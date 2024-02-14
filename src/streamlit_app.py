@@ -6,8 +6,10 @@ import json
 import pandas as pd
 from biasAuditCalculations import BiasAuditCalculations
 from whatIf import WhatIf
-from chatBot import ChatBot
-from quiz import Quiz
+# from chatBot import ChatBot
+# from quiz import Quiz
+from slideDeck import SlideDeck
+from video import Video
 from reference import Reference
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -16,7 +18,7 @@ def main():
     # Set page config
     st.set_page_config(page_title="AEDT Overview",layout="wide", page_icon="▶️")
     st.sidebar.image("https://www.quantuniversity.com/assets/img/logo5.jpg", use_column_width="always")
-    page = st.sidebar.radio("Select a Page:", ["Home", "Bias Audit Calculations", "What If Analysis", "Chat Bot","Quiz", "Reference PDF"])
+    page = st.sidebar.radio("Select a Page:", ["Home",  "Video", "Slide Deck", "Bias Audit Calculations", "What If Analysis", "Chat Bot","Quiz", "Reference PDF"])
     
     if page == "Home":
         st.header("💬➡️📈NY 144 law on Automated Employment Decision Tools (AEDT)", divider= "blue")
@@ -46,8 +48,8 @@ def main():
         
     page1 = BiasAuditCalculations()
     page2 = WhatIf()
-    page3 = ChatBot()
-    page4 = Quiz()
+    # page3 = ChatBot()
+    # page4 = Quiz()
     page5 = Reference()
 
     if page == "Bias Audit Calculations":        
@@ -56,14 +58,23 @@ def main():
     if page == "What If Analysis":
         page2.main()
 
-    if page == "Chat Bot":
-        page3.main()
+    # if page == "Chat Bot":
+    #     page3.main()
 
-    if page == "Quiz":
-        page4.quiz()
+    # if page == "Quiz":
+    #     page4.quiz()
 
     if page == "Reference PDF":
         page5.main()
+
+    if page == "Slide Deck":
+        slides = SlideDeck()
+        slides.display_deck()
+    
+    if page == "Video":
+        video  = Video()
+        video.display_video()
+
 
           
 if __name__ == "__main__":
