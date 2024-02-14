@@ -5,21 +5,12 @@ import cv2
 import base64
 import os
 
-questions = json.load(open("data/questions.json"))
+questions = json.load(open("questions.json"))
 
 
 class Quiz:
     def quiz(self):
-        # Define a function to go to the next question
-        def next_question():
-            # Move to the next question in the questions list
-            st.session_state.current_question += 1
 
-            # If we've reached the end of the questions list, get a new question
-            if st.session_state.current_question > len(st.session_state.questions) - 1:
-                next_question = get_question(st.session_state.current_question)
-                st.session_state.questions.append(next_question)
-        
         def get_binary_file_downloader_html(bin_file, file_label='File'):
             with open(bin_file, 'rb') as f:
                 data = f.read()
@@ -30,8 +21,20 @@ class Quiz:
         def get_question(index):
             return questions[index]
         
+        # Initialize session state variables if they don't exist yet
+        if "current_question" not in st.session_state:
+            st.session_state.answers = {}
+            st.session_state.current_question = 0
+            st.session_state.questions = []
+            st.session_state.right_answers = 0
+            st.session_state.wrong_answers = 0
+            st.session_state.done_with_quiz = False
+            st.session_state.name = ""
+
+
         # Define a function to display the current question and options
         def display_question():
+            
             st.session_state.questions = questions
             # Handle first case
             if len(st.session_state.questions) == 0:
@@ -53,8 +56,16 @@ class Quiz:
             # Display the radio button options and wait for the user to select an answer
             user_answer = options.radio("Your answer:", question["options"], key=st.session_state.current_question)
 
-            # Display the submit button and disable it if necessary
-            submit_button = st.button("Submit Answer", disabled=submit_button_disabled)
+            col1, col2, _ = st.columns([1, 1, 6])
+            
+            with col1:
+                # Display the submit button and disable it if necessary
+                submit_button = st.button("Submit Answer", type="primary", disabled=submit_button_disabled)
+
+            with col2:
+                # Skip Question
+                if st.button("Next Question", disabled=st.session_state.done_with_quiz):
+                    next_question()
 
             # If the user has already answered this question, display their previous answer
             if st.session_state.current_question in st.session_state.answers:
@@ -92,48 +103,63 @@ class Quiz:
 
             
 
-        # Initialize session state variables if they don't exist yet
-        if "current_question" not in st.session_state:
-            st.session_state.answers = {}
-            st.session_state.current_question = 0
-            st.session_state.questions = []
-            st.session_state.right_answers = 0
-            st.session_state.wrong_answers = 0
-            st.session_state.done_with_quiz = False
-            st.session_state.name = ""
 
-        if st.session_state.name == "":
-            st.session_state.name = st.text_input("Enter your name")
+        # Define a function to go to the next question
+        def next_question():
+            # Move to the next question in the questions list
+            st.session_state.current_question += 1
 
-    
-        # Create a 3-column layout for the Prev/Next buttons and the question display
-        col2, col3 = st.columns([6, 1])
-
-        # Add a Next button to the right column that goes to the next question
-        with col3:
-            if col3.button("Next", disabled=st.session_state.done_with_quiz):
-                next_question()
-
-        # Display the actual quiz question
-        with col2:
-            # After getting 68% questions correct and attempting at least 20 questions, display a certificate
-            if st.session_state.current_question >= 2 and st.session_state.right_answers/st.session_state.current_question >= 0.68 :
-                st.balloons()
-                st.success("Congratulations! You have passed the quiz.")
-                st.write("Here is your certificate:")
-                certi = cv2.imread("data/QU-Certificate-Left aligned.jpg")
-                font = cv2.FONT_HERSHEY_DUPLEX 
-                fontScale = 2
-                original = cv2.putText(certi, st.session_state.name, (80, 510) ,font, fontScale, (0, 0, 0), thickness=2)
-                
-                original = cv2.putText(original, "Recorded on: "+date.today().strftime('%B %d, %Y'), (650,680) ,font, 0.7, (0, 0, 0), thickness=1)
-                cv2.imwrite("Certificate.jpg", original)
-                st.image("Certificate.jpg", use_column_width=True)    
-                st.markdown(get_binary_file_downloader_html('Certificate.jpg', 'Certificate'), unsafe_allow_html=True)
-                st.session_state.done_with_quiz = True              
-            else:
-                display_question()
-
+            # If we've reached the end of the questions list, get a new question
+            if st.session_state.current_question > len(st.session_state.questions) - 1:
+                next_question = get_question(st.session_state.current_question)
+                st.session_state.questions.append(next_question)
+            st.rerun()
         
 
+        st.header("Quiz", divider="blue")
+        
+        
             
+
+        
+        
+        # After getting 68% questions correct and attempting at least 20 questions, display a certificate
+        if st.session_state.current_question >= 2 and st.session_state.right_answers/st.session_state.current_question >= 0.68 :
+            st.balloons()
+            st.success("Congratulations! You have passed the quiz.")
+            st.write("Here is your certificate:")
+            certi = cv2.imread("QU-Certificate-Left aligned.jpg")
+            font = cv2.FONT_HERSHEY_DUPLEX 
+            fontScale = 2
+            original = cv2.putText(certi, st.session_state.name, (80, 510) ,font, fontScale, (0, 0, 0), thickness=2)
+            
+            original = cv2.putText(original, "Recorded on: "+date.today().strftime('%B %d, %Y'), (650,680) ,font, 0.7, (0, 0, 0), thickness=1)
+            cv2.imwrite("Certificate.jpg", original)
+            st.image("Certificate.jpg", use_column_width=True)    
+            st.markdown(get_binary_file_downloader_html('Certificate.jpg', 'Certificate'), unsafe_allow_html=True)
+            st.session_state.done_with_quiz = True
+            import streamlit.components.v1 as components
+
+            components.html(
+                """
+                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" 
+                    data-text="Check my cool Streamlit Web-App🎈" 
+                    data-url="https://streamlit.io"
+                    data-show-count="false">
+                    data-size="Large" 
+                    data-hashtags="streamlit,python"
+                    Tweet
+                    </a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+                    <script type="IN/Share" data-url="https://www.quantuniversity.com/assets/img/logo5.jpg"></script>
+                """
+            )
+            st.link_button(label="Share on LinkedIn", url="https://www.linkedin.com/sharing/share-offsite/?url=https://www.quantuniversity.com/assets/img/logo5.jpg")
+
+        else:
+            display_question()
+
+    
+
+        
