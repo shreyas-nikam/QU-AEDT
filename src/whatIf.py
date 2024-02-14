@@ -19,7 +19,7 @@ class WhatIf:
 
     # Session variable
         if 'df_intersectional_counts' not in st.session_state:
-            df = pd.read_csv("./data.csv", header=0)
+            df = pd.read_csv("./data/data.csv", header=0)
             df['IsSelected'] = df['IsSelected'].map({'Yes': True, 'No': False})
             total_counts = df.groupby(['Sex', 'Race/Ethnicity']).size().reset_index(name='Total Count')
             selected_df = df[df['IsSelected']]
@@ -45,7 +45,7 @@ class WhatIf:
             st.session_state.new_df = pd.DataFrame()
 
     #Headers
-        st.header("🎵➡️📈 What-If Calculations ", divider= "blue")
+        st.header("What-If Calculations ", divider= "blue")
         st.subheader("""Update values to see how it affects the calculations""", divider="orange")
         st.write("  ")
 
@@ -54,14 +54,14 @@ class WhatIf:
         st.session_state.sex_option = sex_content.selectbox(
             "Sex",
             (st.session_state.df_intersectional_counts['Sex'].unique()),
-            index=None,
+            index=0,
             # placeholder="Select sex",
             )
 
         st.session_state.race_option = race_content.selectbox(
             "Race/Ethnicity",
             (st.session_state.df_intersectional_counts['Race/Ethnicity'].unique()),
-            index=None,
+            index=0,
             # placeholder="Select Race/Ethnicity",
             )
         

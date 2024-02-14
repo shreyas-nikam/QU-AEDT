@@ -7,7 +7,7 @@ import plotly.graph_objects as go
 from io import StringIO
 
 
-class BiasAuditCalculations:
+class Calculations:
     def __init__(self):
         self.df = pd.read_csv("./data/data.csv", header=0)
 
@@ -17,7 +17,7 @@ class BiasAuditCalculations:
 
         df_copy = self.df.copy()
         
-        st.header("🎵➡️📈 Calculations ", divider= "blue")
+        st.header("Calculations ", divider= "blue")
         st.subheader("Use the sample data or upload your data", divider = "orange")
         l1,m1,r1 = st.columns([0.02,0.96,0.02])
         m1.dataframe(self.df, hide_index =True)
@@ -28,9 +28,9 @@ class BiasAuditCalculations:
         with open(bin_file, 'rb') as f:
                 data = f.read()
         bin_str = base64.b64encode(data).decode()
-        href = f'<a href="data:application/octet-stream;base64,{bin_str}" download="{os.path.basename(bin_file)}">pdf file.</a>'
+        href = f'<a href="data:application/octet-stream;base64,{bin_str}" download="{os.path.basename(bin_file)}">sample file.</a>'
 
-        st.markdown(f"""<h6 style='text-align: center;'> Use the above sample dataset or upload your own data using the schema in this {href}</h6>""", unsafe_allow_html=True)
+        st.markdown(f"""<h6 style='text-align: center;'> Use the above sample dataset or upload your own data using the format in this {href}</h6>""", unsafe_allow_html=True)
         
         uploaded_file = st.file_uploader("Choose a file")
         if uploaded_file is not None:
@@ -90,31 +90,36 @@ class BiasAuditCalculations:
 
     # Categories : SEX
         st.subheader("Audit metrics by category: Sex ", divider = "orange")
-        margin_left, col_male , divider, col_female, margin_right = st.columns([0.02,0.48,0.02,0.48,0.02])
-        with col_male:
-                container = st.container(border=True)     
-                container.markdown(f"<h4 style='text-align: center; text-shadow: 1px 1px 1px blue; '>{Sex_Categories.iloc[0,0]}</h4>", unsafe_allow_html=True)
-                col1,col2,col3,col4 = container.columns(4)
-                col1.metric(label="Total Applicants", value = Sex_Categories.iloc[0,1])
-                col2.metric(label="Total Selected", value=Sex_Categories.iloc[0,2])
-                col3.metric(label="Selection Rate", value=Sex_Categories.iloc[0,3], help = "The rate at which individuals in a category are either selected to move forward in the hiring process or assigned a classification by an AEDT")
-                col4.metric(label="Impact Ratio", value=Sex_Categories.iloc[0,4], delta=((Sex_Categories.iloc[0,4]-1).round(2)), help = "The selection rate for a category divided by the selection rate of the most selected category")
 
-        with col_female:
-                container = st.container(border=True)     
-                container.markdown(f"<h4 style='text-align: center; text-shadow: 1px 1px 1px blue;'>{Sex_Categories.iloc[1,0]}</h4>", unsafe_allow_html=True)
-                col1,col2,col3,col4 = container.columns(4)
-                col1.metric(label="Total Applicants", value=Sex_Categories.iloc[1,1])
-                col2.metric(label="Total Selected", value=Sex_Categories.iloc[1,2])
-                col3.metric(label="Selection Rate", value=Sex_Categories.iloc[1,3], help = "The rate at which individuals in a category are either selected to move forward in the hiring process or assigned a classification by an AEDT")
-                col4.metric(label="Impact Ratio", value=Sex_Categories.iloc[1,4], delta=((Sex_Categories.iloc[1,4]-1).round(2)), help = "The selection rate for a category divided by the selection rate of the most selected category")
-
-        with st.expander("Data Table"):
-            l1,m1,r1 = st.columns([0.3,0.4,0.3])
+        l,r,m = st.columns([.4,.2,.4])
+        if r.toggle('Table View'):
+            l1,m1,r1 = st.columns([0.1,0.8,0.1])
             m1.write(" ")
             vmin = min(Sex_Categories["Impact_Ratio"])
             vmax = max(Sex_Categories["Impact_Ratio"])
-            m1.dataframe(Sex_Categories.style.text_gradient(subset=["Impact_Ratio"], cmap="RdYlGn", vmin=vmin, vmax=vmax),hide_index=True)
+            st.write(" ")
+            m1.dataframe(Sex_Categories.style.text_gradient(subset=["Impact_Ratio"], cmap="RdYlGn", vmin=vmin, vmax=vmax),width= 700,  hide_index=True)
+        else:    
+            margin_left, col_male , divider, col_female, margin_right = st.columns([0.02,0.48,0.02,0.48,0.02])
+            with col_male:
+                    container = st.container(border=True)     
+                    container.markdown(f"<h4 style='text-align: center; text-shadow: 1px 1px 1px blue; '>{Sex_Categories.iloc[0,0]}</h4>", unsafe_allow_html=True)
+                    col1,col2,col3,col4 = container.columns(4)
+                    col1.metric(label="Total Applicants", value = Sex_Categories.iloc[0,1])
+                    col2.metric(label="Total Selected", value=Sex_Categories.iloc[0,2])
+                    col3.metric(label="Selection Rate", value=Sex_Categories.iloc[0,3], help = "The rate at which individuals in a category are either selected to move forward in the hiring process or assigned a classification by an AEDT")
+                    col4.metric(label="Impact Ratio", value=Sex_Categories.iloc[0,4], delta=((Sex_Categories.iloc[0,4]-1).round(2)), help = "The selection rate for a category divided by the selection rate of the most selected category")
+
+            with col_female:
+                    container = st.container(border=True)     
+                    container.markdown(f"<h4 style='text-align: center; text-shadow: 1px 1px 1px blue;'>{Sex_Categories.iloc[1,0]}</h4>", unsafe_allow_html=True)
+                    col1,col2,col3,col4 = container.columns(4)
+                    col1.metric(label="Total Applicants", value=Sex_Categories.iloc[1,1])
+                    col2.metric(label="Total Selected", value=Sex_Categories.iloc[1,2])
+                    col3.metric(label="Selection Rate", value=Sex_Categories.iloc[1,3], help = "The rate at which individuals in a category are either selected to move forward in the hiring process or assigned a classification by an AEDT")
+                    col4.metric(label="Impact Ratio", value=Sex_Categories.iloc[1,4], delta=((Sex_Categories.iloc[1,4]-1).round(2)), help = "The selection rate for a category divided by the selection rate of the most selected category")
+
+            
 
     # Race / Ethnicity Categories
         st.subheader("Audit metrics by category: Race/Ethnicity", divider = "orange")

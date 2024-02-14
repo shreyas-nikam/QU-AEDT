@@ -5,7 +5,7 @@ import cv2
 import base64
 import os
 
-questions = json.load(open("questions.json"))
+questions = json.load(open("./data/questions.json"))
 
 
 class Quiz:
@@ -30,6 +30,9 @@ class Quiz:
             st.session_state.wrong_answers = 0
             st.session_state.done_with_quiz = False
             st.session_state.name = ""
+        
+        if "show_explanation" not in st.session_state:
+            st.session_state.show_explanation = False
 
 
         # Define a function to display the current question and options
@@ -61,11 +64,14 @@ class Quiz:
             with col1:
                 # Display the submit button and disable it if necessary
                 submit_button = st.button("Submit Answer", type="primary", disabled=submit_button_disabled)
+                
 
             with col2:
                 # Skip Question
-                if st.button("Next Question", disabled=st.session_state.done_with_quiz):
+                if st.button("Next Question", disabled=st.session_state.done_with_quiz or not submit_button_disabled):
+                    st.session_state.show_explanation = False
                     next_question()
+                    
 
             # If the user has already answered this question, display their previous answer
             if st.session_state.current_question in st.session_state.answers:
@@ -82,6 +88,7 @@ class Quiz:
             if submit_button:
                 # Record the user's answer in the session state
                 st.session_state.answers[st.session_state.current_question] = question["options"].index(user_answer)
+                st.session_state.show_explanation = True
 
                 # Check if the user's answer is correct and update the score
                 if user_answer == question["answer"]:
@@ -91,11 +98,15 @@ class Quiz:
                     results_placeholder.subheader("Incorrect!")
                     st.write(f"Sorry, the correct answer was \n {question['answer']}.")
                     st.session_state.wrong_answers += 1
+                
+                st.rerun()
 
                 # Show an expander with the explanation of the correct answer
+            if st.session_state.show_explanation: 
                 with st.expander("Explanation"):
                     st.write(question["explanation"])
                 st.header(f"Score: {st.session_state.right_answers} / {st.session_state.current_question + 1}")
+                
 
             # Display the current score at the bottom of the page
             st.success(f"Right answers: {st.session_state.right_answers}")
@@ -128,10 +139,10 @@ class Quiz:
             st.balloons()
             st.success("Congratulations! You have passed the quiz.")
             st.write("Here is your certificate:")
-            certi = cv2.imread("QU-Certificate-Left aligned.jpg")
+            certi = cv2.imread("./data/QU-Certificate-Left aligned.jpg")
             font = cv2.FONT_HERSHEY_DUPLEX 
             fontScale = 2
-            original = cv2.putText(certi, st.session_state.name, (80, 510) ,font, fontScale, (0, 0, 0), thickness=2)
+            original = cv2.putText(certi, st.session_state.userInfo['name'], (80, 510) ,font, fontScale, (0, 0, 0), thickness=2)
             
             original = cv2.putText(original, "Recorded on: "+date.today().strftime('%B %d, %Y'), (650,680) ,font, 0.7, (0, 0, 0), thickness=1)
             cv2.imwrite("Certificate.jpg", original)
@@ -140,22 +151,22 @@ class Quiz:
             st.session_state.done_with_quiz = True
             import streamlit.components.v1 as components
 
-            components.html(
-                """
-                    <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" 
-                    data-text="Check my cool Streamlit Web-App🎈" 
-                    data-url="https://streamlit.io"
-                    data-show-count="false">
-                    data-size="Large" 
-                    data-hashtags="streamlit,python"
-                    Tweet
-                    </a>
-                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-                    <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
-                    <script type="IN/Share" data-url="https://www.quantuniversity.com/assets/img/logo5.jpg"></script>
-                """
-            )
-            st.link_button(label="Share on LinkedIn", url="https://www.linkedin.com/sharing/share-offsite/?url=https://www.quantuniversity.com/assets/img/logo5.jpg")
+            # components.html(
+            #     """
+            #         <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" 
+            #         data-text="Check my cool Streamlit Web-App🎈" 
+            #         data-url="https://streamlit.io"
+            #         data-show-count="false">
+            #         data-size="Large" 
+            #         data-hashtags="streamlit,python"
+            #         Tweet
+            #         </a>
+            #         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            #         <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
+            #         <script type="IN/Share" data-url="https://www.quantuniversity.com/assets/img/logo5.jpg"></script>
+            #     """
+            # )
+            # st.link_button(label="Share on LinkedIn", url="https://www.linkedin.com/sharing/share-offsite/?url=https://www.quantuniversity.com/assets/img/logo5.jpg")
 
         else:
             display_question()

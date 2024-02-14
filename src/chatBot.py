@@ -1,7 +1,7 @@
 import os
 import time
 import streamlit as st
-from chat_ui import message_func
+from chatUI import message_func
 from langchain_openai.chat_models import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
 # from langchain.chains import LLMChain
@@ -119,17 +119,17 @@ class ChatBot:
             st.session_state.keyOwner = "QU"
 
 
+        name = st.session_state.userInfo['name']
         if "response" not in st.session_state:
             st.session_state.ques_session = True
-           
-            st.session_state.response = {'answer': 'Hello there! How can I help you today? ',
+            st.session_state.response = {'answer': f'Hello {name}! How can I help you today? ',
                             'followup_questions': ["How to calculate impact ratio for a category?",
                                                     "Is an “employment decision” just the final hiring or promotion decision?",
                                                     "What are the parameters required for audit analysis?",
                                                     ]}
         #front-end chatmemory
         INITIAL_MESSAGE = [{"role": "assistant",
-                "content": "Hello there! How can I help you today?"}]
+                "content": f'Hello {name}! How can I help you today? '}]
         if "messages" not in st.session_state:
             st.session_state["messages"] = INITIAL_MESSAGE
 
@@ -154,9 +154,15 @@ class ChatBot:
                 st.rerun()
             
 
-        st.markdown("<h1 style='text-align: center;'>Audit Bias : FAQ Chat Bot</h1>", unsafe_allow_html=True)
-        st.markdown("<p style='text-align: center;'><i>Disclaimer: This bot is designed to provide insights about audit bais. We strongly recommend to thoroughly read the documents and consult subject matter experts.", unsafe_allow_html=True)
+        st.markdown("<h1 style='text-align: Left;'>FAQ : QuBot</h1>", unsafe_allow_html=True)
         
+        # st.header("FAQ : QuBot", divider= "blue")
+        st.markdown("""
+        <p style='text-align: left; font-size:12px;'><i>Note:</i><br>
+            <i>Qubot</i> is an experimental AI-bot that utilizes information from a published <a href="{url}">document</a>. You can experiment with Qubot a few times for free. Later, you can use your own <a href="{key_link}">OpenAI key</a> for further usage.
+        </p>
+        """.format(url="https://www.nyc.gov/site/dca/about/automated-employment-decision-tools.page", key_link="https://platform.openai.com/docs/quickstart#:~:text=First%2C%20create%20an%20OpenAI%20account,not%20share%20it%20with%20anyone"), unsafe_allow_html=True)
+
         if st.session_state.keyOwner != "None" :
             for message in st.session_state.messages:
                 message_func(
@@ -195,10 +201,7 @@ class ChatBot:
                 send_prompt(ques2)
             if btn3:
                 send_prompt(ques3)
-            
-            
-            print(f"No of questions remaining: {self.TOTAL_QUES - st.session_state.question_per_session}")
-            
+
         else:
             st.warning("You have exhausted your free trial. Enter your OpenAI key below to conitnue")
             # input_content, btn_content = st.columns([0.8,0.2])
@@ -209,7 +212,5 @@ class ChatBot:
                 st.session_state.keyOwner = "USER"
                 st.rerun()
 
-        
 
 
-            
