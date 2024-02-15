@@ -91,18 +91,21 @@ class Quiz:
                 st.session_state.show_explanation = True
 
                 # Check if the user's answer is correct and update the score
+               
+                st.rerun()
+
+                # Show an expander with the explanation of the correct answer
+            
+        
+            if st.session_state.show_explanation:
                 if user_answer == question["answer"]:
                     results_placeholder.subheader("Correct!")
                     st.session_state.right_answers += 1
                 else:
                     results_placeholder.subheader("Incorrect!")
-                    st.write(f"Sorry, the correct answer was \n {question['answer']}.")
+                    st.write(f"Correct answer: {question['answer']}.")
                     st.session_state.wrong_answers += 1
-                
-                st.rerun()
 
-                # Show an expander with the explanation of the correct answer
-            if st.session_state.show_explanation: 
                 with st.expander("Explanation"):
                     st.write(question["explanation"])
                 st.header(f"Score: {st.session_state.right_answers} / {st.session_state.current_question + 1}")
@@ -145,23 +148,6 @@ class Quiz:
             st.markdown(get_binary_file_downloader_html('Certificate.jpg', 'Certificate'), unsafe_allow_html=True)
             st.session_state.done_with_quiz = True
             import streamlit.components.v1 as components
-
-            # components.html(
-            #     """
-            #         <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" 
-            #         data-text="Check my cool Streamlit Web-App🎈" 
-            #         data-url="https://streamlit.io"
-            #         data-show-count="false">
-            #         data-size="Large" 
-            #         data-hashtags="streamlit,python"
-            #         Tweet
-            #         </a>
-            #         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            #         <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
-            #         <script type="IN/Share" data-url="https://www.quantuniversity.com/assets/img/logo5.jpg"></script>
-            #     """
-            # )
-            # st.link_button(label="Share on LinkedIn", url="https://www.linkedin.com/sharing/share-offsite/?url=https://www.quantuniversity.com/assets/img/logo5.jpg")
 
         else:
             display_question()

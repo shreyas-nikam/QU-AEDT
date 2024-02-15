@@ -48,7 +48,7 @@ def main():
     # Set page config
     st.set_page_config(page_title="AEDT Overview",layout="wide", page_icon="▶️")
     st.sidebar.image("https://www.quantuniversity.com/assets/img/logo5.jpg", use_column_width="always")
-    page = st.sidebar.radio("Select a Page:", ["Home",  "CourseMaterial", "Bias Audit Calculations", "What If Analysis", "FAQ : QuBot","Quiz", "Reference PDF"], disabled= True if not st.session_state.userInfo else False)
+    page = st.sidebar.radio("Select a Page:", ["Home",  "Course Materials", "Bias Audit Calculations", "What If Analysis", "FAQ - QuBot","Quiz", "Reference PDF"], disabled= True if not st.session_state.userInfo else False)
     
    
     if not st.session_state.userInfo:
@@ -83,7 +83,7 @@ def main():
         st.markdown("""
         ### Introduction
 
-        - The Department of Consumer and Worker Protection (DCWP) is implementing rules for automated employment decision tools (AEDTs) based on Local Law 144 of 2021. [link](https://www.nyc.gov/site/dca/about/automated-employment-decision-tools.page)
+        - The Department of Consumer and Worker Protection (DCWP) is implementing rules for automated employment decision tools (AEDTs) based on [Local Law 144 of 2021](https://www.nyc.gov/site/dca/about/automated-employment-decision-tools.page).
         - AEDTs cannot be used by employers or employment agencies without undergoing a bias audit and making the audit results public.
         - The bias audit must analyze selection rates for different demographic groups and compare them to detect potential biases.
         - Rules clarify terms, audit requirements, publication standards for audit results, and notice obligations for employees and job candidates.
@@ -110,13 +110,13 @@ def main():
     if page == "Bias Audit Calculations":        
         page1.main()
 
-    if page == "CourseMaterial":
+    if page == "Course Materials":
         page6.main()
-        
+
     if page == "What If Analysis":
         page2.main()
 
-    if page == "FAQ : QuBot":
+    if page == "FAQ - QuBot":
         page3.main()
 
     if page == "Quiz":
@@ -125,13 +125,13 @@ def main():
     if page == "Reference PDF":
         page5.main()
 
-    if page == "Slide Deck":
-        slides = SlideDeck()
-        slides.display_deck()
+    # if page == "Slide Deck":
+    #     slides = SlideDeck()
+    #     slides.display_deck()
     
-    if page == "Video":
-        video  = Video()
-        video.display_video()
+    # if page == "Video":
+    #     video  = Video()
+    #     video.display_video()
 
 if __name__ == "__main__":
     main()
