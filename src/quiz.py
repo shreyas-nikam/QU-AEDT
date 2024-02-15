@@ -128,12 +128,7 @@ class Quiz:
         
 
         st.header("Quiz", divider="blue")
-        
-        
-            
-
-        
-        
+ 
         # After getting 68% questions correct and attempting at least 20 questions, display a certificate
         if st.session_state.current_question >= 2 and st.session_state.right_answers/st.session_state.current_question >= 0.68 :
             st.balloons()

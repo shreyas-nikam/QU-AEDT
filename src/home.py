@@ -13,6 +13,7 @@ from quiz import Quiz
 from slideDeck import SlideDeck
 from video import Video
 from reference import Reference
+from courseMaterial import CourseMaterial
 
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
@@ -47,8 +48,8 @@ def main():
     # Set page config
     st.set_page_config(page_title="AEDT Overview",layout="wide", page_icon="▶️")
     st.sidebar.image("https://www.quantuniversity.com/assets/img/logo5.jpg", use_column_width="always")
-    page = st.sidebar.radio("Select a Page:", ["Home",  "Video", "Slide Deck", "Bias Audit Calculations", "What If Analysis", "FAQ : QuBot","Quiz", "Reference PDF"], disabled= True if not st.session_state.userInfo else False)
-
+    page = st.sidebar.radio("Select a Page:", ["Home",  "CourseMaterial", "Bias Audit Calculations", "What If Analysis", "FAQ : QuBot","Quiz", "Reference PDF"], disabled= True if not st.session_state.userInfo else False)
+    
    
     if not st.session_state.userInfo:
         st.header("NY 144 law on Automated Employment Decision Tools (AEDT)", divider= "blue")
@@ -104,10 +105,14 @@ def main():
     page3 = ChatBot()
     page4 = Quiz()
     page5 = Reference()
+    page6 = CourseMaterial()
 
     if page == "Bias Audit Calculations":        
         page1.main()
 
+    if page == "CourseMaterial":
+        page6.main()
+        
     if page == "What If Analysis":
         page2.main()
 

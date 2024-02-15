@@ -18,7 +18,7 @@ class SlideDeck:
             st.session_state.course_index = 0
         # st.session_state.course_index = 0
 
-        st.header(f"Slide Deck - Module {st.session_state.course_index+1}", divider="blue")
+        st.subheader(f"Slide Deck - Module {st.session_state.course_index+1}", divider="orange")
         
         components.iframe(self.course_links[st.session_state.course_index],  height=560)
         
