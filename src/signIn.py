@@ -55,9 +55,9 @@ class SignIn:
                     st.error("Please read and agree the QuantUniversity's [Privacy Policy](https://www.quantuniversity.com/privacy.html).")
                 else:
                     data, count = st.session_state.supabaseDB.table(self.table_name).insert({"name":name, "email":email}).execute()
-                    print(f"data {data[1][0]}")
+                    
                     st.session_state.user_info = data[1][0]
-                    print(f"st.session_state.user_info : {st.session_state.user_info['name']}")
+                    
                     st.rerun()
 
             cent_co1.markdown("<p style='text-align: center;'>Not a member? <a href='{url}'>SignUp</a></p>".format(url="https://academy.qusandbox.com/register"), unsafe_allow_html=True)

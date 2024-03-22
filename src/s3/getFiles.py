@@ -38,7 +38,7 @@ def fetch_updated_files():
     Path("./data/transcripts").mkdir(parents=True, exist_ok=True)
     local_files = get_last_updated_local()
     s3_files = get_last_updated_s3()
-    print(s3_files, local_files)
+    
     
     # iterate over the vidoes and download the updated videos
     for video in s3_files["videos"]:

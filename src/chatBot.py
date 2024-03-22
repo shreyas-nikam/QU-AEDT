@@ -72,13 +72,11 @@ OUTPUT QUESTION:
         )
 
         _input = prompt.format_prompt(history=self.chatHistory, question=question)
-        print(_input)
         output = llm(_input.to_messages())
         return output.content
 
     def get_response(self,question):
         question = self.resolve_question(question)
-        print("RESOLVED QUESTION::",question)
         response_schemas = [
                 ResponseSchema(name="answer", description="Your answer to the given question",type = 'markdown'),
                 ResponseSchema(name="followup_questions", description="A list of 3 follow-up questions that the user may have based on the question.", type = 'list')
@@ -87,7 +85,6 @@ OUTPUT QUESTION:
         format_instructions = output_parser.get_format_instructions()
 
         context = self.get_context(question)
-        print("Context::", context)
 
         prompt = ChatPromptTemplate(
             messages=[
@@ -129,12 +126,9 @@ If the answer is not present in the context, return "Please provide more context
                 self.chatHistory += f"""\n
                 User: {question}
                 You: {str(json_output['answer'])}"""
-                print("History::",self.chatHistory)
             except Exception as e :
-                print(f"Error : {e}")
                 runs+=1
                 if runs < 4:
-                    print(f"\n\n Retry No ::{runs}")
                     error_prompt = ChatPromptTemplate(
                         messages=[
                                 HumanMessagePromptTemplate.from_template(""" 
@@ -157,7 +151,6 @@ If the answer is not present in the context, return "Please provide more context
                         partial_variables={"format_instructions": format_instructions}
                     )
                     _error_input = error_prompt.format_prompt(e=e,history = self.chatHistory,context = context, question=question)
-                    print(f"_error_input:: \n{_error_input}")
                     output = self.chatModel(_error_input.to_messages())
                 else:
                     return {'answer': f"Something went wrong! Please try again!",

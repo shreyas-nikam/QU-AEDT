@@ -1,478 +1,516 @@
 {
   "1 Introduction": [
     {
-      "question": "What are the two main classes of AI systems mentioned in the text?",
+      "question": "Under which authority did the Commissioner of the Department of Consumer and Worker Protection adopt a final rule?",
       "options": [
-        "Modular and Systematic",
-        "Analytical and Predictive",
-        "Predictive and Generative",
-        "Framework and Decentralized"
+        "Sections 1043, 2203(f) of NYC Charter and Section 20-104(b) of NYC Administrative Code",
+        "Federal Regulations",
+        "State Legislature",
+        "Executive Order"
       ],
-      "answer_option": "c",
-      "explanation": "The two main classes of AI systems mentioned in the text are Predictive and Generative."
+      "answer_option": "a",
+      "explanation": "The final rule was adopted under the authority from Sections 1043, 2203(f) of NYC Charter and Section 20-104(b) of NYC Administrative Code."
     },
     {
-      "question": "What are some examples of failures caused by attacks on AI and ML technologies?",
+      "question": "What does the final rule amend?",
       "options": [
-        "Autonomous vehicles swerving into the opposite lane",
-        "Misclassification of road signs",
-        "Loss of internet connection",
-        "A and B"
+        "Title 6 of the Rules of NYC",
+        "The Constitution",
+        "The Bill of Rights",
+        "Federal Employment Laws"
+      ],
+      "answer_option": "a",
+      "explanation": "This rule amends Title 6 of the Rules of NYC."
+    },
+    {
+      "question": "When was the initial version of the rule proposed and published?",
+      "options": [
+        "September 23, 2022",
+        "January 23, 2023",
+        "November 4, 2022",
+        "December 23, 2022"
+      ],
+      "answer_option": "a",
+      "explanation": "The initial version of the rule was proposed and published on September 23, 2022."
+    },
+    {
+      "question": "What is required by Local Law 144 of 2021 for automated employment decision tools?",
+      "options": [
+        "A bias audit",
+        "Employee satisfaction survey",
+        "Federal certification",
+        "State approval"
+      ],
+      "answer_option": "a",
+      "explanation": "Local Law 144 of 2021 requires a bias audit for automated employment decision tools."
+    },
+    {
+      "question": "What must the bias audit calculate for automated employment decision tools?",
+      "options": [
+        "The selection rate for each race/ethnicity and sex category",
+        "The cost-benefit ratio",
+        "The efficiency rate",
+        "The employee turnover rate"
+      ],
+      "answer_option": "a",
+      "explanation": "The bias audit should calculate the selection rate for each race/ethnicity and sex category."
+    },
+    {
+      "question": "What is the purpose of comparing selection rates to the most selected category in a bias audit?",
+      "options": [
+        "To determine the cost-effectiveness",
+        "To reveal an impact ratio",
+        "To calculate the return on investment",
+        "To assess the market reach"
+      ],
+      "answer_option": "b",
+      "explanation": "Comparing selection rates to the most selected category is done to reveal an impact ratio."
+    },
+    {
+      "question": "What new definitions and clarifications did the changes to the rules include?",
+      "options": [
+        "AEDT, the employment of independent auditors, and calculation for scoring candidates",
+        "Federal employment standards",
+        "State labor laws",
+        "Corporate governance principles"
+      ],
+      "answer_option": "a",
+      "explanation": "Changes included defining AEDT, the employment of independent auditors, calculation for scoring candidates, and category comparison by the impact ratio."
+    },
+    {
+      "question": "What is a new requirement introduced for bias audits?",
+      "options": [
+        "Inability to use an AEDT with an audit older than a year",
+        "Mandatory federal oversight",
+        "Annual shareholder review",
+        "Bi-monthly public disclosure"
+      ],
+      "answer_option": "a",
+      "explanation": "A new requirement introduced for bias audits is the inability to use an AEDT with an audit older than a year."
+    },
+    {
+      "question": "What does the expansion of 'machine learning' definition relate to?",
+      "options": [
+        "Clarification for bias audit examples",
+        "Data protection standards",
+        "Employee training programs",
+        "Investor relations"
+      ],
+      "answer_option": "a",
+      "explanation": "The expansion of 'machine learning' definition relates to clarification for bias audit examples."
+    },
+    {
+      "question": "What additional flexibility does the rule provide regarding the impact ratio?",
+      "options": [
+        "Allowing category exclusion from impact ratio",
+        "Increasing the number of categories",
+        "Mandatory inclusion of all categories",
+        "Periodic re-evaluation of impact ratio"
+      ],
+      "answer_option": "a",
+      "explanation": "The rule provides additional flexibility by allowing category exclusion from impact ratio."
+    },
+    {
+      "question": "When was the second version of the rule proposed?",
+      "options": [
+        "December 23, 2022",
+        "September 23, 2022",
+        "November 4, 2022",
+        "January 23, 2023"
+      ],
+      "answer_option": "a",
+      "explanation": "The second version of the rule was proposed on December 23, 2022."
+    },
+    {
+      "question": "What is the significance of publishing audit details publicly?",
+      "options": [
+        "It ensures transparency and accountability",
+        "It is a legal formality without practical use",
+        "It serves marketing purposes",
+        "It is intended to confuse competitors"
+      ],
+      "answer_option": "a",
+      "explanation": "Publishing audit details publicly is significant because it ensures transparency and accountability regarding the use and fairness of automated employment decision tools."
+    },
+    {
+      "question": "What additional requirement was introduced for the definition of 'machine learning' in the context of AEDT?",
+      "options": [
+        "The requirement to include all possible algorithms",
+        "Expansion to include clarity and examples",
+        "Mandatory annual redefinition",
+        "Exclusive focus on neural networks"
+      ],
+      "answer_option": "b",
+      "explanation": "An additional requirement introduced was the expansion of the 'machine learning' definition to include more clarity and examples."
+    },
+    {
+      "question": "How do the new rules address the issue of data types for bias audits?",
+      "options": [
+        "By specifying the exact data types to be used",
+        "By allowing any data type as long as it's consistent",
+        "By mandating the use of third-party data",
+        "By detailing acceptable data types and requirements for bias audits"
       ],
       "answer_option": "d",
-      "explanation": "The text specifically mentions autonomous vehicles swerving into the opposite lane and misclassification of road signs as failures caused by attacks on AI and ML technologies."
+      "explanation": "The new rules address data types for bias audits by detailing acceptable data types and requirements, ensuring the audits are thorough and appropriate."
     },
     {
-      "question": "What are Generative AI (GenAI) systems commonly used for?",
+      "question": "What does the rule say about the use of an AEDT with an audit older than a year?",
       "options": [
-        "Object detection",
-        "Online search and powering chatbots",
-        "Vehicle navigation",
-        "Database management"
+        "It can still be used with special permission",
+        "It is strictly prohibited",
+        "It is recommended",
+        "It requires reevaluation but can be used"
       ],
       "answer_option": "b",
-      "explanation": "The text mentions that GenAI systems are commonly used for online search, coding aid, powering chatbots, and Retrieval Augmented Generation (RAG)."
+      "explanation": "The rule strictly prohibits the use of an Automated Employment Decision Tool (AEDT) with a bias audit that is older than a year to ensure up-to-date fairness and accuracy."
     },
     {
-      "question": "Why is user privacy online a potential risk in AI Systems?",
+      "question": "What must the bias audits show in addition to the selection rates?",
       "options": [
-        "Because internet is not secure",
-        "Because AI models can get hacked",
-        "Because AI models use datasets that may include sensitive personal information",
-        "None of these"
+        "The number of employees who received promotions",
+        "The profitability of the company",
+        "Numbers of uncalculated individuals",
+        "The turnover rate of the company"
       ],
       "answer_option": "c",
-      "explanation": "The given text suggests that companies developing AI models often do not release information about the datasets they use, which sometimes include sensitive personal information such as addresses and emails, thus risking user privacy online."
-    },
-    {
-      "question": "What is data poisoning?",
-      "options": [
-        "Deleting important data",
-        "Illegally obtaining data",
-        "Manipulating training data of AI models",
-        "Spreading malware through data"
-      ],
-      "answer_option": "c",
-      "explanation": "Data poisoning, in this context, refers to the manipulation of AI models' training data which could lead to potential security breaches."
-    },
-    {
-      "question": "How can pre-trained AI models pose risks?",
-      "options": [
-        "They are hard to train",
-        "They are not efficient",
-        "They can be maliciously modified leading to data leaks and incorrect processing",
-        "They do not work well with new datasets"
-      ],
-      "answer_option": "c",
-      "explanation": "The text states that pre-trained models, which could be adjusted with new datasets for different tasks, can be maliciously modified. This could risk data leaks, incorrect processing, model availability, etc."
-    },
-    {
-      "question": "What is an example of a negative outcome from adversarial distortions in Predictive AI (PredAI)?",
-      "options": [
-        "Incorrect road sign classification",
-        "Improper data storage",
-        "Incorrect data prediction",
-        "High energy consumption"
-      ],
-      "answer_option": "a",
-      "explanation": "The text gives an example of adversarial distortions in Predictive AI (PredAI) leading to incorrect road sign classification."
-    },
-    {
-      "question": "What is the potential harm with large language models (LLMs) in Generative AI (GenAI)?",
-      "options": [
-        "Slow processing speed",
-        "Potential for exposing confidential and proprietary enterprise data",
-        "Lack of understanding of human language",
-        "Inability to generate meaningful sentences"
-      ],
-      "answer_option": "b",
-      "explanation": "As per the text, with large language models (LLMs) that are integral to the Internet infrastructure, a new attack surface can expose confidential and proprietary enterprise data."
-    },
-    {
-      "question": "Why may scraping of training data from the Internet pose a security risk in AI systems?",
-      "options": [
-        "It results in slow processing of data",
-        "It can lead to data poisoning at scale",
-        "It increases cost of data handling",
-        "It is an illegal practice"
-      ],
-      "answer_option": "b",
-      "explanation": "The practice of scraping training data from the Internet opens up the possibility of data poisoning at scale, leading to potential security breaches, as per the text."
-    },
-    {
-      "question": "Which AI class is particularly affected by adversarial distortions?",
-      "options": [
-        "Predictive AI (PredAI)",
-        "Generative AI (GenAI)",
-        "Both Predictive and Generative AI",
-        "None of the above"
-      ],
-      "answer_option": "a",
-      "explanation": "The text specifically mentions that Predictive AI (PredAI) is badly affected by adversarial distortions, particularly affecting object detection and classification applications."
+      "explanation": "Bias audits must now show numbers of uncalculated individuals, adding another layer of transparency and detail to the audit process."
     }
   ],
-  "2 Predictive AI Taxonomy": [
+  "4 Summary": [
     {
-      "question": "What are the two stages involved in Machine learning?",
+      "question": "Which department amends Title 6 of the Rules of the City of New York?",
       "options": [
-        "Analysis and design",
-        "Development and testing",
-        "Training and Deployment",
-        "None of the above"
+        "Department of Health",
+        "Department of Consumer and Worker Protection",
+        "Department of Education",
+        "Department of Finance"
       ],
-      "answer_option": "c",
-      "explanation": "Machine learning involves a training stage, in which a model is learned, and a deployment stage, in which the model is deployed on new, unlabeled data samples to generate predictions."
+      "answer_option": "b",
+      "explanation": "According to the provided content, it's the Department of Consumer and Worker Protection that amends Title 6 of the Rules of the City of New York."
     },
     {
-      "question": "What are the common types of supervised learning techniques?",
+      "question": "What is the purpose of the new rules implemented by DCWP regarding automated employment decision tools?",
       "options": [
-        "Classification and Regression",
-        "Fuzzy logic and Genetic algorithm",
-        "Evolutionary algorithms and Neural networks",
-        "None of the above"
+        "Prohibit their use completely",
+        "Ensure they are subject to a bias audit",
+        "Limit their use in sensitive areas",
+        "Obligate employers to inform applicants about their use"
+      ],
+      "answer_option": "b",
+      "explanation": "The new rules ensure that an automated employment decision tool is subject to a bias audit, and the information about the audit is publicly available."
+    },
+    {
+      "question": "Which commission's selection rate calculation is used as a reference for the bias audit of an AEDT?",
+      "options": [
+        "Equal Employment Opportunity Commission",
+        "Federal Communications Commission",
+        "American Immigration Lawyers Association",
+        "American Civil Liberties Union"
       ],
       "answer_option": "a",
-      "explanation": "Common supervised learning techniques include classification, in which the predicted labels or _classes_ are discrete, and regression, in which the predicted labels or _response variables_ are continuous."
+      "explanation": "The Equal Employment Opportunity Commission's ('EEOC') selection rate is used as an approach to calculate the bias audit of an AEDT."
     },
     {
-      "question": "In Machine learning, what is a generative model?",
+      "question": "What elements does a bias audit of an AEDT need to include according to the new rules?",
       "options": [
-        "Model that specializes in regression",
-        "Model that predicts labels",
-        "Model that learns the distribution of training data and generates similar examples",
-        "Model that learns only a decision boundary"
+        "Calculating the selection rate for each sex, and comparing the rates to find an impact ratio",
+        "Calculating the selection rate for each race/ethnicity, and comparing the rates to the most selected group to find an impact ratio",
+        "Both a and b",
+        "None of the above"
       ],
       "answer_option": "c",
-      "explanation": "Generative models in Machine learning learn the distribution of training data and generates similar examples."
+      "explanation": "The bias audit must calculate the selection rate for each race/ethnicity and sex category and compare the selection rates to the most selected category to determine an impact ratio."
     },
     {
-      "question": "What is a poisoning attack in the context of Machine Learning?",
+      "question": "How often should a bias audit of an AEDT be conducted?",
       "options": [
-        "Attacks that compromise the integrity of a model",
-        "Attacks that compromise the privacy of a model",
-        "Attacks during the ML training stage",
-        "Attacks that compromise the availability of a model"
+        "Every Month",
+        "Every Quarter",
+        "Every Year",
+        "Once in Two Years"
       ],
       "answer_option": "c",
-      "explanation": "In the context of machine learning, attacks during the ML training stage are called poisoning attacks. These can occur during the ML training stage where the attacker might control part of the training data or their labels, the model parameters, or the code of ML algorithms."
+      "explanation": "According to the new rules, a bias audit must be conducted at least once a year."
     },
     {
-      "question": "What does an integrity attack in Machine Learning refer to?",
+      "question": "What happens if an AEDT has not been audited for more than a year?",
       "options": [
-        "Attack that compromises the model's ability to generate predictions",
-        "Attack that compromises the model's training data",
-        "Attack that compromises the model's code",
-        "Attack that targets the integrity of an ML model's output, resulting in incorrect predictions performed by an ML model."
+        "It needs to be audited twice",
+        "It cannot be used",
+        "It needs to be reported to DCWP",
+        "Nothing happens"
+      ],
+      "answer_option": "b",
+      "explanation": "The new rules state that an AEDT cannot be used if its most recent bias audit is more than a year old."
+    },
+    {
+      "question": "Who can conduct a Bias Audit of an AEDT according to the new rules?",
+      "options": [
+        "Anyone who is interested",
+        "The developer of the AEDT",
+        "An independent auditor without financial interests in the AEDT's development",
+        "The employer"
+      ],
+      "answer_option": "c",
+      "explanation": "The rules clarify that an 'independent auditor' conducting the bias audit may not be employed or have a financial interest in an employer that seeks to use or continue to use an AEDT."
+    },
+    {
+      "question": "What changes were made in the final version of the rule about AEDT bias audits?",
+      "options": [
+        "Clarifying examples of a bias audit",
+        "Requiring the bias audit to include the number of unknown category individuals",
+        "Clarifying when an employer may rely on historical data of other employers for a bias audit",
+        "All of the above"
       ],
       "answer_option": "d",
-      "explanation": "An integrity attack targets the integrity of a model's output, resulting in incorrect predictions performed by an ML model."
+      "explanation": "The final version included all the listed changes."
     },
     {
-      "question": "What is a privacy compromise attack in Machine Learning?",
+      "question": "What is the meaning of 'shall' and 'must' in the context of the department's rules?",
       "options": [
-        "Attacks aimed at learning information about the training data or the ML model",
-        "Attacks aimed at compromising the integrity of a model's output",
-        "Attacks aimed at compromising the availability of a model",
-        "None of the above"
+        "They denote optional requirements",
+        "They denote exclusive requirements",
+        "They denote mandatory requirements",
+        "They denote potential requirements"
       ],
-      "answer_option": "a",
-      "explanation": "A privacy compromise attack in Machine Learning is when attackers are interested in learning information about the training data or the ML model."
+      "answer_option": "c",
+      "explanation": "In the context of the department's rules, 'shall' and 'must' denote mandatory requirements."
     },
     {
-      "question": "What are the different types of knowledge an attacker could possess in the context of machine learning attacks?",
+      "question": "What does Local Law 144 of 2021 mandates?",
       "options": [
-        "White-box, black-box, and gray-box knowledge",
-        "Deep knowledge, surface knowledge, and intermediate knowledge",
-        "Theoretical knowledge, practical knowledge, and intuitive knowledge",
+        "Prohibits use of AEDTs",
+        "Use of AEDTs without an audit",
+        "Audit of AEDTs within one year of use with public availability of audit information",
         "None of the above"
       ],
-      "answer_option": "a",
-      "explanation": "There are three main types of knowledge an attacker might have about the ML system: white-box, black-box, and gray-box."
-    },
-    {
-      "question": "What is an evasion attack in the context of Machine Learning?",
-      "options": [
-        "An attack that compromises the model's availability",
-        "An attack where the goal is to generate adversarial examples whose classification can be changed at deployment time to an arbitrary class",
-        "An attack that compromises the model's integrity",
-        "None of the above"
-      ],
-      "answer_option": "b",
-      "explanation": "An evasion attack in Machine Learning is where the adversary's goal is to generate adversarial examples, defined as testing samples whose classification can be changed at deployment time to an arbitrary class of the attacker's choice with only minimal perturbation."
-    },
-    {
-      "question": "What is a universal evasion attack in Machine Learning?",
-      "options": [
-        "An attack that adapts perturbation globally",
-        "An attack where small universal perturbations are constructed which can be added to most images and induce a misclassification",
-        "An attack where unique perturbation is added each time",
-        "None of the above"
-      ],
-      "answer_option": "b",
-      "explanation": "A universal evasion attack in Machine Learning is when small universal perturbations are constructed to be added to most images and induce a misclassification."
-    },
-    {
-      "question": "What is a black-box evasion attack in the context of Machine Learning?",
-      "options": [
-        "An attack that assumes the attacker has no prior knowledge of the model architecture or training data",
-        "An attack where the attacker is allowed to inspect the entirety of the ML model and compute gradients relative to the model's loss function",
-        "An attack that has full knowledge of the Machine Learning system",
-        "None of the above"
-      ],
-      "answer_option": "a",
-      "explanation": "A black-box evasion attack in Machine Learning is designed under a realistic adversarial model, in which the attacker has no prior knowledge of the model architecture or training data. Instead, the adversary can interact with a trained ML model by querying it on various data samples and obtaining the model's predictions."
+      "answer_option": "c",
+      "explanation": "Local Law 144 of 2021 forbids employers and employment agencies from using an AEDT unless the tool has been subject to a bias audit within a year of the use of the tool, this audit information to be publicly available."
     }
   ],
-  "3 Generative AI Taxonomy": [
+  "2 Definitions": [
     {
-      "question": "What does Generative AI do?",
+      "question": "What is an AEDT?",
       "options": [
-        "Generates mathematical models",
-        "Generates text, images, and other media like its training data",
-        "Is used to test other AI models",
-        "All of the above"
+        "A data analytics tool",
+        "A computer-based tool that helps in decision making and uses machine learning",
+        "An artificial intelligence tool",
+        "An employment agency"
       ],
       "answer_option": "b",
-      "explanation": "Generative AI generates content such as images, text and other media similar to its training data."
+      "explanation": "AEDT is a computer-based tool that uses machine learning, statistical modeling, data analytics, or artificial intelligence and helps employers and employment agencies make employment decisions. It substantially assists or replaces discretionary decision-making."
     },
     {
-      "question": "What are the technologies included in Generative AI?",
+      "question": "How can you tell if a tool uses machine learning, statistical modeling, data analytics or artificial intelligence?",
       "options": [
-        "Generative adversarial networks and Generative Pre-Trained Transformer",
-        "Diffusion Model and Generative adversarial network",
-        "Diffusion model and Generative Pre-Trained Transformer",
+        "If it is able to generate predictions",
+        "If it has the ability to identify important inputs",
+        "If it can do classification",
         "All of the above"
       ],
       "answer_option": "d",
-      "explanation": "Generative AI involves technologies such as generative adversarial networks, Generative Pre-Trained Transformer, and Diffusion Model."
+      "explanation": "A tool uses machine learning, statistical modeling, data analytics or artificial intelligence if it is able to generate a prediction or classification and can identify inputs, importance of inputs and other parameters to improve the accuracy of the prediction or classification."
     },
     {
-      "question": "What is the function of Generative adversarial networks (GANs)?",
+      "question": "Does the Law's requirement apply if an employer uses an AEDT to scan a resume bank?",
       "options": [
-        "They work by having two networks, a generator and a discriminator, compete with each other",
-        "They work by adversarial training of generator and discriminator",
-        "They are used to generate high quality images",
-        "All of the above"
-      ],
-      "answer_option": "a",
-      "explanation": "GANs are AI models that work by having two networks, a generator and a discriminator, compete with each other."
-    },
-    {
-      "question": "What does the Generative Pre-Trained Transformer (GPT) do?",
-      "options": [
-        "It uses transformer models to generate grammatically correct sentences",
-        "It uses pre-trained models to generate text",
-        "It uses neural network models to generate high quality media",
-        "All of the above"
-      ],
-      "answer_option": "a",
-      "explanation": "The Generative Pre-Trained Transformer (GPT) is an AI model that uses transformer models to generate coherent, grammatically correct sentences."
-    },
-    {
-      "question": "What function do Diffusion Models serve in Generative AI?",
-      "options": [
-        "They work by learning representation of training data",
-        "They generate new instances from the distributions learned from training data",
-        "They are used to generate high quality images",
-        "All of the above"
+        "Yes",
+        "No",
+        "Depends on the situation",
+        "None of the above"
       ],
       "answer_option": "b",
-      "explanation": "Diffusion Models are a type of generative model that generate new instances from the distributions learned from training data."
+      "explanation": "The Law's requirements do not apply when employers or employment agencies use an AEDT to scan a resume bank, conduct outreach to potential candidates or invite applications. It applies only when AEDT is used to assess candidates for hiring or promotion."
     },
     {
-      "question": "What is the objective of adversaries while launching attacks on Generative AI?",
+      "question": "What is a bias audit?",
       "options": [
-        "Availability breakdowns",
-        "Integrity violations",
-        "Privacy compromise",
+        "A business evaluation",
+        "An independent evaluation",
+        "An internal evaluation",
+        "None of the above"
+      ],
+      "answer_option": "b",
+      "explanation": "A bias audit is an independent, impartial evaluation done by an independent auditor which includes calculations of selection or scoring rates along with the impact ratio across different categories."
+    },
+    {
+      "question": "Do employers need to publicly share the results of a bias audit?",
+      "options": [
+        "Yes",
+        "No",
+        "Depends on the results",
+        "None of the above"
+      ],
+      "answer_option": "a",
+      "explanation": "Yes, employers need to publicly share the summary of results of the most recent bias audit and the distribution date of the AEDT on the employment section of their website or provide an active hyperlink to the needed information."
+    },
+    {
+      "question": "Can a bias audit use historical data from another employer's use of the same AEDT?",
+      "options": [
+        "Yes",
+        "No",
+        "Only if they have permission",
+        "None of the above"
+      ],
+      "answer_option": "a",
+      "explanation": "Yes, a bias audit can use historical data of multiple employers that use the same AEDT."
+    },
+    {
+      "question": "What should employers do if they lack demographic data from applicants or have minimal historical data from their use of an AEDT?",
+      "options": [
+        "Discontinue the audit",
+        "Make assumptions about the data",
+        "Use test data to conduct the bias audit",
+        "Ask for more data"
+      ],
+      "answer_option": "c",
+      "explanation": "If there is insufficient historical data available to conduct a statistically significant bias audit, test data can be used to conduct the bias audit."
+    },
+    {
+      "question": "Who can be an independent auditor?",
+      "options": [
+        "An employee of the same company",
+        "A vendor",
+        "Someone who exercises objective and impartial judgment in the performance of a bias audit",
+        "Anyone"
+      ],
+      "answer_option": "c",
+      "explanation": "An independent auditor is someone who exercises objective and impartial judgment in the performance of a bias audit."
+    },
+    {
+      "question": "What is the responsibility of vendors who create AEDTs according to the Law's requirements?",
+      "options": [
+        "To perform a bias audit of the tool",
+        "To collect the data required for the bias audit",
+        "To use the AEDT",
+        "None of the above"
+      ],
+      "answer_option": "a",
+      "explanation": "A vendor can have an independent auditor do a bias audit of its tool. However, they are not responsible for the bias audit of the tool as per the Law's requirements."
+    },
+    {
+      "question": "How can someone make a complaint about violations of the Law?",
+      "options": [
+        "Through 311",
+        "By visiting the DCWP website",
+        "Both a and b",
+        "None of the above"
+      ],
+      "answer_option": "c",
+      "explanation": "To submit a complaint about violations of the Law, one can contact 311 or visit the DCWP website and provide the party's necessary details and explanation of the suspected violation."
+    }
+  ],
+  "3 Bias Audit": [
+    {
+      "question": "How often must a bias audit of an AEDT be conducted?",
+      "options": [
+        "Every six months",
+        "Every year",
+        "Every two years",
+        "Only once before first use"
+      ],
+      "answer_option": "b",
+      "explanation": "A bias audit of an Automatic Employment Decision Tool (AEDT) must be conducted every year."
+    },
+    {
+      "question": "What should a bias audit minimally calculate when an AEDT selects candidates for employment?",
+      "options": [
+        "The selection rate for each category",
+        "The impact ratio for each category",
+        "The effects of the AEDT on sex categories and race/ethnicity categories",
         "All of the above"
       ],
       "answer_option": "d",
-      "explanation": "The objectives of adversaries while launching attacks on Generative AI include availability breakdowns, integrity violations, privacy compromise, and violations of abuse."
+      "explanation": "A comprehensive bias audit should calculate the selection rate and the impact ratio for each category. It should also assess the impacts of the AEDT on various categories such as sex, race/ethnicity, and more."
     },
     {
-      "question": "What are some of the potential security violations in Generative AI?",
+      "question": "What happens when an employer or employment agency must rely on a bias audit that uses test data?",
       "options": [
-        "Manipulating training data",
-        "Prompt injection",
-        "Modifying key components of the ML algorithm",
+        "Must explain why historical data was not used",
+        "Must describe how the test data was generated and obtained",
+        "Both a and b",
+        "None of the above"
+      ],
+      "answer_option": "c",
+      "explanation": "If the bias audit uses test data, the summary of results must explain why historical data was not used. Moreover, the summary should also describe how the test data which was used was generated and obtained."
+    },
+    {
+      "question": "What information does a bias audit have to provide before the use of an AEDT?",
+      "options": [
+        "The date of the most recent bias audit of the AEDT and a summary of the results, the distribution date of the AEDT",
+        "The number of individuals the AEDT assessed that fall within an unknown category",
+        "The number of applicants or candidates, the selection or scoring rates, and the impact ratios for all categories",
         "All of the above"
       ],
       "answer_option": "d",
-      "explanation": "In Generative AI, attacks can include manipulating training data (training data control), submitting inputs to the model (query access), or modifying key components of the machine learning algorithm (source code control)."
+      "explanation": "Before the use of an AEDT, the bias audit has to provide numerous pieces of information like the date of the most recent bias audit, a summary of the results, the distribution date, and more."
     },
     {
-      "question": "What scenario suggests misuse of GenAI models and poses an abuse violation?",
+      "question": "How long should an employer or employment agency keep the summary of results posted?",
       "options": [
-        "When an attacker reposts a misuse of GenAI system's intended use to achieve their own objectives",
-        "When GenAI models are used to promote hate speech",
-        "When GenAI models generate media that incites violence",
-        "All of the above"
+        "3 months",
+        "6 months",
+        "1 year",
+        "Until the next bias audit is conducted"
       ],
-      "answer_option": "d",
-      "explanation": "Abuse violations occur when an attacker repurposes a GenAI system's intended use to achieve their own objectives such as promoting hate speech or generating media that incites violence."
+      "answer_option": "b",
+      "explanation": "An employer or employment agency must keep the summary of results and distribution date posted for at least 6 months after its latest use of the AEDT for an employment decision."
     },
     {
-      "question": "What is the significant security concern regarding Generative AI products and supply chain?",
+      "question": "What must a notice to candidates and employees include according to section 20-871(b)(1) of the Code?",
       "options": [
-        "Inheritance of vulnerabilities of the traditional software supply chain",
-        "Vulnerability of widely used repositories such as TensorFlow and OpenCV",
+        "Instructions for how to request an alternative selection process",
+        "Instructions for how to request a reasonable accommodation under other laws",
         "Both a and b",
         "Neither a nor b"
       ],
       "answer_option": "c",
-      "explanation": "As AI models are software-based, they inherit the vulnerabilities of the traditional software supply chain. Repositories like TensorFlow and OpenCV, which are widely used in AI and ML projects, have significant vulnerability exposure."
+      "explanation": "The notice required by section 20-871(b)(1) of the Code must include instructions for how an individual can request an alternative selection process or a reasonable accommodation under other laws."
     },
     {
-      "question": "What are the dimensions of attacking objectives related to GenAI?",
-      "options": ["Availability", "Integrity", "Privacy", "All of the above"],
+      "question": "How can an employer or employment agency meet the requirements of subdivision (a) about the distribution date of the AEDT and the summary of results?",
+      "options": [
+        "Posting them on their website",
+        "Providing them via mail",
+        "Sending them via e-mail",
+        "Providing an active hyperlink to a website containing the required information"
+      ],
       "answer_option": "d",
-      "explanation": "Attacker objectives in Generative AI can be classified broadly along the dimensions of availability, integrity, privacy and abuse violations."
-    }
-  ],
-  "4 Discussion and Remaining Challenges": [
+      "explanation": "The employer or employment agency can meet these requirements by providing an active hyperlink on their website to another website that contains the required information."
+    },
     {
-      "question": "Why is the scale of training data considered a significant challenge in Adversarial Machine Learning?",
+      "question": "What information should an employer provide to comply with section 20-871(b)(3) of the Code?",
       "options": [
-          "Because smaller data sets are insufficient for training Large Language Models (LLMs)",
-          "As models grow, the amount of training data required decreases",
-          "As models grow, the amount of training data required increases, necessitating gigantic data amounts",
-          "Because the cost of data storage becomes cheaper with larger data sets"
+        "Its data retention policy",
+        "Type of data collected for the AEDT and the source",
+        "Instructions for making a written request for such information",
+        "All of the above"
       ],
-      "answer_option": "c",
-      "explanation": "The scale of training data is a significant challenge because as models grow in complexity and capability, the amount of training data they require also increases. This is especially true for Large Language Models (LLMs), which utilize massive amounts of data for training."
-  },
-  {
-      "question": "What does modern data repositories consist of, according to the module?",
+      "answer_option": "d",
+      "explanation": "To comply with this section of the code, an employer needs to provide their data retention policy, the type of data collected for the AEDT and its source, and the instructions for requesting this information."
+    },
+    {
+      "question": "Under what conditions can an independent auditor exclude a category from the required calculations?",
       "options": [
-          "Single units of static data",
-          "Labels and links connected to servers holding the actual data",
-          "Physical storage devices distributed globally",
-          "Encrypted data only accessible by the owning organization"
+        "When the category represents less than 2% of the data being used for the bias audit",
+        "When the category is irrelevant to the employment decision",
+        "When the employer requests for the category to be excluded",
+        "When there is insufficient data to make the calculation"
       ],
-      "answer_option": "b",
-      "explanation": "Modern data repositories are not simply single units of data. Instead, they consist of labels and links connected to servers that hold the actual data. This structure introduces new cybersecurity risks and challenges."
-  },
-  {
-      "question": "What is a direct cybersecurity risk associated with the structure of modern data repositories?",
+      "answer_option": "a",
+      "explanation": "An independent auditor may exclude a category that represents less than 2% of the data being used for the bias audit from the required calculations for impact ratio."
+    },
+    {
+      "question": "Which of the following situations allows an employer or employment agency to depend on a bias audit using test data?",
       "options": [
-          "High cost of data encryption",
-          "Single point of failure in data storage",
-          "Data being distributed across various modalities and locations",
-          "Complexity in managing large volumes of data"
+        "When the employer is using an AEDT for the first time",
+        "When the employment agency has been using AEDT for six months",
+        "When insufficient historical data is available",
+        "All of the above"
       ],
-      "answer_option": "c",
-      "explanation": "The direct cybersecurity risk associated with modern data repositories comes from data being distributed across various modalities and locations. No single organization or nation owns the complete data used for training an LLM, making it challenging to ensure security across all data sources."
-  },
-  {
-      "question": "How does the capacity to produce synthetic content at scale negatively impact LLMs?",
-      "options": [
-          "By making it easier to create and distribute malware",
-          "By increasing the cost of training LLMs",
-          "By potentially leading to model collapse due to the intake of large amounts of unverified data",
-          "By reducing the need for real human-generated content"
-      ],
-      "answer_option": "c",
-      "explanation": "The capacity to produce synthetic content at scale can negatively impact LLMs by potentially leading to model collapse. This is because LLMs may consume large amounts of synthetic, possibly unverified or misleading, data during training, affecting their performance and reliability."
-  },
-  {
-      "question": "What is the primary purpose of open-source data poisoning tools?",
-      "options": [
-          "To enhance the security of copyrighted materials",
-          "To generate synthetic content for training data sets",
-          "To protect copyright, particularly for artists",
-          "To facilitate the training of adversarial models"
-      ],
-      "answer_option": "c",
-      "explanation": "The primary purpose of open-source data poisoning tools is to protect copyright, particularly for artists. These tools can alter image training data in a way that asserts copyright claims, but their misuse can lead to significant risks and challenges for machine learning systems."
-  },
-  {
-      "question": "What challenge does the availability of powerful models that can generate massive amounts of unmarked synthetic content pose?",
-      "options": [
-          "Increased computational costs for model training",
-          "Difficulty in distinguishing between synthetic and real content",
-          "Potential impacts on the performance of subsequently trained LLMs",
-          "Easier detection of adversarial attacks"
-      ],
-      "answer_option": "c",
-      "explanation": "The availability of powerful models capable of generating massive amounts of unmarked synthetic content poses a challenge to the integrity of Large Language Models (LLMs). This unmarked synthetic content can severely impact the performance of subsequently trained LLMs, potentially leading to issues like model collapse."
-  },
-  {
-      "question": "Why is watermarking considered a potential solution for the challenge of synthetic content?",
-      "options": [
-          "It can increase the computational efficiency of LLMs",
-          "It helps in identifying and tracking the origin of synthetic content",
-          "It makes synthetic content more realistic",
-          "It reduces the overall cost of model training"
-      ],
-      "answer_option": "b",
-      "explanation": "Watermarking is considered a potential solution for the challenge of synthetic content because it helps in identifying and tracking the origin of such content. By marking synthetic content, it becomes possible to distinguish it from real data, mitigating some risks associated with its use in training LLMs."
-  },
-  {
-    "question": "Why do current limitations in detecting when a model is under attack pose a significant challenge in Adversarial Machine Learning?",
-    "options": [
-        "They prevent the development of new machine learning algorithms",
-        "They limit the amount of data that can be used for training",
-        "Identifying an attack early allows for countermeasures to prevent adverse effects",
-        "They make it easier for attackers to steal data"
-    ],
-    "answer_option": "c",
-    "explanation": "The limitations in detecting when a model is under attack pose a significant challenge because identifying an attack early can allow for countermeasures to be taken, preventing potential information loss or triggering of adverse behavior in the model."
-},
-{
-    "question": "What role do data and model sanitization techniques play in Adversarial Machine Learning?",
-    "options": [
-        "They primarily increase the speed of model training",
-        "They reduce the impact of poisoning attacks on the models",
-        "They are used to increase the accuracy of models on test data",
-        "They prevent all forms of cyber attacks on AI systems"
-    ],
-    "answer_option": "b",
-    "explanation": "Data and model sanitization techniques play a crucial role in reducing the impact of poisoning attacks on the models. By identifying and mitigating malicious alterations to data or model parameters, these techniques help in safeguarding the integrity of machine learning systems."
-},
-{
-    "question": "Why is the rapid advancement of AI technology considered a challenge in terms of privacy attacks?",
-    "options": [
-        "Because it leads to faster computation times",
-        "Because it creates a gap in the development of effective mitigation techniques",
-        "Because it reduces the overall cost of deploying AI systems",
-        "Because it simplifies the process of model training"
-    ],
-    "answer_option": "b",
-    "explanation": "The rapid advancement of AI technology outpaces the development of effective mitigation techniques, creating a gap that can expose privacy vulnerabilities and attract more adversaries. This imbalance poses significant challenges in protecting privacy and securing AI systems."
-},
-{
-    "question": "What is the primary concern regarding the open vs. closed model dilemma in AI?",
-    "options": [
-        "The cost associated with developing open models",
-        "The potential misuse of open AI technology by malicious individuals or groups",
-        "The difficulty in maintaining open source code",
-        "The challenge of integrating open models into existing systems"
-    ],
-    "answer_option": "b",
-    "explanation": "The primary concern regarding the open vs. closed model dilemma in AI revolves around the potential misuse of open AI technology by malicious individuals or groups. This issue highlights the need for careful consideration in how we approach the accessibility of AI models to balance the benefits of open models with the risks they present."
-},
-{
-    "question": "What challenge does the lack of information-theoretically secure machine learning algorithms present?",
-    "options": [
-        "It complicates the process of algorithm selection",
-        "It increases the computational resources needed",
-        "It obstructs the development of fully secure AI systems",
-        "It simplifies the task of adversarial attackers"
-    ],
-    "answer_option": "c",
-    "explanation": "The lack of information-theoretically secure machine learning algorithms presents a challenge in that it obstructs the development of fully secure AI systems. Ensuring the safety and reliability of AI in critical domains requires overcoming this obstacle to mitigate potential vulnerabilities."
-},
-{
-    "question": "Why is continuous monitoring essential in the use of chatbots?",
-    "options": [
-        "To ensure they are updated with the latest data",
-        "To prevent them from becoming obsolete",
-        "To detect and mitigate potential vulnerabilities and attacks",
-        "To monitor user satisfaction and improve responses"
-    ],
-    "answer_option": "c",
-    "explanation": "Continuous monitoring is essential in the use of chatbots to detect and mitigate potential vulnerabilities and attacks. As chatbots become more prevalent, adversaries continually seek new ways to exploit them, making vigilance crucial for maintaining security."
-}
+      "answer_option": "d",
+      "explanation": "An employer or employment agency may rely on a bias audit using test data if they are planning to use an AEDT for the first time, if the historical usage of the AEDT is not sufficient to provide a significant bias audit or if there is insufficient historical data available to conduct a statistically significant bias audit."
+    }
   ]
 }

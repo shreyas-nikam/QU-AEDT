@@ -19,7 +19,6 @@ class CourseMaterial:
             st.session_state.course_index = 0
             st.session_state.page_num = 0
 
-        print(st.session_state.course_index)
         self.course_links = st.session_state.config_param["COURSE_LINKS"]
         self.course_names = st.session_state.config_param["COURSE_NAMES"]
         self.videos = st.session_state.config_param["VIDEOS_LINKS"]
