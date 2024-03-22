@@ -17,10 +17,9 @@ class Calculations:
 
         df_copy = self.df.copy()
         
-        st.header("Calculations ", divider= "blue")
+        st.header("Bias Audit Calculations ", divider= "blue")
         st.subheader("Use the sample data or upload your data", divider = "orange")
-        l1,m1,r1 = st.columns([0.02,0.96,0.02])
-        m1.dataframe(self.df, hide_index =True)
+        st.dataframe(self.df, hide_index =True)
 
         st.divider()
 
@@ -63,42 +62,39 @@ class Calculations:
 
     # Calculating SELECTION RATE and IMPACT RATIO
         st.subheader("Calculating SELECTION RATE and IMPACT RATIO", divider = "orange")
-        l,m,r = st.columns([0.1,0.8,0.1])
+        
         # m.markdown(f"<h5 style='text-align: center;'>Calculations for Sex category</h5>", unsafe_allow_html=True)
-        with m:
-            container = st.container(border=True)
-            container.latex(r'''\text{SELECTION RATE} = \frac{Number\ of\ Selected}{Total\ Applicants}''')
-            container.write(' \n')
-            category = Sex_Categories.iloc[0,0]
-            # container.write(f'For {category} applicants:')
-            container.markdown(f"<h5 style='text-align: center;'><u>For {category} applicants:</u></h5>", unsafe_allow_html=True)
-            total_applicants = Sex_Categories.iloc[0, 1]
-            sex_selected = Sex_Categories.iloc[0, 2]
-            selection_rate = Sex_Categories.iloc[0, 3]
-            latex_code = r'\text{SELECTION RATE} = \frac{Number\ of\ Selected\ }{Total\ Applicants} = \frac{' + str(sex_selected) + '}{' + str(total_applicants) + '} = ' + str(selection_rate)
-            container.latex(latex_code)            
+        container = st.container(border=True)
+        container.latex(r'''\text{SELECTION RATE} = \frac{Number\ of\ Selected}{Total\ Applicants}''')
+        container.write(' \n')
+        category = Sex_Categories.iloc[0,0]
+        # container.write(f'For {category} applicants:')
+        container.markdown(f"<h5 style='text-align: center;'><u>For {category} applicants:</u></h5>", unsafe_allow_html=True)
+        total_applicants = Sex_Categories.iloc[0, 1]
+        sex_selected = Sex_Categories.iloc[0, 2]
+        selection_rate = Sex_Categories.iloc[0, 3]
+        latex_code = r'\text{SELECTION RATE} = \frac{Number\ of\ Selected\ }{Total\ Applicants} = \frac{' + str(sex_selected) + '}{' + str(total_applicants) + '} = ' + str(selection_rate)
+        container.latex(latex_code)            
         st.write(" ")
 
-        with m:
-            container = st.container(border=True)
-            container.latex(r'''\text{IMPACT RATIO} = \frac{Selection\ Rate\ for\ a\ Category}{Selection\ Rate\ of\ the\ Most\ Selected\ Category}''')
-            container.write(' \n')
-            container.markdown(f"<h5 style='text-align: center;'><u>For {category} applicants:</u></h5>", unsafe_allow_html=True)
-            impact_ratio = Sex_Categories.iloc[0, 4]
-            max_selection_rate = max(Sex_Categories['Selection_Rate'])
-            container.latex(r'\text{IMPACT RATIO} = \frac{Selection\ Rate\ for\ a\ Category}{Selection\ Rate\ of\ the\ Most\ Selected\ Category} = \frac{' + str(selection_rate) + '}{' + str(max_selection_rate) + '}= '+str(impact_ratio))
+        container = st.container(border=True)
+        container.latex(r'''\text{IMPACT RATIO} = \frac{Selection\ Rate\ for\ a\ Category}{Selection\ Rate\ of\ the\ Most\ Selected\ Category}''')
+        container.write(' \n')
+        container.markdown(f"<h5 style='text-align: center;'><u>For {category} applicants:</u></h5>", unsafe_allow_html=True)
+        impact_ratio = Sex_Categories.iloc[0, 4]
+        max_selection_rate = max(Sex_Categories['Selection_Rate'])
+        container.latex(r'\text{IMPACT RATIO} = \frac{Selection\ Rate\ for\ a\ Category}{Selection\ Rate\ of\ the\ Most\ Selected\ Category} = \frac{' + str(selection_rate) + '}{' + str(max_selection_rate) + '}= '+str(impact_ratio))
 
     # Categories : SEX
         st.subheader("Audit metrics by category: Sex ", divider = "orange")
 
         l,r,m = st.columns([.4,.2,.4])
         if r.toggle('Table View'):
-            l1,m1,r1 = st.columns([0.1,0.8,0.1])
-            m1.write(" ")
+            st.write(" ")
             vmin = min(Sex_Categories["Impact_Ratio"])
             vmax = max(Sex_Categories["Impact_Ratio"])
             st.write(" ")
-            m1.dataframe(Sex_Categories.style.text_gradient(subset=["Impact_Ratio"], cmap="RdYlGn", vmin=vmin, vmax=vmax),width= 700,  hide_index=True)
+            st.dataframe(Sex_Categories.style.text_gradient(subset=["Impact_Ratio"], cmap="RdYlGn", vmin=vmin, vmax=vmax),width= 700,  hide_index=True)
         else:    
             margin_left, col_male , divider, col_female, margin_right = st.columns([0.02,0.48,0.02,0.48,0.02])
             with col_male:
@@ -121,21 +117,19 @@ class Calculations:
 
             
 
-    # Race / Ethnicity Categories
+        # Race / Ethnicity Categories
         st.subheader("Audit metrics by category: Race/Ethnicity", divider = "orange")
-        l1,m1,r1 = st.columns([0.1,0.8,0.1])
         vmin = min(Race_Categories["Impact_Ratio"])
         vmax = max(Race_Categories["Impact_Ratio"])
-        m1.dataframe(Race_Categories.style.text_gradient(subset=["Impact_Ratio"], cmap="RdYlGn", vmin=vmin, vmax=vmax),hide_index=True)
+        st.dataframe(Race_Categories.style.text_gradient(subset=["Impact_Ratio"], cmap="RdYlGn", vmin=vmin, vmax=vmax),hide_index=True)
 
 
-    # Intersectional Categories
+        # Intersectional Categories
         st.subheader("Audit metrics by category: Sex + Race/Ethnicity", divider = "orange")
         
-        l1,m1,r1 = st.columns([0.05,0.9,0.05])
         vmin = min(intersectional_counts["Impact_Ratio"])
         vmax = max(intersectional_counts["Impact_Ratio"])
-        m1.dataframe(data = intersectional_counts.style.text_gradient(subset=["Impact_Ratio"], cmap="RdYlGn", vmin=vmin, vmax=vmax),hide_index=True, height = 527)
+        st.dataframe(data = intersectional_counts.style.text_gradient(subset=["Impact_Ratio"], cmap="RdYlGn", vmin=vmin, vmax=vmax),hide_index=True, height = 527)
 
         # chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
         # # st.bar_chart(intersectional_counts, )
