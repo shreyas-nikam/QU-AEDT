@@ -1,0 +1,22 @@
+Hello! Welcome to module 1 of the NIST's Adversarial Machine Learning course. In this module, we will be introducing you to key concepts of Adversarial Machine Learning. This course is based on NIST’s publication on Adversarial Machine Learning.
+We advise you to have the original source handy as you progress through this course for additional references and details. This course is meant to provide you key aspects of Adversarial machine learning and geared towards professionals who build, deploy and use machine learning models.
+
+Today, we're exploring the concept of Artificial Intelligence systems, and their vulnerabilities. AI systems have been going through constant global development and deployment, leading to them being integrated into various areas of our lives. PredAI and GenAI are the two main classes of AI systems. However, as AI and ML tech evolve and expand, so do their vulnerabilities.
+
+Generative AI or GenAI is facing challenges with large language models, often shortened to LLMs. LLMs form a significant part of the Internet infrastructure, serving functions like powering chatbots, aiding in coding, enhancing online searches, and facilitating RAG. However, this exposure also translates into potential vulnerabilities for confidential and proprietary enterprise data, creating a new attack surface. This new attack surface can expose confidential and proprietary enterprise data.
+
+There are some privacy concerns and security risks in AI systems. Often, companies developing AI models do not release or disclose information about the datasets they utilize in developing their models. We have to bear in mind that these datasets may contain sensitive personal information like addresses and emails, which exposes a considerable risk for user privacy online.
+
+Furthermore, there's a chance for the training data of these AI models to be manipulated, which creates vulnerability to attacks. Moreover, scraping training data from the Internet leaves a door open to the possibility of large scale data poisoning, subsequently leading to potential security breaches.
+
+As Machine Learning models become increasingly prominent, organizations often utilize pre-trained models. The advantage here is that these can be adjusted with new datasets to accommodate different tasks. But this practice also leads to opportunities for malicious modifications of pre-trained models, which in effect, threatens the security of these models. Data leaks, incorrect process executions, and compromise on model availability are some of the risks involved.
+
+
+
+This course offers guidance for the development of:
+Standardized terminology in AML to be used by the ML and cybersecurity communities; 
+A taxonomy of the most widely studied and effective attacks in AML, including evasion, poisoning, and privacy attacks; The taxonomy is organized by first defining the broad categories of attacker objectives/goals. Based on that, we define the categories of capabilities the adversary must be able to leverage to achieve the corresponding objectives. Then, we introduce specific attack classes for each type of capability. A corresponding set of mitigations for each class of attacks is provided in the attack class sections.
+A discussion of potential mitigations in AML that have withstood the test of time and limitations of some of the existing mitigations.
+We will be discussing these challenges in relation to Pred AI Taxonomy, Gen AI Taxonomy, And finally cover the discussion and remaining challenges of Adversarial Machine Learning.
+
+Now, that we have completed the introduction, we will be beginning with the actual discussion of GenAI, PredAI, attacks, their classification and mitigations in the next module. Check out the next module in the course 

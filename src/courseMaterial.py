@@ -1,22 +1,114 @@
 import streamlit as st
-from video import Video
-from slideDeck import SlideDeck
+import streamlit.components.v1 as components
+import fitz  # PyMuPDF
+import io
+from PIL import Image
+from src.s3.getFiles import fetch_updated_files
+
+###
+# add videos in data/videos directory and update video locations by changing the parameter "VIDEOS_LINKS" in data/config_param.json
+# update course_links locations by changing the parameter "COURSE_LINKS" in data/config_param.json
+# add transcripts in data/transcripts directory and update transcripts locations by changing the parameter "TRANSCRIPTS_FILES" in data/config_param.json
+###
+
 
 class CourseMaterial:
-    def __init__(self):
-        self.slides = SlideDeck()
-    def main(self):
-        
-        st.header("Course Material", divider="blue")
 
-        tab_video, tab_slide = st.tabs(["Video", "Slides"])
-        with tab_video: 
-            st.video("data/Understanding the Amendments and Changes to the Proposed Rules.mp4")
-            void, btn_space = st.columns([0.8,0.2])
-            with open("./data/transcript.txt", "r") as file:
-                data = file.read()
-            btn_space.download_button('📩 Download Transcript', data)  
-                
-        with tab_slide: 
-            self.slides.display_deck()       
-    
+    def __init__(self):
+        if "course_index" not in st.session_state:
+            st.session_state.course_index = 0
+            st.session_state.page_num = 0
+
+        print(st.session_state.course_index)
+        self.course_links = st.session_state.config_param["COURSE_LINKS"]
+        self.course_names = st.session_state.config_param["COURSE_NAMES"]
+        self.videos = st.session_state.config_param["VIDEOS_LINKS"]
+        self.transcripts = st.session_state.config_param["TRANSCRIPTS_FILES"]
+
+    def main(self):
+
+        st.header("Course Materials", divider="blue")
+        if "last_updated" not in st.session_state:
+            with st.spinner("Fetching latest content..."):
+                fetch_updated_files()
+                st.session_state.last_updated = True
+
+        t1, t2 = st.tabs(["Video", "Slides"])
+
+        def slide_handle_change():
+            st.session_state.course_index = st.session_state.config_param["COURSE_NAMES"].index(
+                st.session_state.slides_nav)
+            st.session_state.page_num = 0
+
+        def video_handle_change():
+            st.session_state.course_index = st.session_state.config_param["COURSE_NAMES"].index(
+                st.session_state.video_nav)
+
+        with t1:
+
+            course1 = st.selectbox("Modules", self.course_names, index=st.session_state.course_index,
+                                   key="video_nav", on_change=video_handle_change)
+            # st.session_state.course_index = st.session_state.config_param["COURSE_NAMES"].index(course1)
+            st.video(self.videos[st.session_state.course_index])
+
+            _, col = st.columns([8, 2])
+            f = open(self.transcripts[st.session_state.course_index],
+                     encoding='utf-8', errors='ignore').read()
+
+            col.download_button("Download Transcript", f,
+                                file_name="transcript.txt")
+
+        with t2:
+
+            course2 = st.selectbox("Modules", self.course_names, index=st.session_state.course_index,
+                                   key="slides_nav", on_change=slide_handle_change)
+
+            with st.spinner('Wait for it...'):
+                url = self.course_links[st.session_state.course_index]
+
+                doc = fitz.open(url)
+
+                total_pages = len(doc)
+
+                def display_page(page_num):
+                    page = doc.load_page(page_num)  # load the page
+                    pix = page.get_pixmap()  # render page to an image
+                    img = Image.open(io.BytesIO(pix.tobytes()))
+                    st.image(img, use_column_width=True)
+
+                display_page(st.session_state.page_num)
+
+                # Navigation buttons
+                col1, _, center, _, col2 = st.columns([1, 4, 1, 4, 1])
+                with col1:
+                    if st.button('⇦'):
+                        if st.session_state.page_num > 0:
+                            st.session_state.page_num -= 1
+                            st.rerun()
+
+                with col2:
+                    if st.button('⇨'):
+                        if st.session_state.page_num < total_pages - 1:
+                            st.session_state.page_num += 1
+                            st.rerun()
+
+                with center:
+                    st.caption(
+                        f'Page {st.session_state.page_num + 1}/{total_pages}')
+
+            col1, col2, col3 = st.columns([0.1, 0.6, 0.1])
+            with col1:
+                if st.session_state.course_index > 0:
+
+                    if st.button("Previous Module"):
+                        st.session_state.course_index -= 1
+                        st.session_state.page_num = 0
+                        st.rerun()
+
+            with col3:
+                if st.session_state.course_index < len(self.course_links):
+
+                    if st.button("Next Module"):
+                        st.session_state.course_index += 1
+                        st.session_state.page_num = 0
+                        st.rerun()

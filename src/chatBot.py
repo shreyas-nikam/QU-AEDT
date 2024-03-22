@@ -1,69 +1,123 @@
-import os
 import time
+import ast
 import streamlit as st
-from chatUI import message_func
+from src.ui.chatUI import display_on_chat
 from langchain_openai.chat_models import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
-# from langchain.chains import LLMChain
 from langchain_community.vectorstores import FAISS
 from langchain.prompts import BasePromptTemplate, PromptTemplate, ChatPromptTemplate, HumanMessagePromptTemplate
 from langchain.chains import ConversationChain
 from langchain.output_parsers import StructuredOutputParser, ResponseSchema
 from langchain_openai import OpenAIEmbeddings
 
-
+from src.customHybridRetriever import Retriever
 
 class ChatBot:
     def __init__(self):
-        # load_dotenv()
         OPENAI_KEY = st.secrets["OPENAI_KEY"]
         self.OPENAI_MODEL =  st.secrets["OPENAI_MODEL"]
-        self.TOTAL_QUES = st.secrets["TOTAL_QUES"]
-        # llm = ChatOpenAI(model="gpt-4", temperature=0, api_key=OPENAI_KEY)
+        self.TOTAL_QUES = st.session_state.config_param["QUIZ_TOTAL_QUES"]
         self.embeddings = OpenAIEmbeddings(api_key=OPENAI_KEY)
         self.chatModel = ChatOpenAI(temperature=0, model_name = self.OPENAI_MODEL,openai_api_key = OPENAI_KEY)
-        self.chatHistory = """Previous Conversation :\n"""
+        self.chatHistory = ""
+        self.retriever = Retriever()
+        # self.retriever.create_vector_store(file_name="./data/content.txt")
     
-    def get_context(self,query, path = "./data/text_to_vector_db"):
-        db = FAISS.load_local(path, self.embeddings)
-        docs = db.similarity_search(query)
-        return docs
+    def get_context(self, question, path = "./data/text_to_vector_db"):
+        return self.retriever.parse_response_with_rerank(question)
+    
+    def resolve_question(self, question):
+        prompt = """
+Generate the OUTPUT QUESTION based on the following examples for the last query.
+
+HISTORY:
+[]
+NOW QUESTION: Hello, how are you?
+NEED COREFERENCE RESOLUTION: No => THOUGHT: Consequently, the output question mirrors the current query.
+OUPUT QUESTION: Hello, how are you?
+-------------------
+HISTORY:
+[User: Is Milvus a vector database?
+You: Yes, Milvus is a vector database.]
+NOW QUESTION: How to use it?
+NEED COREFERENCE RESOLUTION: Yes => THOUGHT: I must substitute 'it' with 'Milvus' in the current question.
+OUTPUT QUESTION: How to use Milvus?
+-------------------
+HISTORY:
+[]
+NOW QUESTION: What are its features?
+NEED COREFERENCE RESOLUTION: Yes => THOUGHT: Although 'it' requires substitution, there's no suitable reference in the history. Thus, the output question remains unchanged. 
+OUTPUT QUESTION: What are its features?
+-------------------
+HISTORY:
+[User: What is PyTorch?
+You: PyTorch is an open-source machine learning library for Python. It provides a flexible and efficient framework for building and training deep neural networks.
+User: What is Tensorflow?
+You: TensorFlow is an open-source machine learning framework. It provides a comprehensive set of tools, libraries, and resources for building and deploying machine learning models.]
+NOW QUESTION: What is the difference between them?
+NEED COREFERENCE RESOLUTION: Yes => THOUGHT: 'Them' should be replaced with 'PyTorch and Tensorflow' in the current question.
+OUTPUT QUESTION: What is the difference between PyTorch and Tensorflow?
+-------------------
+HISTORY:[
+{history}
+]
+NOW QUESTION: {question}
+NEED COREFERENCE RESOLUTION:
+OUTPUT QUESTION: 
+        """
+        llm = ChatOpenAI(model=self.OPENAI_MODEL, temperature=0, api_key=st.secrets["OPENAI_KEY"])
+        prompt = PromptTemplate(
+            template=prompt,
+            input_variables=["history", "question"]
+        )
+
+        _input = prompt.format_prompt(history=self.chatHistory, question=question)
+        print(_input)
+        output = llm(_input.to_messages())
+        return output.content
 
     def get_response(self,question):
+        question = self.resolve_question(question)
+        print("RESOLVED QUESTION::",question)
         response_schemas = [
                 ResponseSchema(name="answer", description="Your answer to the given question",type = 'markdown'),
-                ResponseSchema(name="followup_questions", description="A list of 3 insurance related follow-up questions on top the question below.", type = 'list')
+                ResponseSchema(name="followup_questions", description="A list of 3 follow-up questions that the user may have based on the question.", type = 'list')
             ]
         output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
         format_instructions = output_parser.get_format_instructions()
 
         context = self.get_context(question)
+        print("Context::", context)
 
         prompt = ChatPromptTemplate(
             messages=[
                 HumanMessagePromptTemplate.from_template("""
-            Answer the given question using the provide context only. Answer the questions in simple financial english. If you 
-            You have to return 2 things :
-            1. A conversational Reponse to the question below using the context and previous conversation only. 
-            2. A list of three insurance related follow-up questions on top the recent question and the answer you will provide. Do not repeat the suggested questions. 
-                output format : ['Question1', 'Question2','Question3']
+Answer the given question using the provided context only. 
+You have to return 2 things :
+1. A conversational reponse to the question below using the context and previous conversation only. 
+2. A list of three related follow-up questions to the question that the user might have. Do not repeat the suggested questions. 
 
-            {format_instructions}
+{format_instructions}
 
-            DONT FORGET TO PUT COMMA(,) between the keys in JSON output
+DONT FORGET TO PUT COMMA(,) between the keys in JSON output
+                                                
+History:
+{history}
 
-            {history}
+Context:
+{context}
 
-            Context:
-            {context}
 
-            Question:
-            {question} """)
+Question:
+{question}
+
+If the answer is not present in the context, return "Please provide more context to answer the question. Please check the official reference pdf here: https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.ipd.pdf".
+            """)
             ],
             input_variables=["history","context","question"],
             partial_variables={"format_instructions": format_instructions}
         )
-        _input = prompt.format_prompt(history = self.chatHistory,context = context, question=question)
+        _input = prompt.format_prompt(history = self.chatHistory, context = context, question=question)
         output = self.chatModel(_input.to_messages())
         
         validJSON = False
@@ -72,6 +126,10 @@ class ChatBot:
             try:
                 json_output = output_parser.parse(output.content)
                 validJSON = True
+                self.chatHistory += f"""\n
+                User: {question}
+                You: {str(json_output['answer'])}"""
+                print("History::",self.chatHistory)
             except Exception as e :
                 print(f"Error : {e}")
                 runs+=1
@@ -88,11 +146,12 @@ class ChatBot:
 
                                 {history}
 
-                                Extracted Data:
+                                Extracted Da
+                                You:
                                 {context}
 
                                 Question:
-                                {question} Also include INSURANCE_PLAN_ID if available!""")
+                                {question}""")
                                 ],
                         input_variables=["e","history","context","question"],
                         partial_variables={"format_instructions": format_instructions}
@@ -105,9 +164,6 @@ class ChatBot:
                         'followup_questions': []}
                     
 
-                self.chatHistory += f"""\n
-                User : {question}
-                Insurance Agent : {str(json_output)}"""
         return json_output
 
     
@@ -119,13 +175,13 @@ class ChatBot:
             st.session_state.keyOwner = "QU"
 
 
-        name = st.session_state.userInfo['name']
+        name = st.session_state.user_info['name']
         if "response" not in st.session_state:
             st.session_state.ques_session = True
             st.session_state.response = {'answer': f'Hello {name}! How can I help you today? ',
-                            'followup_questions': ["How to calculate impact ratio for a category?",
-                                                    "Is an “employment decision” just the final hiring or promotion decision?",
-                                                    "What are the parameters required for audit analysis?",
+                            'followup_questions': ["What are White-box evasion attacks in Adversarial Machine Learning?",
+                                                    "Tell me more about Availability Poisoning.",
+                                                    "Give me some strategies to mitigate evasion attacks.",
                                                     ]}
         #front-end chatmemory
         INITIAL_MESSAGE = [{"role": "assistant",
@@ -139,9 +195,9 @@ class ChatBot:
         def send_prompt(prompt):
             # if "limit_reached" not in st.session_state and st.session_state.question_per_session < self.TOTAL_QUES:
                 st.session_state.messages.append({"role": "user", "content": prompt})
-                message_func(prompt, is_user =True , is_df=False) #user
+                display_on_chat(prompt, is_user =True) #user
                 
-                with st.spinner('Wait for it...'):
+                with st.spinner('Getting you the answer'):
                     time.sleep(1)
                     st.session_state.response = self.get_response(prompt)
 
@@ -154,9 +210,9 @@ class ChatBot:
                 st.rerun()
             
 
-        st.markdown("<h1 style='text-align: Left;'>FAQ : QuBot</h1>", unsafe_allow_html=True)
+        # st.markdown("<h1 style='text-align: Left;'>NIST QuBot</h1>", unsafe_allow_html=True)
         
-        # st.header("FAQ : QuBot", divider= "blue")
+        st.header("QuBot", divider= "blue")
         st.markdown("""
         <p style='text-align: left; font-size:12px;'><i>Note:</i><br>
             <i>Qubot</i> is an experimental AI-bot that utilizes information from a published <a href="{url}">document</a>. You can experiment with Qubot a few times for free. Later, you can use your own <a href="{key_link}">OpenAI key</a> for further usage.
@@ -165,10 +221,9 @@ class ChatBot:
 
         if st.session_state.keyOwner != "None" :
             for message in st.session_state.messages:
-                message_func(
+                display_on_chat(
                     message["content"],
                     True if message["role"] == "user" else False,
-                    True if message["role"] == "data" else False,
                 )
             if type(st.session_state.response["followup_questions"]) == str:
                 followup_questions = ast.literal_eval(st.session_state.response["followup_questions"])
