@@ -78,7 +78,7 @@ OUTPUT QUESTION:
     def get_response(self,question):
         question = self.resolve_question(question)
         response_schemas = [
-                ResponseSchema(name="answer", description="Your answer to the given question",type = 'markdown'),
+                ResponseSchema(name="answer", description="Your answer to the given question in markdown format", type = 'string'),
                 ResponseSchema(name="followup_questions", description="A list of 3 follow-up questions that the user may have based on the question.", type = 'list')
             ]
         output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
