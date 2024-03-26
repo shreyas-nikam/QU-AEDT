@@ -140,7 +140,6 @@ If the answer is not present in the context, return "Please provide more context
 
                                 {history}
 
-                                Extracted Da
                                 You:
                                 {context}
 

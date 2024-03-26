@@ -28,6 +28,7 @@ if "page_chatbot" not in st.session_state:
     # st.session_state.page_courseMaterial = CourseMaterial()
     st.session_state.page_calculations = Calculations()
     st.session_state.page_whatIf = WhatIf()
+    st.session_state.contact_form = ContactForm()
 
 
 st.set_page_config(
@@ -41,7 +42,8 @@ page = st.sidebar.radio(label="Select a Page:",
                          "What If Analysis",
                          "QuBot",
                          "Quiz",
-                         "Reference PDF"],
+                         "Reference PDF", 
+                         "Contact Form"],
                         disabled=True if not st.session_state.user_info else False)
 
 # check if the content is updated
@@ -63,4 +65,6 @@ else:
         st.session_state.page_whatIf.main()
     elif page == "Reference PDF":
         st.session_state.page_reference.main()
+    elif page == "Contact Form":
+        st.session_state.contact_form.main()
         
