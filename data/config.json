@@ -1,26 +1,21 @@
-{
+{ 
+  "APP_CODE":"AEDT",
   "APP_NAME": "NY 144 Law on Automated Employment Decision Tools (AEDT)",
-
   "DOCUMENT_LINK": "https://www.nyc.gov/site/dca/about/automated-employment-decision-tools.page",
-
   "PDF_FILE_PATH": "data/AEDT.pdf",
-
   "QUIZ_TOTAL_QUES": 5,
-
-  "SUPABASE_TABLE_NAME": "aedt_users",
-
+  "USER_TABLE_NAME": "users",
+  "QUIZ_RESULT_TABLE_NAME": "quiz_results",
+  "QUESTIONS_TABLE_NAME": "aedt_users",
   "COURSE_LINKS": [
     "./data/slides/Introduction.pdf"
   ],
-
   "COURSE_NAMES": [
     "1. Introduction"
   ],
-
   "VIDEOS_LINKS": [
     "./data/videos/Introduction.mp4"
   ],
-
   "TRANSCRIPTS_FILES": [
     "./data/transcripts/transcript_1.txt"
   ]
