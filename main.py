@@ -9,7 +9,7 @@ from src.reference import Reference
 from src.quiz import Quiz
 from src.whatIf import WhatIf
 from src.calculations import Calculations
-
+from src.contactForm import ContactForm
 
 if "user_info" not in st.session_state:
     st.session_state.user_info = {}
