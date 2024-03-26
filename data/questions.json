@@ -9,7 +9,8 @@
         "Executive Order"
       ],
       "answer_option": "a",
-      "explanation": "The final rule was adopted under the authority from Sections 1043, 2203(f) of NYC Charter and Section 20-104(b) of NYC Administrative Code."
+      "explanation": "The final rule was adopted under the authority from Sections 1043, 2203(f) of NYC Charter and Section 20-104(b) of NYC Administrative Code.",
+      "uuid": "ff7a3942-5ab9-4b3f-92d2-6ad1695e866d"
     },
     {
       "question": "What does the final rule amend?",
@@ -20,7 +21,8 @@
         "Federal Employment Laws"
       ],
       "answer_option": "a",
-      "explanation": "This rule amends Title 6 of the Rules of NYC."
+      "explanation": "This rule amends Title 6 of the Rules of NYC.",
+      "uuid": "c5a56fdd-dbac-4b42-9399-2f3841a2e799"
     },
     {
       "question": "When was the initial version of the rule proposed and published?",
@@ -31,7 +33,8 @@
         "December 23, 2022"
       ],
       "answer_option": "a",
-      "explanation": "The initial version of the rule was proposed and published on September 23, 2022."
+      "explanation": "The initial version of the rule was proposed and published on September 23, 2022.",
+      "uuid": "21b7d22d-85d0-43fe-983d-aa6ebe9d45e9"
     },
     {
       "question": "What is required by Local Law 144 of 2021 for automated employment decision tools?",
@@ -42,7 +45,8 @@
         "State approval"
       ],
       "answer_option": "a",
-      "explanation": "Local Law 144 of 2021 requires a bias audit for automated employment decision tools."
+      "explanation": "Local Law 144 of 2021 requires a bias audit for automated employment decision tools.",
+      "uuid": "c5914c5e-a37e-4e81-b67b-a4b52b7e092a"
     },
     {
       "question": "What must the bias audit calculate for automated employment decision tools?",
@@ -53,7 +57,8 @@
         "The employee turnover rate"
       ],
       "answer_option": "a",
-      "explanation": "The bias audit should calculate the selection rate for each race/ethnicity and sex category."
+      "explanation": "The bias audit should calculate the selection rate for each race/ethnicity and sex category.",
+      "uuid": "9e52aabc-19d8-4dc4-aff0-2d6592ac3320"
     },
     {
       "question": "What is the purpose of comparing selection rates to the most selected category in a bias audit?",
@@ -64,7 +69,8 @@
         "To assess the market reach"
       ],
       "answer_option": "b",
-      "explanation": "Comparing selection rates to the most selected category is done to reveal an impact ratio."
+      "explanation": "Comparing selection rates to the most selected category is done to reveal an impact ratio.",
+      "uuid": "1e0f691f-34a4-42f1-b4ea-47eed03dfbd6"
     },
     {
       "question": "What new definitions and clarifications did the changes to the rules include?",
@@ -75,7 +81,8 @@
         "Corporate governance principles"
       ],
       "answer_option": "a",
-      "explanation": "Changes included defining AEDT, the employment of independent auditors, calculation for scoring candidates, and category comparison by the impact ratio."
+      "explanation": "Changes included defining AEDT, the employment of independent auditors, calculation for scoring candidates, and category comparison by the impact ratio.",
+      "uuid": "b3aa1344-d4ff-4cac-af73-ad0bd6c0bdaf"
     },
     {
       "question": "What is a new requirement introduced for bias audits?",
@@ -86,7 +93,8 @@
         "Bi-monthly public disclosure"
       ],
       "answer_option": "a",
-      "explanation": "A new requirement introduced for bias audits is the inability to use an AEDT with an audit older than a year."
+      "explanation": "A new requirement introduced for bias audits is the inability to use an AEDT with an audit older than a year.",
+      "uuid": "7e2c5c19-cc7e-4ec4-ad1b-7683c0047b52"
     },
     {
       "question": "What does the expansion of 'machine learning' definition relate to?",
@@ -97,7 +105,8 @@
         "Investor relations"
       ],
       "answer_option": "a",
-      "explanation": "The expansion of 'machine learning' definition relates to clarification for bias audit examples."
+      "explanation": "The expansion of 'machine learning' definition relates to clarification for bias audit examples.",
+      "uuid": "349f4e27-b769-457e-b4b4-5db0f53ce81c"
     },
     {
       "question": "What additional flexibility does the rule provide regarding the impact ratio?",
@@ -108,7 +117,8 @@
         "Periodic re-evaluation of impact ratio"
       ],
       "answer_option": "a",
-      "explanation": "The rule provides additional flexibility by allowing category exclusion from impact ratio."
+      "explanation": "The rule provides additional flexibility by allowing category exclusion from impact ratio.",
+      "uuid": "bb78cf6d-83ac-4498-9f10-537f91dfd38b"
     },
     {
       "question": "When was the second version of the rule proposed?",
@@ -119,7 +129,8 @@
         "January 23, 2023"
       ],
       "answer_option": "a",
-      "explanation": "The second version of the rule was proposed on December 23, 2022."
+      "explanation": "The second version of the rule was proposed on December 23, 2022.",
+      "uuid": "7e549487-dfec-422b-8e6a-ab663de0fca7"
     },
     {
       "question": "What is the significance of publishing audit details publicly?",
@@ -130,7 +141,8 @@
         "It is intended to confuse competitors"
       ],
       "answer_option": "a",
-      "explanation": "Publishing audit details publicly is significant because it ensures transparency and accountability regarding the use and fairness of automated employment decision tools."
+      "explanation": "Publishing audit details publicly is significant because it ensures transparency and accountability regarding the use and fairness of automated employment decision tools.",
+      "uuid": "dc480ba2-9662-4d31-9bca-870f48288e63"
     },
     {
       "question": "What additional requirement was introduced for the definition of 'machine learning' in the context of AEDT?",
@@ -141,7 +153,8 @@
         "Exclusive focus on neural networks"
       ],
       "answer_option": "b",
-      "explanation": "An additional requirement introduced was the expansion of the 'machine learning' definition to include more clarity and examples."
+      "explanation": "An additional requirement introduced was the expansion of the 'machine learning' definition to include more clarity and examples.",
+      "uuid": "b4ef53ea-7760-43e0-b42e-f1775a8b5b53"
     },
     {
       "question": "How do the new rules address the issue of data types for bias audits?",
@@ -152,7 +165,8 @@
         "By detailing acceptable data types and requirements for bias audits"
       ],
       "answer_option": "d",
-      "explanation": "The new rules address data types for bias audits by detailing acceptable data types and requirements, ensuring the audits are thorough and appropriate."
+      "explanation": "The new rules address data types for bias audits by detailing acceptable data types and requirements, ensuring the audits are thorough and appropriate.",
+      "uuid": "b81dd215-24bf-4d9f-aa3e-fcecbf01810b"
     },
     {
       "question": "What does the rule say about the use of an AEDT with an audit older than a year?",
@@ -163,7 +177,8 @@
         "It requires reevaluation but can be used"
       ],
       "answer_option": "b",
-      "explanation": "The rule strictly prohibits the use of an Automated Employment Decision Tool (AEDT) with a bias audit that is older than a year to ensure up-to-date fairness and accuracy."
+      "explanation": "The rule strictly prohibits the use of an Automated Employment Decision Tool (AEDT) with a bias audit that is older than a year to ensure up-to-date fairness and accuracy.",
+      "uuid": "6556428a-8663-4077-858f-98bdfe4dc6e7"
     },
     {
       "question": "What must the bias audits show in addition to the selection rates?",
@@ -174,7 +189,8 @@
         "The turnover rate of the company"
       ],
       "answer_option": "c",
-      "explanation": "Bias audits must now show numbers of uncalculated individuals, adding another layer of transparency and detail to the audit process."
+      "explanation": "Bias audits must now show numbers of uncalculated individuals, adding another layer of transparency and detail to the audit process.",
+      "uuid": "274a3f81-a309-4219-8987-a4f10a6057fd"
     }
   ],
   "4 Summary": [
@@ -187,7 +203,8 @@
         "Department of Finance"
       ],
       "answer_option": "b",
-      "explanation": "According to the provided content, it's the Department of Consumer and Worker Protection that amends Title 6 of the Rules of the City of New York."
+      "explanation": "According to the provided content, it's the Department of Consumer and Worker Protection that amends Title 6 of the Rules of the City of New York.",
+      "uuid": "e1207ec4-81cc-4e74-8156-468bb6385594"
     },
     {
       "question": "What is the purpose of the new rules implemented by DCWP regarding automated employment decision tools?",
@@ -198,7 +215,8 @@
         "Obligate employers to inform applicants about their use"
       ],
       "answer_option": "b",
-      "explanation": "The new rules ensure that an automated employment decision tool is subject to a bias audit, and the information about the audit is publicly available."
+      "explanation": "The new rules ensure that an automated employment decision tool is subject to a bias audit, and the information about the audit is publicly available.",
+      "uuid": "4ebda5c4-383b-40e8-9757-16a8c3ee0414"
     },
     {
       "question": "Which commission's selection rate calculation is used as a reference for the bias audit of an AEDT?",
@@ -209,7 +227,8 @@
         "American Civil Liberties Union"
       ],
       "answer_option": "a",
-      "explanation": "The Equal Employment Opportunity Commission's ('EEOC') selection rate is used as an approach to calculate the bias audit of an AEDT."
+      "explanation": "The Equal Employment Opportunity Commission's ('EEOC') selection rate is used as an approach to calculate the bias audit of an AEDT.",
+      "uuid": "b8649cc2-f9e7-4917-b952-6a5562386c70"
     },
     {
       "question": "What elements does a bias audit of an AEDT need to include according to the new rules?",
@@ -220,7 +239,8 @@
         "None of the above"
       ],
       "answer_option": "c",
-      "explanation": "The bias audit must calculate the selection rate for each race/ethnicity and sex category and compare the selection rates to the most selected category to determine an impact ratio."
+      "explanation": "The bias audit must calculate the selection rate for each race/ethnicity and sex category and compare the selection rates to the most selected category to determine an impact ratio.",
+      "uuid": "22681192-972e-4d00-93ea-254945146061"
     },
     {
       "question": "How often should a bias audit of an AEDT be conducted?",
@@ -231,7 +251,8 @@
         "Once in Two Years"
       ],
       "answer_option": "c",
-      "explanation": "According to the new rules, a bias audit must be conducted at least once a year."
+      "explanation": "According to the new rules, a bias audit must be conducted at least once a year.",
+      "uuid": "fea70a7c-1a67-4f93-8252-a438ee70c6fe"
     },
     {
       "question": "What happens if an AEDT has not been audited for more than a year?",
@@ -242,7 +263,8 @@
         "Nothing happens"
       ],
       "answer_option": "b",
-      "explanation": "The new rules state that an AEDT cannot be used if its most recent bias audit is more than a year old."
+      "explanation": "The new rules state that an AEDT cannot be used if its most recent bias audit is more than a year old.",
+      "uuid": "efd83d13-4dea-4791-8ad9-e6b8800675d8"
     },
     {
       "question": "Who can conduct a Bias Audit of an AEDT according to the new rules?",
@@ -253,7 +275,8 @@
         "The employer"
       ],
       "answer_option": "c",
-      "explanation": "The rules clarify that an 'independent auditor' conducting the bias audit may not be employed or have a financial interest in an employer that seeks to use or continue to use an AEDT."
+      "explanation": "The rules clarify that an 'independent auditor' conducting the bias audit may not be employed or have a financial interest in an employer that seeks to use or continue to use an AEDT.",
+      "uuid": "800de265-7238-4035-a091-c3ad814e3eae"
     },
     {
       "question": "What changes were made in the final version of the rule about AEDT bias audits?",
@@ -264,7 +287,8 @@
         "All of the above"
       ],
       "answer_option": "d",
-      "explanation": "The final version included all the listed changes."
+      "explanation": "The final version included all the listed changes.",
+      "uuid": "6bb7a464-47de-46b9-bb6d-a7c1c2788c1e"
     },
     {
       "question": "What is the meaning of 'shall' and 'must' in the context of the department's rules?",
@@ -275,7 +299,8 @@
         "They denote potential requirements"
       ],
       "answer_option": "c",
-      "explanation": "In the context of the department's rules, 'shall' and 'must' denote mandatory requirements."
+      "explanation": "In the context of the department's rules, 'shall' and 'must' denote mandatory requirements.",
+      "uuid": "5211d754-9488-4236-9f1d-835bddd3c67d"
     },
     {
       "question": "What does Local Law 144 of 2021 mandates?",
@@ -286,7 +311,8 @@
         "None of the above"
       ],
       "answer_option": "c",
-      "explanation": "Local Law 144 of 2021 forbids employers and employment agencies from using an AEDT unless the tool has been subject to a bias audit within a year of the use of the tool, this audit information to be publicly available."
+      "explanation": "Local Law 144 of 2021 forbids employers and employment agencies from using an AEDT unless the tool has been subject to a bias audit within a year of the use of the tool, this audit information to be publicly available.",
+      "uuid": "7a66d2f9-d6b1-470a-9e4e-0f7b50eabc4e"
     }
   ],
   "2 Definitions": [
@@ -299,7 +325,8 @@
         "An employment agency"
       ],
       "answer_option": "b",
-      "explanation": "AEDT is a computer-based tool that uses machine learning, statistical modeling, data analytics, or artificial intelligence and helps employers and employment agencies make employment decisions. It substantially assists or replaces discretionary decision-making."
+      "explanation": "AEDT is a computer-based tool that uses machine learning, statistical modeling, data analytics, or artificial intelligence and helps employers and employment agencies make employment decisions. It substantially assists or replaces discretionary decision-making.",
+      "uuid": "1e6b9384-57ae-4811-a32b-36d17eef63c4"
     },
     {
       "question": "How can you tell if a tool uses machine learning, statistical modeling, data analytics or artificial intelligence?",
@@ -310,7 +337,8 @@
         "All of the above"
       ],
       "answer_option": "d",
-      "explanation": "A tool uses machine learning, statistical modeling, data analytics or artificial intelligence if it is able to generate a prediction or classification and can identify inputs, importance of inputs and other parameters to improve the accuracy of the prediction or classification."
+      "explanation": "A tool uses machine learning, statistical modeling, data analytics or artificial intelligence if it is able to generate a prediction or classification and can identify inputs, importance of inputs and other parameters to improve the accuracy of the prediction or classification.",
+      "uuid": "638ae4cc-8dab-45d5-9642-7c3e5d631e26"
     },
     {
       "question": "Does the Law's requirement apply if an employer uses an AEDT to scan a resume bank?",
@@ -321,7 +349,8 @@
         "None of the above"
       ],
       "answer_option": "b",
-      "explanation": "The Law's requirements do not apply when employers or employment agencies use an AEDT to scan a resume bank, conduct outreach to potential candidates or invite applications. It applies only when AEDT is used to assess candidates for hiring or promotion."
+      "explanation": "The Law's requirements do not apply when employers or employment agencies use an AEDT to scan a resume bank, conduct outreach to potential candidates or invite applications. It applies only when AEDT is used to assess candidates for hiring or promotion.",
+      "uuid": "409c1608-750d-41f1-8668-18f2362262dc"
     },
     {
       "question": "What is a bias audit?",
@@ -332,7 +361,8 @@
         "None of the above"
       ],
       "answer_option": "b",
-      "explanation": "A bias audit is an independent, impartial evaluation done by an independent auditor which includes calculations of selection or scoring rates along with the impact ratio across different categories."
+      "explanation": "A bias audit is an independent, impartial evaluation done by an independent auditor which includes calculations of selection or scoring rates along with the impact ratio across different categories.",
+      "uuid": "f078d6fc-b43e-4182-bb8c-f7ad6f834ad5"
     },
     {
       "question": "Do employers need to publicly share the results of a bias audit?",
@@ -343,7 +373,8 @@
         "None of the above"
       ],
       "answer_option": "a",
-      "explanation": "Yes, employers need to publicly share the summary of results of the most recent bias audit and the distribution date of the AEDT on the employment section of their website or provide an active hyperlink to the needed information."
+      "explanation": "Yes, employers need to publicly share the summary of results of the most recent bias audit and the distribution date of the AEDT on the employment section of their website or provide an active hyperlink to the needed information.",
+      "uuid": "c2be38a5-40ad-44a0-ada3-7b8b72acb856"
     },
     {
       "question": "Can a bias audit use historical data from another employer's use of the same AEDT?",
@@ -354,7 +385,8 @@
         "None of the above"
       ],
       "answer_option": "a",
-      "explanation": "Yes, a bias audit can use historical data of multiple employers that use the same AEDT."
+      "explanation": "Yes, a bias audit can use historical data of multiple employers that use the same AEDT.",
+      "uuid": "8f702dfc-7806-4331-ac29-7b57d85096ca"
     },
     {
       "question": "What should employers do if they lack demographic data from applicants or have minimal historical data from their use of an AEDT?",
@@ -365,7 +397,8 @@
         "Ask for more data"
       ],
       "answer_option": "c",
-      "explanation": "If there is insufficient historical data available to conduct a statistically significant bias audit, test data can be used to conduct the bias audit."
+      "explanation": "If there is insufficient historical data available to conduct a statistically significant bias audit, test data can be used to conduct the bias audit.",
+      "uuid": "1f0e05e4-1701-4828-a92d-b2cc7c29b189"
     },
     {
       "question": "Who can be an independent auditor?",
@@ -376,7 +409,8 @@
         "Anyone"
       ],
       "answer_option": "c",
-      "explanation": "An independent auditor is someone who exercises objective and impartial judgment in the performance of a bias audit."
+      "explanation": "An independent auditor is someone who exercises objective and impartial judgment in the performance of a bias audit.",
+      "uuid": "c09791c5-36fa-4f19-aa95-5cc41c708705"
     },
     {
       "question": "What is the responsibility of vendors who create AEDTs according to the Law's requirements?",
@@ -387,7 +421,8 @@
         "None of the above"
       ],
       "answer_option": "a",
-      "explanation": "A vendor can have an independent auditor do a bias audit of its tool. However, they are not responsible for the bias audit of the tool as per the Law's requirements."
+      "explanation": "A vendor can have an independent auditor do a bias audit of its tool. However, they are not responsible for the bias audit of the tool as per the Law's requirements.",
+      "uuid": "f548df98-6747-4fc8-a091-543f86feead2"
     },
     {
       "question": "How can someone make a complaint about violations of the Law?",
@@ -398,7 +433,8 @@
         "None of the above"
       ],
       "answer_option": "c",
-      "explanation": "To submit a complaint about violations of the Law, one can contact 311 or visit the DCWP website and provide the party's necessary details and explanation of the suspected violation."
+      "explanation": "To submit a complaint about violations of the Law, one can contact 311 or visit the DCWP website and provide the party's necessary details and explanation of the suspected violation.",
+      "uuid": "1d5464c9-23c5-4c5d-abef-d428d1b6503d"
     }
   ],
   "3 Bias Audit": [
@@ -411,7 +447,8 @@
         "Only once before first use"
       ],
       "answer_option": "b",
-      "explanation": "A bias audit of an Automatic Employment Decision Tool (AEDT) must be conducted every year."
+      "explanation": "A bias audit of an Automatic Employment Decision Tool (AEDT) must be conducted every year.",
+      "uuid": "ceaff0b4-d0e8-477b-b893-eddc718e5b0a"
     },
     {
       "question": "What should a bias audit minimally calculate when an AEDT selects candidates for employment?",
@@ -422,7 +459,8 @@
         "All of the above"
       ],
       "answer_option": "d",
-      "explanation": "A comprehensive bias audit should calculate the selection rate and the impact ratio for each category. It should also assess the impacts of the AEDT on various categories such as sex, race/ethnicity, and more."
+      "explanation": "A comprehensive bias audit should calculate the selection rate and the impact ratio for each category. It should also assess the impacts of the AEDT on various categories such as sex, race/ethnicity, and more.",
+      "uuid": "e3500ec3-f790-4710-b6ba-5d4759b58062"
     },
     {
       "question": "What happens when an employer or employment agency must rely on a bias audit that uses test data?",
@@ -433,7 +471,8 @@
         "None of the above"
       ],
       "answer_option": "c",
-      "explanation": "If the bias audit uses test data, the summary of results must explain why historical data was not used. Moreover, the summary should also describe how the test data which was used was generated and obtained."
+      "explanation": "If the bias audit uses test data, the summary of results must explain why historical data was not used. Moreover, the summary should also describe how the test data which was used was generated and obtained.",
+      "uuid": "20b3abce-32b7-4e6e-a02b-45aba2186295"
     },
     {
       "question": "What information does a bias audit have to provide before the use of an AEDT?",
@@ -444,7 +483,8 @@
         "All of the above"
       ],
       "answer_option": "d",
-      "explanation": "Before the use of an AEDT, the bias audit has to provide numerous pieces of information like the date of the most recent bias audit, a summary of the results, the distribution date, and more."
+      "explanation": "Before the use of an AEDT, the bias audit has to provide numerous pieces of information like the date of the most recent bias audit, a summary of the results, the distribution date, and more.",
+      "uuid": "65f21106-5f66-44b0-9447-7ef8ae3a4583"
     },
     {
       "question": "How long should an employer or employment agency keep the summary of results posted?",
@@ -455,7 +495,8 @@
         "Until the next bias audit is conducted"
       ],
       "answer_option": "b",
-      "explanation": "An employer or employment agency must keep the summary of results and distribution date posted for at least 6 months after its latest use of the AEDT for an employment decision."
+      "explanation": "An employer or employment agency must keep the summary of results and distribution date posted for at least 6 months after its latest use of the AEDT for an employment decision.",
+      "uuid": "3c23ca1c-fba6-41fa-8640-fc4f6789a7d1"
     },
     {
       "question": "What must a notice to candidates and employees include according to section 20-871(b)(1) of the Code?",
@@ -466,7 +507,8 @@
         "Neither a nor b"
       ],
       "answer_option": "c",
-      "explanation": "The notice required by section 20-871(b)(1) of the Code must include instructions for how an individual can request an alternative selection process or a reasonable accommodation under other laws."
+      "explanation": "The notice required by section 20-871(b)(1) of the Code must include instructions for how an individual can request an alternative selection process or a reasonable accommodation under other laws.",
+      "uuid": "d85b0ba3-74b3-4c37-b2df-e31d33740e6d"
     },
     {
       "question": "How can an employer or employment agency meet the requirements of subdivision (a) about the distribution date of the AEDT and the summary of results?",
@@ -477,7 +519,8 @@
         "Providing an active hyperlink to a website containing the required information"
       ],
       "answer_option": "d",
-      "explanation": "The employer or employment agency can meet these requirements by providing an active hyperlink on their website to another website that contains the required information."
+      "explanation": "The employer or employment agency can meet these requirements by providing an active hyperlink on their website to another website that contains the required information.",
+      "uuid": "ae726c81-c558-4201-858a-087916045ecc"
     },
     {
       "question": "What information should an employer provide to comply with section 20-871(b)(3) of the Code?",
@@ -488,7 +531,8 @@
         "All of the above"
       ],
       "answer_option": "d",
-      "explanation": "To comply with this section of the code, an employer needs to provide their data retention policy, the type of data collected for the AEDT and its source, and the instructions for requesting this information."
+      "explanation": "To comply with this section of the code, an employer needs to provide their data retention policy, the type of data collected for the AEDT and its source, and the instructions for requesting this information.",
+      "uuid": "44db8368-00ee-4f6f-bef4-c271e5968864"
     },
     {
       "question": "Under what conditions can an independent auditor exclude a category from the required calculations?",
@@ -499,7 +543,8 @@
         "When there is insufficient data to make the calculation"
       ],
       "answer_option": "a",
-      "explanation": "An independent auditor may exclude a category that represents less than 2% of the data being used for the bias audit from the required calculations for impact ratio."
+      "explanation": "An independent auditor may exclude a category that represents less than 2% of the data being used for the bias audit from the required calculations for impact ratio.",
+      "uuid": "5ea12688-0f38-48db-86d7-67b393457d7b"
     },
     {
       "question": "Which of the following situations allows an employer or employment agency to depend on a bias audit using test data?",
@@ -510,7 +555,8 @@
         "All of the above"
       ],
       "answer_option": "d",
-      "explanation": "An employer or employment agency may rely on a bias audit using test data if they are planning to use an AEDT for the first time, if the historical usage of the AEDT is not sufficient to provide a significant bias audit or if there is insufficient historical data available to conduct a statistically significant bias audit."
+      "explanation": "An employer or employment agency may rely on a bias audit using test data if they are planning to use an AEDT for the first time, if the historical usage of the AEDT is not sufficient to provide a significant bias audit or if there is insufficient historical data available to conduct a statistically significant bias audit.",
+      "uuid": "705a2c2a-8910-41d1-8b05-dc66a97fcc29"
     }
   ]
 }
