@@ -35,13 +35,13 @@ class SignIn:
 
     def main(self):
         st.markdown(f"<h1 style='text-align: center;'>{st.session_state.config_param['APP_NAME']}</h1>", unsafe_allow_html=True)
-        left_co, cent_co,right_co = st.columns([2,3,2])
+        left_co, cent_co,right_co = st.columns([.2,.6,.2])
         with cent_co:
             index = None
             st.markdown("<p style='text-align: center;'>Enter the following information to proceed.</p>", unsafe_allow_html=True)
             name = st.text_input("Name :", placeholder="Enter full name")
             email = st.text_input("Email ID :", placeholder="Enter email address")
-            agree = st.checkbox(f"""I read and agree to QuantUniversity's [Privacy Policy](https://www.quantuniversity.com/privacy.html)""")            
+            agree = st.checkbox(f"""I read and agree to QuantUniversity's [Privacy Policy](https://www.quantuniversity.com/privacy.html) and Terms & Conditions*""")            
             
             st.write(' ')
             left_co1, cent_co1,right_co1 = cent_co.columns([.25,.5,.25])
@@ -72,3 +72,10 @@ class SignIn:
                     st.rerun()
 
             cent_co1.markdown("<p style='text-align: center;'>Not a member? <a href='{url}'>SignUp</a></p>".format(url="https://academy.qusandbox.com/register"), unsafe_allow_html=True)
+
+        st.write(" ")
+        st.write(" ")
+        st.write(" ")
+        st.divider()
+        st.caption("*This demo and application are for educational purposes only and are provided as illustrations. The interpretations of the law are prepared by QuantUniversity to offer our understanding of the law. However, this information should not be considered legal advice. Users are advised to consult with a qualified attorney for legal interpretation tailored to their organization's situation. QuantUniversity bears no liability for any consequences resulting from the interpretation or implementation.")
+
