@@ -66,10 +66,8 @@ class SignIn:
                         'app_code':st.session_state.config_param["APP_CODE"]
                     }
                     data, count = st.session_state.supabaseDB.table(self.user_table_name).insert(user_data).execute()
-                    print(f"data:{data}\n\n")
-
+                    
                     st.session_state.user_info = data[1][0]
-                    print(f"st.session_state.user_info :{st.session_state.user_info}")
                     
                     st.rerun()
 

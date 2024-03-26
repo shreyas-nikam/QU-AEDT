@@ -6,7 +6,7 @@
   "QUIZ_TOTAL_QUES": 5,
   "USER_TABLE_NAME": "users",
   "QUIZ_RESULT_TABLE_NAME": "quiz_results",
-  "QUESTIONS_TABLE_NAME": "aedt_users",
+  "USER_QUIZ_INTERACTION_TABLE_NAME": "user_quiz_interaction",
   "COURSE_LINKS": [
     "./data/slides/Introduction.pdf"
   ],
