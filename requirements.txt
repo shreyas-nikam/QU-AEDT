@@ -103,4 +103,4 @@ yarl==1.9.4
 zipp==3.17.0
 plotly==5.18.0
 matplotlib==3.8.2
-xhml2pdf==0.2.15
+xhtml2pdf==0.2.15
