@@ -108,7 +108,7 @@ Context:
 Question:
 {question}
 
-If the answer is not present in the context, return "Please provide more context to answer the question. Please check the official reference pdf here: https://nvlpubs.nist.gov/nistpubs/ai/NIST.AI.100-2e2023.ipd.pdf".
+If the answer is not present in the context, return "Please provide more context to answer the question. Please check the official reference here: https://www.nyc.gov/site/dca/about/automated-employment-decision-tools.page".
             """)
             ],
             input_variables=["history","context","question"],
@@ -171,9 +171,9 @@ If the answer is not present in the context, return "Please provide more context
         if "response" not in st.session_state:
             st.session_state.ques_session = True
             st.session_state.response = {'answer': f'Hello {name}! How can I help you today? ',
-                            'followup_questions': ["What are White-box evasion attacks in Adversarial Machine Learning?",
-                                                    "Tell me more about Availability Poisoning.",
-                                                    "Give me some strategies to mitigate evasion attacks.",
+                            'followup_questions': ["What is required by Local Law 144 of 2021 for automated employment decision tools?",
+                                                    "Tell me more about Data Requirements for the Bias Audit.",
+                                                    "What is selection rate in context of AEDT? Give me an example.",
                                                     ]}
         #front-end chatmemory
         INITIAL_MESSAGE = [{"role": "assistant",
