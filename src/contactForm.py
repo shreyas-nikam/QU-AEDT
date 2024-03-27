@@ -3,7 +3,7 @@ import streamlit.components.v1 as components
 
 class ContactForm:
     def main(self):
-        st.header("Contact Form")
+        st.header("Contact Form", divider="blue")
         st.write("For any technical issues, comments or feedback, please reach out to us. We would love to hear from you!")
         # contact_form = """
         # <form action="https://formsubmit.co/info@qusandbox.com" method="POST">
