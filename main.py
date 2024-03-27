@@ -25,7 +25,7 @@ if "page_chatbot" not in st.session_state:
     st.session_state.page_signIn = SignIn()
     st.session_state.page_quiz = Quiz()
     st.session_state.page_reference = Reference()
-    # st.session_state.page_courseMaterial = CourseMaterial()
+    st.session_state.page_courseMaterial = CourseMaterial()
     st.session_state.page_calculations = Calculations()
     st.session_state.page_whatIf = WhatIf()
     st.session_state.contact_form = ContactForm()
@@ -38,6 +38,7 @@ st.sidebar.image(
 # Set sidebar routes
 page = st.sidebar.radio(label="Select a Page:",
                         options=["Home",
+                         "Course Material",
                          "Bias Audit Calculations",
                          "What If Analysis",
                          "QuBot",
@@ -53,8 +54,8 @@ if not st.session_state.user_info:
 else:
     if page == "Home":
         st.session_state.page_home.main()
-    # elif page == "Course Material":
-    #     st.session_state.page_courseMaterial.main()
+    elif page == "Course Material":
+        st.session_state.page_courseMaterial.main()
     elif page == "QuBot":
         st.session_state.page_chatbot.main()
     elif page == "Quiz":

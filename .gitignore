@@ -171,3 +171,11 @@ secrets.toml
 .DS_Store
 
 Certificate.jpg
+
+
+data/slides/*
+data/slides
+data/videos/*
+data/videos
+data/transcripts/*
+data/transcripts

@@ -8,15 +8,27 @@
   "QUIZ_RESULT_TABLE_NAME": "quiz_results",
   "USER_QUIZ_INTERACTION_TABLE_NAME": "user_quiz_interaction",
   "COURSE_LINKS": [
-    "./data/slides/Introduction.pdf"
+    "./data/slides/1 Introduction.pdf",
+    "./data/slides/2 Definitions.pdf",
+    "./data/slides/3 Bias Audit.pdf",
+    "./data/slides/4 Summary.pdf"
   ],
   "COURSE_NAMES": [
-    "1. Introduction"
+    "1. Introduction",
+    "2. Definitions",
+    "3. Bias Audit",
+    "4. Summary"
   ],
   "VIDEOS_LINKS": [
-    "./data/videos/Introduction.mp4"
+    "./data/videos/1 Introduction.mp4",
+    "./data/videos/2 Definitions.mp4",
+    "./data/videos/3 Bias Audit.mp4",
+    "./data/videos/4 Summary.mp4"
   ],
   "TRANSCRIPTS_FILES": [
-    "./data/transcripts/transcript_1.txt"
+    "./data/transcripts/transcript_1 Introduction.txt",
+    "./data/transcripts/transcript_2 Definitions.txt",
+    "./data/transcripts/transcript_3 Bias Audit.txt",
+    "./data/transcripts/transcript_4 Summary.txt"
   ]
 }

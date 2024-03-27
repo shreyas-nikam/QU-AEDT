@@ -7,7 +7,7 @@ from pathlib import Path
 AWS_ACCESS_KEY = st.secrets["AWS_ACCESS_KEY"]
 AWS_SECRET_KEY = st.secrets["AWS_SECRET_KEY"]
 BUCKET_NAME = "qucoursify"
-PREFIX = "qu-nist/test/"
+PREFIX = "qu-aedt/test/"
 
 # get the last updated json from data/last_updated.json locally
 def get_last_updated_local():
