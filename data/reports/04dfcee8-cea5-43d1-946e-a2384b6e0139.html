@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,footer,header,nav,section{display:block}h1{font-size:2em;margin:.67em 0}figcaption,figure,main{display:block}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent;-webkit-text-decoration-skip:objects}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}dfn{font-style:italic}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}audio,video{display:inline-block}audio:not([controls]){display:none;height:0}img{border-style:none}svg:not(:root){overflow:hidden}button,input,optgroup,select,textarea{font-family:sans-serif;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{display:inline-block;vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details,menu{display:block}summary{display:list-item}canvas{display:inline-block}template{display:none}[hidden]{display:none}/*# sourceMappingURL=normalize.min.css.map */
+.container{position:relative;width:100%;max-width:960px;margin:0 auto;padding:0 20px;box-sizing:border-box}.column,.columns{width:100%;float:left;box-sizing:border-box}@media (min-width:400px){.container{width:85%;padding:0}}@media (min-width:550px){.container{width:80%}.column,.columns{margin-left:4%}.column:first-child,.columns:first-child{margin-left:0}.one.column,.one.columns{width:4.66666666667%}.two.columns{width:13.3333333333%}.three.columns{width:22%}.four.columns{width:30.6666666667%}.five.columns{width:39.3333333333%}.six.columns{width:48%}.seven.columns{width:56.6666666667%}.eight.columns{width:65.3333333333%}.nine.columns{width:74%}.ten.columns{width:82.6666666667%}.eleven.columns{width:91.3333333333%}.twelve.columns{width:100%;margin-left:0}.one-third.column{width:30.6666666667%}.two-thirds.column{width:65.3333333333%}.one-half.column{width:48%}.offset-by-one.column,.offset-by-one.columns{margin-left:8.66666666667%}.offset-by-two.column,.offset-by-two.columns{margin-left:17.3333333333%}.offset-by-three.column,.offset-by-three.columns{margin-left:26%}.offset-by-four.column,.offset-by-four.columns{margin-left:34.6666666667%}.offset-by-five.column,.offset-by-five.columns{margin-left:43.3333333333%}.offset-by-six.column,.offset-by-six.columns{margin-left:52%}.offset-by-seven.column,.offset-by-seven.columns{margin-left:60.6666666667%}.offset-by-eight.column,.offset-by-eight.columns{margin-left:69.3333333333%}.offset-by-nine.column,.offset-by-nine.columns{margin-left:78%}.offset-by-ten.column,.offset-by-ten.columns{margin-left:86.6666666667%}.offset-by-eleven.column,.offset-by-eleven.columns{margin-left:95.3333333333%}.offset-by-one-third.column,.offset-by-one-third.columns{margin-left:34.6666666667%}.offset-by-two-thirds.column,.offset-by-two-thirds.columns{margin-left:69.3333333333%}.offset-by-one-half.column,.offset-by-one-half.columns{margin-left:52%}}html{font-size:62.5%}body{font-size:1.5em;line-height:1.6;font-weight:400;font-family:Raleway,HelveticaNeue,"Helvetica Neue",Helvetica,Arial,sans-serif;color:#222}h1,h2,h3,h4,h5,h6{margin-top:0;margin-bottom:2rem;font-weight:300}h1{font-size:4rem;line-height:1.2;letter-spacing:-.1rem}h2{font-size:3.6rem;line-height:1.25;letter-spacing:-.1rem}h3{font-size:3rem;line-height:1.3;letter-spacing:-.1rem}h4{font-size:2.4rem;line-height:1.35;letter-spacing:-.08rem}h5{font-size:1.8rem;line-height:1.5;letter-spacing:-.05rem}h6{font-size:1.5rem;line-height:1.6;letter-spacing:0}@media (min-width:550px){h1{font-size:5rem}h2{font-size:4.2rem}h3{font-size:3.6rem}h4{font-size:3rem}h5{font-size:2.4rem}h6{font-size:1.5rem}}p{margin-top:0}a{color:#1EAEDB}a:hover{color:#0FA0CE}.button,button,input[type=button],input[type=reset],input[type=submit]{display:inline-block;height:38px;padding:0 30px;color:#555;text-align:center;font-size:11px;font-weight:600;line-height:38px;letter-spacing:.1rem;text-transform:uppercase;text-decoration:none;white-space:nowrap;background-color:transparent;border-radius:4px;border:1px solid #bbb;cursor:pointer;box-sizing:border-box}.button:focus,.button:hover,button:focus,button:hover,input[type=button]:focus,input[type=button]:hover,input[type=reset]:focus,input[type=reset]:hover,input[type=submit]:focus,input[type=submit]:hover{color:#333;border-color:#888;outline:0}.button.button-primary,button.button-primary,input[type=button].button-primary,input[type=reset].button-primary,input[type=submit].button-primary{color:#FFF;background-color:#33C3F0;border-color:#33C3F0}.button.button-primary:focus,.button.button-primary:hover,button.button-primary:focus,button.button-primary:hover,input[type=button].button-primary:focus,input[type=button].button-primary:hover,input[type=reset].button-primary:focus,input[type=reset].button-primary:hover,input[type=submit].button-primary:focus,input[type=submit].button-primary:hover{color:#FFF;background-color:#1EAEDB;border-color:#1EAEDB}input[type=email],input[type=number],input[type=password],input[type=search],input[type=tel],input[type=text],input[type=url],select,textarea{height:38px;padding:6px 10px;background-color:#fff;border:1px solid #D1D1D1;border-radius:4px;box-shadow:none;box-sizing:border-box}input[type=email],input[type=number],input[type=password],input[type=search],input[type=tel],input[type=text],input[type=url],textarea{-webkit-appearance:none;-moz-appearance:none;appearance:none}textarea{min-height:65px;padding-top:6px;padding-bottom:6px}input[type=email]:focus,input[type=number]:focus,input[type=password]:focus,input[type=search]:focus,input[type=tel]:focus,input[type=text]:focus,input[type=url]:focus,select:focus,textarea:focus{border:1px solid #33C3F0;outline:0}label,legend{display:block;margin-bottom:.5rem;font-weight:600}fieldset{padding:0;border-width:0}input[type=checkbox],input[type=radio]{display:inline}label>.label-body{display:inline-block;margin-left:.5rem;font-weight:400}ul{list-style:circle inside}ol{list-style:decimal inside}ol,ul{padding-left:0;margin-top:0}ol ol,ol ul,ul ol,ul ul{margin:1.5rem 0 1.5rem 3rem;font-size:90%}li{margin-bottom:1rem}code{padding:.2rem .5rem;margin:0 .2rem;font-size:90%;white-space:nowrap;background:#F1F1F1;border:1px solid #E1E1E1;border-radius:4px}pre>code{display:block;padding:1rem 1.5rem;white-space:pre}td,th{padding:12px 15px;text-align:left;border-bottom:1px solid #E1E1E1}td:first-child,th:first-child{padding-left:0}td:last-child,th:last-child{padding-right:0}.button,button{margin-bottom:1rem}fieldset,input,select,textarea{margin-bottom:1.5rem}blockquote,dl,figure,form,ol,p,pre,table,ul{margin-bottom:2.5rem}.u-full-width{width:100%;box-sizing:border-box}.u-max-full-width{max-width:100%;box-sizing:border-box}.u-pull-right{float:right}.u-pull-left{float:left}hr{margin-top:3rem;margin-bottom:3.5rem;border-width:0;border-top:1px solid #E1E1E1}.container:after,.row:after,.u-cf{content:"";display:table;clear:both}
+        body {
+            width: 100%;
+            height: 90%;
+            margin: 0;
+            padding: 0;
+            background-color: #FAFAFA;
+            font-size: 1.1rem;
+            line-height: 1.3;
+        }
+
+        * {
+            box-sizing: border-box;
+            -moz-box-sizing: border-box;
+        }
+
+        .page {
+            position: relative;
+            width: 210mm;
+            height: 100%;
+            padding: 0mm;
+            margin: auto;
+            /* border: 1px #D3D3D3 solid; */
+            border-radius: 5px;
+            background: white;
+            /* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
+        }
+
+        .subpage {
+            padding: 1cm;
+            border: 5px #ccc solid;
+            /*min-height: 297mm;*/
+            display: block;
+            overflow: auto;
+            padding-bottom: 20px;
+        }
+
+        .page-1a {
+            height: 30px;
+        }
+
+        .page-1b {
+            color: white;
+            margin-left: 40px;
+        }
+
+        .page-1c {
+            display: flex;
+        }
+
+        .page-1d {
+            background-color: #435966;
+            margin-top: -38px;
+            width: 110%;
+            margin-left: -38px;
+            height: 130px;
+            padding: 30px;
+            display: flex;
+        }
+
+        .page-1e {
+            opacity: 0.8;
+        }
+
+        .page-1f {
+            color: white;
+            background-color: #1993dc;
+            margin-top: -38px;
+            margin-right: -38px;
+            width: 50%;
+            height: 130px;
+            padding: 30px;
+        }
+
+        .page-1g {
+            display: flex;
+        }
+
+        .page-1h {
+            color: #435966;
+        }
+
+        .page-1i {
+            margin-top: 30px;
+            padding-left: 40px;
+        }
+
+        .page-1j {
+            display: block;
+            background-color: #F8F8FF;
+            width: 250px;
+            float: left;
+            text-align: justify;
+            padding-bottom: 30px;
+
+            padding-top: 10px;
+            margin-left: 15px;
+            margin-top: 30px;
+        }
+
+        .page-1k {
+            border-left: 5px;
+            border-left-style: solid;
+            border-left-color: #435966;
+            border-left-width: 7px;
+            padding-left: 20px;
+            margin-top: 30px
+        }
+
+        .page-1l {
+            border-left: 5px;
+            border-left-style: solid;
+            border-left-color: #1993dc;
+            border-left-width: 7px;
+            padding-left: 20px;
+            margin-top: 20px
+        }
+
+        .page-1m {
+            border-left: 5px;
+            border-left-style: solid;
+            border-left-color: #435966;
+            border-left-width: 7px;
+            padding-left: 20px;
+            margin-top: 20px;
+        }
+
+        .page-1n {
+            display: block;
+            float: right;
+            width: 400px;
+            margin-left: 10px;
+            margin-right: 15px;
+        }
+
+        .page-1o {
+            background-color: #435966;
+            color: white;
+            width: 200px;
+            height: 160px;
+            padding: 20px;
+            margin-left: 50px;
+            margin-top: -38px;
+        }
+
+        .page-2a {
+            background-color: #435966;
+            color: white;
+            width: 200px;
+            height: 160px;
+            padding: 20px;
+            margin-left: 50px;
+            margin-top: -38px;
+        }
+
+        .page-2b {
+            margin-top: 40px
+        }
+
+        .page-2c {
+            margin-top: 20px
+        }
+
+        .page-3 {
+            margin-left: 80px;
+            margin-right: 40px;
+        }
+
+        .page-3a {
+            background-color: #1993dc;
+            color: white;
+            width: 200px;
+            height: 160px;
+            padding: 20px;
+            margin-left: 50px;
+            margin-top: -38px;
+        }
+
+        .page-3b {
+            color: #435966;
+            margin-top: 40px;
+        }
+
+        .page-3c {
+            margin-top: 15px;
+        }
+
+        .page-3d {
+            margin-left: 20px;
+        }
+
+        .page-3e {
+            border-left: 5px;
+            border-left-style: solid;
+            border-left-color: #435966;
+            border-left-width: 7px;
+        }
+
+        .page-3f {
+            border-left: 5px;
+            border-left-style: solid;
+            border-left-color: #1993dc;
+            margin-top: 20px;
+            border-left-width: 7px;
+        }
+
+        .page-3g {
+            border-left: 5px;
+            border-left-style: solid;
+            border-left-color: #435966;
+            margin-top: 20px;
+            border-left-width: 7px;
+        }
+
+        .page-3h {
+            color: #435966;
+        }
+
+        .page-3i {
+            background-color: #F8F8FF;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-right: 20px;
+        }
+
+        .page-3j {
+            margin-left: 250px;
+            margin-bottom: 15px;
+            width: 400px;
+        }
+
+        .page-3k {
+            font-size: 11;
+        }
+
+        .page-3l {
+            position: relative;
+            margin-top: 40px;
+            margin-left: 30px;
+        }
+
+        .page-3m {
+            height: 250px;
+        }
+
+        .page-5 {
+            border-left: 5px;
+            border-left-style: solid;
+            border-left-color: #435966;
+            padding: 20px;
+            border-left-width: 7px;
+        }
+
+        .page-5a {
+            border-left: 5px;
+            border-left-style: solid;
+            border-left-color: #1993dc;
+            padding: 20px;
+            border-left-width: 7px;
+            margin-top: 20px;
+        }
+
+        .page-5b {
+            border-left: 5px;
+            border-left-style: solid;
+            border-left-color: #435966;
+            padding: 20px;
+            border-left-width: 7px;
+            margin-top: 20px;
+        }
+
+        .page-5c {
+            background-color: #F8F8FF;
+            margin-left: 25px;
+            margin-top: 40px;
+        }
+
+        .page-5d {
+            border-left: 5px;
+            border-left-style: solid;
+            border-left-color: #435966;
+            padding: 20px;
+            border-left-width: 7px;
+            margin-top: 20px;
+        }
+
+        .page-5e {
+            background-color: #F8F8FF;
+            margin-left: 25px;
+            margin-top: 40px;
+        }
+
+        .page-5f {
+            margin-left: 5px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .page-5g {
+            position: relative;
+            top: 0px;
+            margin-bottom: 40px;
+        }
+
+        .page-6 {
+            position: relative;
+            margin-top: 40px;
+        }
+
+        .page-6a {
+            float: left;
+            margin-top: 25px;
+            margin-right: 20px;
+        }
+
+        .page-6b {
+            height: 180px;
+            float: right;
+            margin-top: 20px;
+        }
+
+        .page-6c {
+            margin-top: 25px;
+        }
+
+        .page-6d {
+            color: #435966;
+            float: left;
+            margin-left: 25px;
+        }
+
+        .page-6e {
+            position: relative;
+            margin-top: 0;
+        }
+
+        .page-7 {
+            padding-top: 20px;
+            margin-left: 30px;
+        }
+
+        .page-7a {
+            float: left;
+        }
+
+        .page-7b {
+            position: relative;
+            margin-top: 40px;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+
+        .page-7c {
+            margin-top: 5px;
+            height: 250;
+        }
+
+        .page-7d {
+
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            margin-top: 10px;
+            margin-left: 40px;
+            border-left: 15px;
+            border-left-style: solid;
+            border-left-color: #F8F8FF;
+            border-left-width: 2px;
+            display: flex;
+        }
+
+        .page-8a {
+            margin-top: 15px;
+            color: #435966;
+        }
+
+        .page-8b {
+            margin-left: 100px;
+        }
+
+        .page-8c {
+            margin-top: 50px;
+        }
+
+        .page-9a {
+            height: 250;
+            margin-top: 20px;
+        }
+
+        .page-9b {
+            margin-top: 50px;
+            float: left;
+        }
+
+        .page-9c {
+            margin-left: 30px;
+            margin-top: 40px;
+            margin-left: 30px;
+        }
+
+        .page-9d {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .page-9f {
+            margin-top: 10px;
+        }
+
+        .page-9g {
+            margin-top: 10px;
+            color: #435966;
+        }
+
+        .page-9h {
+            margin-top: 40px;
+            color: #435966;
+        }
+
+        .page-12a {
+            margin-top: 20px;
+            margin-left: 30px;
+        }
+
+        .page-12b {
+            color: #435966;
+            margin-top: 30px;
+        }
+
+        .page-12c {
+            color: #435966;
+            margin-top: 30px;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.3;
+            margin-bottom: 1rem
+        }
+
+        .iframe {
+            border: none;
+        }
+
+        .gs-header {
+            color: white !important;
+            -webkit-print-color-adjust: exact;
+        }
+
+        .gs-text-header {
+            background: #C41230 !important;
+            -webkit-print-color-adjust: exact;
+        }
+
+        .gs-table-header {
+            background: #C41230 !important;
+            -webkit-print-color-adjust: exact;
+        }
+
+        .gs-accent-header {
+            background: #65201F !important;
+            -webkit-print-color-adjust: exact;
+        }
+
+
+
+        div.padded {
+            padding: 10px;
+        }
+
+        h6.padded,
+        p.padded {
+            padding: 2px 5px;
+            margin-top: 10px;
+            margin-bottom: 2px;
+        }
+
+        .blue-text {
+            color: #8496B8;
+        }
+
+        table {
+            width: 100%
+        }
+
+        td {
+            padding: 2px 0px
+        }
+
+        tr:nth-child(even) {
+            background-color: #D7DBE1;
+            -webkit-print-color-adjust: exact;
+        }
+
+        table.reversed tr:nth-child(odd) {
+            background-color: #D7DBE1;
+            -webkit-print-color-adjust: exact;
+        }
+
+        table.reversed tr:nth-child(even) {
+            background-color: white;
+        }
+
+        table {
+            font-size: 0.95rem;
+            border-spacing: 0;
+            border-collapse: collapse;
+        }
+
+        table.tiny-header tr:first-child {
+            font-size: 8px;
+        }
+
+        /* .columns{ margin-left: 0 !important; } */
+
+        /* .row > .columns:not(:first-child){
+	padding-left: 20px;
+} */
+
+        td,
+        th {
+            border: 0
+        }
+
+        h1,
+        h5,
+        h6 {
+            margin: 0
+        }
+
+        h6 {
+            font-size: 1.425rem
+        }
+
+        h6.tiny-header {
+            font-size: 10px;
+        }
+
+        li {
+            padding-left: 10px;
+        }
+
+        a {
+            color: black;
+            cursor: pointer;
+        }
+
+        .page-view {
+            text-align: left;
+            padding-top: 40px;
+        }
+
+        .middle-aligned {
+            padding: 50px 20px 0 0;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        .right-aligned {
+            text-align: right;
+        }
+
+        .no-page {
+            text-align: center;
+            margin-top: 100px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .tab {
+            border-style: solid;
+            border-color: rgba(0, 0, 0, 0.2);
+            border-bottom-style: none;
+            border-top-style: none;
+            border-right-style: none;
+            color: black;
+            padding: 10px 14px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .tab.first {
+            border-left-style: none;
+        }
+
+        #page-content>div:nth-child(n+2)>a {
+            visibility: hidden;
+        }
+        .up-border {
+            border-top: solid #cacaca 1px;
+            padding-left: 20px;
+            margin-top: 20px;
+            padding-top: 5px;
+        }
+        .reference {
+            color: #435966;
+            font-style: oblique;
+            margin-bottom: 0px;
+        }
+        .metadata {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            flex-direction: column;
+            padding:30px 20px 30px 20px;
+            width: 73%;
+        }
+    </style>
+    <title>
+         Report for Bias Audit for Client XYZ Corp.
+    </title>
+    
+</head>
+
+<body>
+    <div class="page">
+        <div class="subpage">
+            <div class="page-1g">
+                <div class="page-1d" style="padding: 15px;">
+                    <div class="page-1c">
+                        <div style="padding: 25px 15px 25px 0px;display: flex;align-items: center;">
+                            <img
+                                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAA0CAYAAADIZmusAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUQ4MkIzQzczQTQ2MTFFNzg3Q0NFNDE2RUM1MjhGQzgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUQ4MkIzQzgzQTQ2MTFFNzg3Q0NFNDE2RUM1MjhGQzgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5RDgyQjNDNTNBNDYxMUU3ODdDQ0U0MTZFQzUyOEZDOCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5RDgyQjNDNjNBNDYxMUU3ODdDQ0U0MTZFQzUyOEZDOCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PkDg9JoAABQOSURBVHjazFppeFRl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">
+                            <span style="font-size:25px;color: white;vertical-align: middle;">QU<span
+                                    style="color: #63c963"><span id="appName">Report</span>
+                        </div>
+
+                        <div class="page-1b" style="margin:auto">
+                            <h6> Report</h6>
+                            <h5 style="max-width: 300px;">Bias Audit for Client XYZ Corp.</h5>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="page-1f metadata">
+                    
+                    <h6 style="float: left;"><span style="font-weight: bold;">Version</span>:
+                        1.0</h6>
+                    <h6 style="float: left;"><span style="font-weight: bold;">Date</span>:
+                        2024-07-11</h6>
+                </div>
+            </div>
+            <div>
+                <div class="page-1l">
+                    <h6 class="page-1h">Information</h6>
+                    
+                    
+                    <p>Owner: Sri Krishnamurthy</p>
+                    
+                    
+                    <p>Contact: info@qusandbox.com</p>
+                    
+                    
+                    
+                </div>
+                
+                
+                <div class="page-1m">
+                    <h6 class="page-1h">Bias Audit Report</h6>
+                    <p>This is the bias audit report for XYZ Corp.</p>
+                </div>
+                
+                    <div class="page-1l">
+                    <h6 class="page-1h">Appendix</h6>
+                    <div style="text-align:center">
+                    
+                    <p>Audit metrics by category: Sex: </p>
+                    
+                    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sex (Male/Female)</th>
+      <th>Total</th>
+      <th>Selected</th>
+      <th>Selection_Rate</th>
+      <th>Impact_Ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Female</td>
+      <td>2533</td>
+      <td>1232</td>
+      <td>0.49</td>
+      <td>0.961</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Male</td>
+      <td>2467</td>
+      <td>1262</td>
+      <td>0.51</td>
+      <td>1.000</td>
+    </tr>
+  </tbody>
+</table>
+                    
+                    
+                    <p>Audit metrics by category: Race/Ethnicity: </p>
+                    
+                    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Race/Ethnicity</th>
+      <th>Total</th>
+      <th>Selected</th>
+      <th>Selection_Rate</th>
+      <th>Impact_Ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Asian (Not Hispanic or Latino)</td>
+      <td>754</td>
+      <td>410</td>
+      <td>0.54</td>
+      <td>1.000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Black or African American (Not Hispanic or Latino)</td>
+      <td>957</td>
+      <td>435</td>
+      <td>0.45</td>
+      <td>0.833</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Hispanic or Latino</td>
+      <td>746</td>
+      <td>346</td>
+      <td>0.46</td>
+      <td>0.852</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Native American or Alaska Native (Not Hispanic or Latino)</td>
+      <td>541</td>
+      <td>265</td>
+      <td>0.49</td>
+      <td>0.907</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Native Hawaiian or Pacific Islander (Not Hispanic or Latino)</td>
+      <td>233</td>
+      <td>101</td>
+      <td>0.43</td>
+      <td>0.796</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Two or More Races (Not Hispanic or Latino)</td>
+      <td>289</td>
+      <td>154</td>
+      <td>0.53</td>
+      <td>0.981</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>White (Not Hispanic or Latino)</td>
+      <td>1480</td>
+      <td>783</td>
+      <td>0.53</td>
+      <td>0.981</td>
+    </tr>
+  </tbody>
+</table>
+                    
+                    
+                    <p>Audit metrics by category: Sex + Race/Ethnicity: </p>
+                    
+                    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sex (Male/Female)</th>
+      <th>Race/Ethnicity</th>
+      <th>Total Count</th>
+      <th>Total Selected</th>
+      <th>Selection Rate</th>
+      <th>Impact_Ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Female</td>
+      <td>Asian (Not Hispanic or Latino)</td>
+      <td>393</td>
+      <td>235</td>
+      <td>0.60</td>
+      <td>0.896</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Female</td>
+      <td>Black or African American (Not Hispanic or Latino)</td>
+      <td>507</td>
+      <td>249</td>
+      <td>0.49</td>
+      <td>0.731</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Female</td>
+      <td>Hispanic or Latino</td>
+      <td>384</td>
+      <td>184</td>
+      <td>0.48</td>
+      <td>0.716</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Female</td>
+      <td>Native American or Alaska Native (Not Hispanic or Latino)</td>
+      <td>262</td>
+      <td>152</td>
+      <td>0.58</td>
+      <td>0.866</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Female</td>
+      <td>Native Hawaiian or Pacific Islander (Not Hispanic or Latino)</td>
+      <td>121</td>
+      <td>57</td>
+      <td>0.47</td>
+      <td>0.701</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Female</td>
+      <td>Two or More Races (Not Hispanic or Latino)</td>
+      <td>150</td>
+      <td>85</td>
+      <td>0.57</td>
+      <td>0.851</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Female</td>
+      <td>White (Not Hispanic or Latino)</td>
+      <td>716</td>
+      <td>270</td>
+      <td>0.38</td>
+      <td>0.567</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Male</td>
+      <td>Asian (Not Hispanic or Latino)</td>
+      <td>361</td>
+      <td>175</td>
+      <td>0.48</td>
+      <td>0.716</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Male</td>
+      <td>Black or African American (Not Hispanic or Latino)</td>
+      <td>450</td>
+      <td>186</td>
+      <td>0.41</td>
+      <td>0.612</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Male</td>
+      <td>Hispanic or Latino</td>
+      <td>362</td>
+      <td>162</td>
+      <td>0.45</td>
+      <td>0.672</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Male</td>
+      <td>Native American or Alaska Native (Not Hispanic or Latino)</td>
+      <td>279</td>
+      <td>113</td>
+      <td>0.41</td>
+      <td>0.612</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Male</td>
+      <td>Native Hawaiian or Pacific Islander (Not Hispanic or Latino)</td>
+      <td>112</td>
+      <td>44</td>
+      <td>0.39</td>
+      <td>0.582</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Male</td>
+      <td>Two or More Races (Not Hispanic or Latino)</td>
+      <td>139</td>
+      <td>69</td>
+      <td>0.50</td>
+      <td>0.746</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Male</td>
+      <td>White (Not Hispanic or Latino)</td>
+      <td>764</td>
+      <td>513</td>
+      <td>0.67</td>
+      <td>1.000</td>
+    </tr>
+  </tbody>
+</table>
+                    
+                    
+                    <p>Audit metrics by category: Sex: </p>
+                    
+                    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sex (Male/Female)</th>
+      <th>Total</th>
+      <th>Selected</th>
+      <th>Selection_Rate</th>
+      <th>Impact_Ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Female</td>
+      <td>2533</td>
+      <td>1232</td>
+      <td>0.49</td>
+      <td>0.961</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Male</td>
+      <td>2467</td>
+      <td>1262</td>
+      <td>0.51</td>
+      <td>1.000</td>
+    </tr>
+  </tbody>
+</table>
+                    
+                    
+                    <p>Audit metrics by category: Race/Ethnicity: </p>
+                    
+                    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Race/Ethnicity</th>
+      <th>Total</th>
+      <th>Selected</th>
+      <th>Selection_Rate</th>
+      <th>Impact_Ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Asian (Not Hispanic or Latino)</td>
+      <td>754</td>
+      <td>410</td>
+      <td>0.54</td>
+      <td>1.000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Black or African American (Not Hispanic or Latino)</td>
+      <td>957</td>
+      <td>435</td>
+      <td>0.45</td>
+      <td>0.833</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Hispanic or Latino</td>
+      <td>746</td>
+      <td>346</td>
+      <td>0.46</td>
+      <td>0.852</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Native American or Alaska Native (Not Hispanic or Latino)</td>
+      <td>541</td>
+      <td>265</td>
+      <td>0.49</td>
+      <td>0.907</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Native Hawaiian or Pacific Islander (Not Hispanic or Latino)</td>
+      <td>233</td>
+      <td>101</td>
+      <td>0.43</td>
+      <td>0.796</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Two or More Races (Not Hispanic or Latino)</td>
+      <td>289</td>
+      <td>154</td>
+      <td>0.53</td>
+      <td>0.981</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>White (Not Hispanic or Latino)</td>
+      <td>1480</td>
+      <td>783</td>
+      <td>0.53</td>
+      <td>0.981</td>
+    </tr>
+  </tbody>
+</table>
+                    
+                    
+                    <p>Audit metrics by category: Sex + Race/Ethnicity: </p>
+                    
+                    <table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Sex (Male/Female)</th>
+      <th>Race/Ethnicity</th>
+      <th>Total Count</th>
+      <th>Total Selected</th>
+      <th>Selection Rate</th>
+      <th>Impact_Ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Female</td>
+      <td>Asian (Not Hispanic or Latino)</td>
+      <td>393</td>
+      <td>235</td>
+      <td>0.60</td>
+      <td>0.896</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Female</td>
+      <td>Black or African American (Not Hispanic or Latino)</td>
+      <td>507</td>
+      <td>249</td>
+      <td>0.49</td>
+      <td>0.731</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Female</td>
+      <td>Hispanic or Latino</td>
+      <td>384</td>
+      <td>184</td>
+      <td>0.48</td>
+      <td>0.716</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Female</td>
+      <td>Native American or Alaska Native (Not Hispanic or Latino)</td>
+      <td>262</td>
+      <td>152</td>
+      <td>0.58</td>
+      <td>0.866</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Female</td>
+      <td>Native Hawaiian or Pacific Islander (Not Hispanic or Latino)</td>
+      <td>121</td>
+      <td>57</td>
+      <td>0.47</td>
+      <td>0.701</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Female</td>
+      <td>Two or More Races (Not Hispanic or Latino)</td>
+      <td>150</td>
+      <td>85</td>
+      <td>0.57</td>
+      <td>0.851</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Female</td>
+      <td>White (Not Hispanic or Latino)</td>
+      <td>716</td>
+      <td>270</td>
+      <td>0.38</td>
+      <td>0.567</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Male</td>
+      <td>Asian (Not Hispanic or Latino)</td>
+      <td>361</td>
+      <td>175</td>
+      <td>0.48</td>
+      <td>0.716</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Male</td>
+      <td>Black or African American (Not Hispanic or Latino)</td>
+      <td>450</td>
+      <td>186</td>
+      <td>0.41</td>
+      <td>0.612</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Male</td>
+      <td>Hispanic or Latino</td>
+      <td>362</td>
+      <td>162</td>
+      <td>0.45</td>
+      <td>0.672</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Male</td>
+      <td>Native American or Alaska Native (Not Hispanic or Latino)</td>
+      <td>279</td>
+      <td>113</td>
+      <td>0.41</td>
+      <td>0.612</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Male</td>
+      <td>Native Hawaiian or Pacific Islander (Not Hispanic or Latino)</td>
+      <td>112</td>
+      <td>44</td>
+      <td>0.39</td>
+      <td>0.582</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Male</td>
+      <td>Two or More Races (Not Hispanic or Latino)</td>
+      <td>139</td>
+      <td>69</td>
+      <td>0.50</td>
+      <td>0.746</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Male</td>
+      <td>White (Not Hispanic or Latino)</td>
+      <td>764</td>
+      <td>513</td>
+      <td>0.67</td>
+      <td>1.000</td>
+    </tr>
+  </tbody>
+</table>
+                    
+                    
+                    </div>
+                    </div>
+                
+                
+                
+            </div>
+            <div class="reference up-border">
+            QuantUniversity developed templates are shared under a  
+            <a target="_blank" class="reference" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 
+            license. Any templates that are licensed by QuSandbox or sourced from another resource shall maintain the original license unless explicitly overridden with a new license. Please contact us at 
+            <a class="reference" target="_blank" href="https://www.quantuniversity.com/contact.html">info@qusandbox.com</a>
+             if you would like to use or license any templates from QuSandbox. Copyright 2001, QuantUniversity LLC. All Rights Reserved.
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

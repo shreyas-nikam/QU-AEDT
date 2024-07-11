@@ -1,26 +1,23 @@
+# import the required libraries
 import streamlit as st
 import streamlit.components.v1 as components
+from src.logger import Logger
+
+# Create the logger object
+logger = Logger.get_logger()
 
 class ContactForm:
+    """
+    This class is used to display the contact form in the Streamlit app.
+    """
     def main(self):
+        """
+        The main function to display the contact form.
+        """
+        logger.info("Logged in to Contact Form")
+        # Display the contact form header
         st.header("Contact Form", divider="blue")
+
+        # Display the contact form
         st.write("For any technical issues, comments or feedback, please reach out to us. We would love to hear from you!")
-        # contact_form = """
-        # <form action="https://formsubmit.co/info@qusandbox.com" method="POST">
-        #     <input type="hidden" name="_captcha" value="false">
-        #     <input type="hidden" name="course" value="QU-AEDT">
-        #     <input type="text" name="name" placeholder="Your name" required>
-        #     <input type="email" name="email" placeholder="Your email" required>
-        #     <textarea name="message" placeholder="Your message or feedback here"></textarea>
-        #     <button type="submit">Send</button>
-        # </form>
-        # """
-
-        # st.markdown(contact_form, unsafe_allow_html=True)
-
-        components.html("""<iframe src="https://docs.google.com/forms/d/e/1FAIpQLScI4unvhBooDbbGy1mJvFnmkFS29EcG_oGMAlb8ZD4jyyLIRA/viewform?embedded=true" width="640" height="1000" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>""", width=640, height=1000)
-        def local_css(file_name):
-            with open(file_name) as f:
-                st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
-
-        local_css("src/contactForm.css")
+        components.html(f"""<iframe src={st.session_state.config_param['CONTACT_FORM_LINK']} width="640" height="900" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>""", width=640, height=900)

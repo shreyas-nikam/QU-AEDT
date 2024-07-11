@@ -1,263 +1,269 @@
+# Import the required libraries
+import random
 import time
 import ast
+import json
 import streamlit as st
 from src.ui.chatUI import display_on_chat
 from langchain_openai.chat_models import ChatOpenAI
 from langchain_core.prompts import PromptTemplate
-from langchain_community.vectorstores import FAISS
-from langchain.prompts import BasePromptTemplate, PromptTemplate, ChatPromptTemplate, HumanMessagePromptTemplate
-from langchain.chains import ConversationChain
+from langchain.prompts import PromptTemplate, ChatPromptTemplate, HumanMessagePromptTemplate
 from langchain.output_parsers import StructuredOutputParser, ResponseSchema
 from langchain_openai import OpenAIEmbeddings
+from src.retriever import Retriever
+from src.logger import Logger
 
-from src.customHybridRetriever import Retriever
+# Create the logger object
+logger = Logger.get_logger()
 
 class ChatBot:
+    """
+    Class to handle the chatbot functionality.
+
+    Attributes:
+    OPENAI_KEY (str): The OpenAI key.
+    OPENAI_MODEL (str): The OpenAI model.
+    embeddings (OpenAIEmbeddings): The OpenAI embeddings.
+    chat_model (ChatOpenAI): The OpenAI chat model.
+    chat_history (str): The chat history.
+    """
     def __init__(self):
-        OPENAI_KEY = st.secrets["OPENAI_KEY"]
+        """
+        The constructor for the ChatBot class.
+        """
+        if "openai_key" not in st.session_state:
+            OPENAI_KEY = st.secrets["OPENAI_KEY"]
+            st.session_state.openai_key = OPENAI_KEY
         self.OPENAI_MODEL =  st.secrets["OPENAI_MODEL"]
-        self.TOTAL_QUES = st.session_state.config_param["QUIZ_TOTAL_QUES"]
-        self.embeddings = OpenAIEmbeddings(api_key=OPENAI_KEY)
-        self.chatModel = ChatOpenAI(temperature=0, model_name = self.OPENAI_MODEL,openai_api_key = OPENAI_KEY)
-        self.chatHistory = ""
-        self.retriever = Retriever()
-        # self.retriever.create_vector_store(file_name="./data/content.txt")
+        self.embeddings = OpenAIEmbeddings(api_key=st.session_state.openai_key)
+        self.chat_model = ChatOpenAI(temperature=0, model_name=self.OPENAI_MODEL, openai_api_key=st.session_state.openai_key)
+        self.chat_history = ""
+        st.session_state.retriever = Retriever()
+        st.session_state.retriever._load_params()
     
-    def get_context(self, question, path = "./data/text_to_vector_db"):
-        return self.retriever.parse_response_with_rerank(question)
+    def get_question_context(self, question):
+        """
+        Function to get the context for the given question.
+        
+        Args:
+        question (str): The question.
+        
+        Returns:
+        str: The context for the question.
+        """
+        logger.info(f"Getting the context for the question: {question}")
+        if "retriever" not in st.session_state:
+            st.session_state.retriever = Retriever()
+            st.session_state.retriever._load_params()
+        return st.session_state.retriever.parse_response_with_rerank(question)
     
     def resolve_question(self, question):
-        prompt = """
-Generate the OUTPUT QUESTION based on the following examples for the last query.
-
-HISTORY:
-[]
-NOW QUESTION: Hello, how are you?
-NEED COREFERENCE RESOLUTION: No => THOUGHT: Consequently, the output question mirrors the current query.
-OUPUT QUESTION: Hello, how are you?
--------------------
-HISTORY:
-[User: Is Milvus a vector database?
-You: Yes, Milvus is a vector database.]
-NOW QUESTION: How to use it?
-NEED COREFERENCE RESOLUTION: Yes => THOUGHT: I must substitute 'it' with 'Milvus' in the current question.
-OUTPUT QUESTION: How to use Milvus?
--------------------
-HISTORY:
-[]
-NOW QUESTION: What are its features?
-NEED COREFERENCE RESOLUTION: Yes => THOUGHT: Although 'it' requires substitution, there's no suitable reference in the history. Thus, the output question remains unchanged. 
-OUTPUT QUESTION: What are its features?
--------------------
-HISTORY:
-[User: What is PyTorch?
-You: PyTorch is an open-source machine learning library for Python. It provides a flexible and efficient framework for building and training deep neural networks.
-User: What is Tensorflow?
-You: TensorFlow is an open-source machine learning framework. It provides a comprehensive set of tools, libraries, and resources for building and deploying machine learning models.]
-NOW QUESTION: What is the difference between them?
-NEED COREFERENCE RESOLUTION: Yes => THOUGHT: 'Them' should be replaced with 'PyTorch and Tensorflow' in the current question.
-OUTPUT QUESTION: What is the difference between PyTorch and Tensorflow?
--------------------
-HISTORY:[
-{history}
-]
-NOW QUESTION: {question}
-NEED COREFERENCE RESOLUTION:
-OUTPUT QUESTION: 
         """
-        llm = ChatOpenAI(model=self.OPENAI_MODEL, temperature=0, api_key=st.secrets["OPENAI_KEY"])
+        Function to resolve the question using the ambiguity resolution prompt.
+
+        Args:
+        question (str): The question.
+
+        Returns:
+        str: The resolved question.
+        """
+        logger.info(f"Resolving the ambiguity for the question: {question}")
+        # Create the language model
+        llm = ChatOpenAI(model=self.OPENAI_MODEL, temperature=0, api_key=st.session_state.openai_key)
+    
+        # Load the ambiguity resolution prompt
+        ambiguity_resolution_prompt = json.load(open("data/prompts.json", "r"))["AMBIGUITY_RESOLUTION_PROMPT"]
         prompt = PromptTemplate(
-            template=prompt,
+            template=ambiguity_resolution_prompt,
             input_variables=["history", "question"]
         )
+        
+        # Format the prompt
+        _input = prompt.format_prompt(history=self.chat_history.split("\nUser:")[-3:], question=question)
 
-        _input = prompt.format_prompt(history=self.chatHistory, question=question)
+        # Get the response
         output = llm(_input.to_messages())
         return output.content
 
-    def get_response(self,question):
+    def get_response(self, question):
+        """
+        Function to get the response to the given question.
+
+        Args:
+        question (str): The question.
+
+        Returns:
+        dict: The response to the question.
+        """
+        logger.info(f"Getting the response for the question: {question}")
+        # Resolve the question
         question = self.resolve_question(question)
+
+        # Create the output parser
         response_schemas = [
-                ResponseSchema(name="answer", description="Your answer to the given question in markdown format", type = 'string'),
-                ResponseSchema(name="followup_questions", description="A list of 3 follow-up questions that the user may have based on the question.", type = 'list')
+                ResponseSchema(name="answer", description="Your answer to the given question in markdown format", type = 'markdown'),
+                ResponseSchema(name="follow_up_questions", description="A list of 3 follow-up questions that the user may have based on the question.", type = 'list')
             ]
         output_parser = StructuredOutputParser.from_response_schemas(response_schemas)
         format_instructions = output_parser.get_format_instructions()
 
-        context = self.get_context(question)
+        # Get the context
+        context = self.get_question_context(question)
+        logger.info(f"Context for the question {question}: {context}")
+        # Get the response prompt
+        response_prompt = json.load(open("data/prompts.json", "r"))["RESPONSE_PROMPT"]
 
+
+   
+        # Create the prompt
         prompt = ChatPromptTemplate(
             messages=[
-                HumanMessagePromptTemplate.from_template("""
-Answer the given question using the provided context only. 
-You have to return 2 things :
-1. A conversational reponse to the question below using the context and previous conversation only. 
-2. A list of three related follow-up questions to the question that the user might have. Do not repeat the suggested questions. 
-
-{format_instructions}
-
-DONT FORGET TO PUT COMMA(,) between the keys in JSON output
-                                                
-History:
-{history}
-
-Context:
-{context}
-
-
-Question:
-{question}
-
-If the answer is not present in the context, return "Please provide more context to answer the question. Please check the official reference here: https://www.nyc.gov/site/dca/about/automated-employment-decision-tools.page".
-            """)
+                HumanMessagePromptTemplate.from_template(response_prompt + st.session_state.config_param["DOCUMENT_LINK"] + ".'")
             ],
-            input_variables=["history","context","question"],
+            input_variables=["history", "context", "question"],
             partial_variables={"format_instructions": format_instructions}
         )
-        _input = prompt.format_prompt(history = self.chatHistory, context = context, question=question)
-        output = self.chatModel(_input.to_messages())
+
+        # Format the prompt
+        _input = prompt.format_prompt(history=self.chat_history.split("\nUser:")[-3:], context=context, question=question)
+
+        # Get the response
+        output = self.chat_model(_input.to_messages())
         
-        validJSON = False
+        valid_json = False
         runs = 0
-        while (validJSON == False):
+        while (valid_json == False):
             try:
+                # Parse the output
                 json_output = output_parser.parse(output.content)
-                validJSON = True
-                self.chatHistory += f"""\n
+                valid_json = True
+                logger.info(f"Response for the question {question}: {output.content}")
+
+                # Update the chat history
+                self.chat_history += f"""\n
                 User: {question}
                 You: {str(json_output['answer'])}"""
-            except Exception as e :
+
+            except Exception as e:
+                # If the output is not in JSON format, regenerate the answer for 5 runs
+                logger.warning(f"Error in parsing the response for the question {question}: {e}")
                 runs+=1
                 if runs < 4:
+
+                    # Load the error prompt
+                    retry_prompt = json.load(open("data/prompts.json", "r"))["RETRY_PROMPT"]
                     error_prompt = ChatPromptTemplate(
                         messages=[
-                                HumanMessagePromptTemplate.from_template(""" 
-                                Error encountered: {e}
-
-                                Regenerate the previous answer with proper JSON format
-                                DO NOT FORGET TO PUT COMMA(,) between the keys in JSON output
-                                {format_instructions}
-
-                                {history}
-
-                                You:
-                                {context}
-
-                                Question:
-                                {question}""")
+                                HumanMessagePromptTemplate.from_template(retry_prompt)
                                 ],
                         input_variables=["e","history","context","question"],
                         partial_variables={"format_instructions": format_instructions}
                     )
-                    _error_input = error_prompt.format_prompt(e=e,history = self.chatHistory,context = context, question=question)
-                    output = self.chatModel(_error_input.to_messages())
+
+                    # Format the error prompt
+                    _error_input = error_prompt.format_prompt(e=e, history=self.chat_history.split("\nUser:")[-3:], context = context, question=question)
+
+                    # Get the response
+                    output = self.chat_model(_error_input.to_messages())
+
+                # If the answer cannot be generated, return an error message
                 else:
                     return {'answer': f"Something went wrong! Please try again!",
-                        'followup_questions': []}
+                        'follow_up_questions': []}
                     
-
         return json_output
 
     
             
     def main(self):
-        # @st.cache_resource
+        """
+        The main function to run the chatbot.
+        """
         
+        logger.info("Logged in to the chatbot.")
+        # Get the user information
+        name = st.session_state.user_info['name']
+
+        # Set the key owner
         if "keyOwner" not in st.session_state:
             st.session_state.keyOwner = "QU"
 
-
-        name = st.session_state.user_info['name']
-        if "response" not in st.session_state:
-            st.session_state.ques_session = True
-            st.session_state.response = {'answer': f'Hello {name}! How can I help you today? ',
-                            'followup_questions': ["What is required by Local Law 144 of 2021 for automated employment decision tools?",
-                                                    "Tell me more about Data Requirements for the Bias Audit.",
-                                                    "What is selection rate in context of AEDT? Give me an example.",
-                                                    ]}
-        #front-end chatmemory
+        # Front-end chat memory
         INITIAL_MESSAGE = [{"role": "assistant",
                 "content": f'Hello {name}! How can I help you today? '}]
+        
+        # Set the messages
         if "messages" not in st.session_state:
             st.session_state["messages"] = INITIAL_MESSAGE
 
+        # Set the question per session
         if "question_per_session" not in st.session_state:
             st.session_state.question_per_session = 0
-
-        def send_prompt(prompt):
-            # if "limit_reached" not in st.session_state and st.session_state.question_per_session < self.TOTAL_QUES:
-                st.session_state.messages.append({"role": "user", "content": prompt})
-                display_on_chat(prompt, is_user =True) #user
-                
-                with st.spinner('Getting you the answer'):
-                    time.sleep(1)
-                    st.session_state.response = self.get_response(prompt)
-
-                answer = st.session_state.response["answer"]
-                st.session_state.messages.append({"role": "assistant", "content": answer})
-                st.session_state.ques_session = True
-                st.session_state.question_per_session += 1
-                if st.session_state.question_per_session == self.TOTAL_QUES:
-                    st.session_state.keyOwner = 'None'
-                st.rerun()
-            
-
-        # st.markdown("<h1 style='text-align: Left;'>NIST QuBot</h1>", unsafe_allow_html=True)
-        
-        st.header("QuBot", divider= "blue")
+      
+        # Display the chatbot UI
+        st.header(f"QuCopilot - {st.session_state.config_param['APP_NAME']}", divider= "blue")
         st.markdown("""
-        <p style='text-align: left; font-size:12px;'><i>Note:</i><br>
-            <i>Qubot</i> is an experimental AI-bot that utilizes information from a published <a href="{url}">document</a>. You can experiment with Qubot a few times for free. Later, you can use your own <a href="{key_link}">OpenAI key</a> for further usage.
+        <p style='text-align: left; font-size:12px;'><i>Note: </i>
+            <i>QuCopilot</i> is an experimental AI-bot that utilizes information for this particular course. You can experiment with QuCopilot a few times for free. Later, you can use your own <a href="{key_link}">OpenAI key</a> for further usage.
+            <br />
+            Quantuniversity does not store or use this key outside of your current usage. Quantuniversity is not responsible for misuse of the key and is not liable for any charges other than for the current use of the QuCopilot. Use QuCopilot at your own risk.
         </p>
-        """.format(url="https://www.nyc.gov/site/dca/about/automated-employment-decision-tools.page", key_link="https://platform.openai.com/docs/quickstart#:~:text=First%2C%20create%20an%20OpenAI%20account,not%20share%20it%20with%20anyone"), unsafe_allow_html=True)
+        """.format(url=st.session_state.config_param["DOCUMENT_LINK"], key_link="https://platform.openai.com/docs/quickstart#:~:text=First%2C%20create%20an%20OpenAI%20account,not%20share%20it%20with%20anyone"), unsafe_allow_html=True)
 
-        if st.session_state.keyOwner != "None" :
+        if st.session_state.keyOwner != "None":
+
+            # Streamed response emulator
+            def response_generator(question):
+                with st.spinner("Getting you the answer..."):
+                    response = self.get_response(question)
+                for word in response['answer']:
+                    yield word
+                    time.sleep(random.random()/100)
+
+            # Display chat messages from history on app rerun
             for message in st.session_state.messages:
-                display_on_chat(
-                    message["content"],
-                    True if message["role"] == "user" else False,
-                )
-            if type(st.session_state.response["followup_questions"]) == str:
-                followup_questions = ast.literal_eval(st.session_state.response["followup_questions"])
-            else:
-                followup_questions = st.session_state.response["followup_questions"]
+                with st.chat_message(message["role"]):
+                    st.markdown(message["content"])
 
-            col0, col1, col2, col3, col5 = st.columns([0.05,0.30,0.30,0.30,0.05])
+            # Accept user input
+            if prompt:= st.chat_input("Message QuCopilot..."):
+                logger.info(f"User message: {prompt}")
+    
+                st.session_state.question_per_session += 1
+                if st.session_state.question_per_session == st.session_state.config_param["CHATBOT_QUESTIONS_LIMIT"]:
+                    st.session_state.keyOwner = 'None'
 
-            btn1,btn2,btn3 = False,False,False
+                # Add user message to chat history
+                st.session_state.messages.append({"role": "user", "content": prompt})
+                # Display user message in chat message container
+                with st.chat_message("user"):
+                    st.markdown(prompt)
 
-            if st.session_state.response["followup_questions"] != [] and len(st.session_state.response["followup_questions"]) == 3:
-                with col1:
-                    ques1 = followup_questions[0]
-                    btn1 = st.button(ques1)
-                
-                with col2:
-                    ques2 = followup_questions[1]
-                    btn2 = st.button(ques2)
+                # Display assistant response in chat message container
+                with st.chat_message("assistant"):
+                    response = st.write_stream(response_generator(prompt))
+                # Add assistant response to chat history
+                st.session_state.messages.append({"role": "assistant", "content": response})
 
-                with col3:
-                    ques3 = followup_questions[2]
-                    btn3 = st.button(ques3)
-
-            if prompt := st.chat_input():
-                    send_prompt(prompt) 
-
-            if btn1:
-                send_prompt(ques1)
-            if btn2:
-                send_prompt(ques2)
-            if btn3:
-                send_prompt(ques3)
 
         else:
-            st.warning("You have exhausted your free trial. Enter your OpenAI key below to conitnue")
-            # input_content, btn_content = st.columns([0.8,0.2])
-            OPENAI_KEY = st.text_input('OpenAI key:',type="password")
+            logger.warning("User has exhausted free trial.")
+            st.warning("You have exhausted your free trial. Enter your OpenAI key below to continue.")
+            st.session_state.openai_key = st.text_input('OpenAI key:',type="password")
 
             if st.button("Submit Key", type="secondary"):
-                self.chatModel = ChatOpenAI(temperature=0, model_name = self.OPENAI_MODEL,openai_api_key = OPENAI_KEY)
-                st.session_state.keyOwner = "USER"
-                st.rerun()
+                logger.info("Key submitted.")
 
-
+                # Check if the key is valid
+                try:
+                    self.chat_model = ChatOpenAI(temperature=0, model_name = self.OPENAI_MODEL, openai_api_key = st.session_state.openai_key)
+                    # Check if key is valid
+                    self.get_response("Hello")
+                    st.session_state.keyOwner = "USER"
+                    logger.info("Key accepted.")
+                    st.rerun()
+                except Exception as e:
+                    logger.error(e)
+                    logger.warning("Invalid key entered.")
+                    st.error("Invalid key. Please try again.")
 

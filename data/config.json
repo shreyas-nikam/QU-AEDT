@@ -1,34 +1,59 @@
-{ 
-  "APP_CODE":"AEDT",
+{
+  "APP_CODE": "AEDT",
   "APP_NAME": "NY 144 Law on Automated Employment Decision Tools (AEDT)",
+  "APP_IMAGE": "qu-aedt/course-image/course-image.jpg",
+  "HOME_PAGE_INTRODUCTION": "### Introduction  \n- The Department of Consumer and Worker Protection (DCWP) is implementing rules for automated employment decision tools (AEDTs) based on [Local Law 144 of 2021](https://www.nyc.gov/site/dca/about/automated-employment-decision-tools.page).  \n- AEDTs cannot be used by employers or employment agencies without undergoing a bias audit and making the audit results public.  \n- The bias audit must analyze selection rates for different demographic groups and compare them to detect potential biases.  \n- Rules clarify terms, audit requirements, publication standards for audit results, and notice obligations for employees and job candidates.  \n- Overall, the rules aim to ensure compliance with the law and promote fairness in employment practices involving AEDTs.  \n- It is a process conducted by employers or employment agencies to assess the fairness of an automated employment decision tool (AEDT) in selecting candidates for employment or promotion.  \n- It ensures that AEDTs don't unfairly discriminate based on sex, race/ethnicity, or intersectional categories by analyzing selection or scoring patterns and comparing them across demographic groups.  \n#### Key Takeaways: \n[QuIQ Report](https://qucoursify.s3.amazonaws.com/qu-aedt/test/key-takeaways.html)  \n#### Reference PDF:  \n[Local Law 144 of 2021](https://www.nyc.gov/site/dca/about/automated-employment-decision-tools.page)",
+  "SHORT_DESCRIPTION": "DCWP is implementing rules for automated employment decision tools (AEDTs) based on Local Law 144 of 2021.",
   "DOCUMENT_LINK": "https://www.nyc.gov/site/dca/about/automated-employment-decision-tools.page",
-  "PDF_FILE_PATH": "data/AEDT.pdf",
-  "QUIZ_TOTAL_QUES": 5,
-  "USER_TABLE_NAME": "users",
+  "S3_BUCKET_NAME": "qucoursify",
+  "S3_BUCKET_PREFIX": "qu-aedt/test",
+  "VIDEOS_PATH": "./data/videos",
+  "SLIDES_PATH": "./data/slides",
+  "TRANSCRIPTS_PATH": "./data/transcripts",
+  "LAST_UPDATED_JSON": "data/last_updated.json",
+  "LOCAL_PATH": "AEDT",
+  "CHAT_BOT_STARTER_FOLLOW_UP_QUESTIONS": [
+    "What is required by Local Law 144 of 2021 for automated employment decision tools?",
+    "Tell me more about Data Requirements for the Bias Audit.",
+    "What is selection rate in context of AEDT? Give me an example."
+  ],
+  "RETRIEVER_DB_PATH": "./data/retriever/",
+  "HYBRID_DB_PATH": "./data/retriever/hybrid_db",
+  "CHATBOT_QUESTIONS_LIMIT": 5,
+  "QUESTIONS_FILE": "./data/questions.json",
+  "CERTIFICATE_PATH": "./data/QU-Certificate.jpg",
+  "QUIZ_TOTAL_QUES": 2,
   "QUIZ_RESULT_TABLE_NAME": "quiz_results",
   "USER_QUIZ_INTERACTION_TABLE_NAME": "user_quiz_interaction",
-  "COURSE_LINKS": [
+  "SLIDES_LINKS": [
     "./data/slides/1 Introduction.pdf",
     "./data/slides/2 Definitions.pdf",
     "./data/slides/3 Bias Audit.pdf",
     "./data/slides/4 Summary.pdf"
   ],
-  "COURSE_NAMES": [
+  "COURSE_NAMES_SLIDES": [
+    "1. Introduction",
+    "2. Definitions",
+    "3. Bias Audit",
+    "4. Summary"
+  ],
+  "COURSE_NAMES_VIDEOS": [
     "1. Introduction",
     "2. Definitions",
     "3. Bias Audit",
     "4. Summary"
   ],
   "VIDEOS_LINKS": [
-    "./data/videos/1 Introduction.mp4",
-    "./data/videos/2 Definitions.mp4",
-    "./data/videos/3 Bias Audit.mp4",
-    "./data/videos/4 Summary.mp4"
+    "<div style='padding:56.24% 0 0 0;position:relative;'><iframe src='https://player.vimeo.com/video/930036330?h=f5bf250537&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479' frameborder='0' allow='autoplay; fullscreen; picture-in-picture; clipboard-write' style='position:absolute;top:0;left:0;width:100%;height:100%;' title='1 Introduction'></iframe></div><script src='https://player.vimeo.com/api/player.js'></script>",
+    "<div style='padding:56.24% 0 0 0;position:relative;'><iframe src='https://player.vimeo.com/video/930036417?h=4421e9927a&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479' frameborder='0' allow='autoplay; fullscreen; picture-in-picture; clipboard-write' style='position:absolute;top:0;left:0;width:100%;height:100%;' title='2 Definitions'></iframe></div><script src='https://player.vimeo.com/api/player.js'></script>",
+    "<div style='padding:56.24% 0 0 0;position:relative;'><iframe src='https://player.vimeo.com/video/930036455?h=8b9d25145d&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479' frameborder='0' allow='autoplay; fullscreen; picture-in-picture; clipboard-write' style='position:absolute;top:0;left:0;width:100%;height:100%;' title='3 Bias Audit'></iframe></div><script src='https://player.vimeo.com/api/player.js'></script>",
+    "<div style='padding:56.24% 0 0 0;position:relative;'><iframe src='https://player.vimeo.com/video/930036540?h=b33426ff8b&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479' frameborder='0' allow='autoplay; fullscreen; picture-in-picture; clipboard-write' style='position:absolute;top:0;left:0;width:100%;height:100%;' title='4 Summary'></iframe></div><script src='https://player.vimeo.com/api/player.js'></script>"
   ],
   "TRANSCRIPTS_FILES": [
     "./data/transcripts/transcript_1 Introduction.txt",
     "./data/transcripts/transcript_2 Definitions.txt",
     "./data/transcripts/transcript_3 Bias Audit.txt",
     "./data/transcripts/transcript_4 Summary.txt"
-  ]
+  ],
+  "CONTACT_FORM_LINK": "https://docs.google.com/forms/d/e/1FAIpQLSfWkOK-in_bMMoHSZfcIvAeO58PAH9wrDqcxnJABHaxiDqhSA/viewform?usp=sf_link"
 }
