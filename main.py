@@ -9,6 +9,7 @@ from src.quiz import Quiz
 from src.whatIf import WhatIf
 from src.calculations import BiasAuditCalculations
 from src.contactForm import ContactForm
+from src.myReports import MyReports
 
 if "user_info" not in st.session_state:
     st.session_state.user_info = {}
@@ -30,6 +31,7 @@ if "page_chatbot" not in st.session_state:
     st.session_state.page_calculations = BiasAuditCalculations()
     st.session_state.page_whatIf = WhatIf()
     st.session_state.contact_form = ContactForm()
+    st.session_state.page_myReports = MyReports()
 
 
 st.set_page_config(
@@ -54,6 +56,7 @@ page = st.sidebar.radio(label="Select a Page:",
                          "What If Analysis",
                          "QuBot",
                          "Quiz",
+                         "My Reports",
                         #  "Reference PDF", 
                          "Contact Form"],
                         disabled=True if not st.session_state.user_info else False)
@@ -69,17 +72,11 @@ elif page == "QuBot":
 elif page == "Quiz":
     st.session_state.page_quiz.main()
 elif page == "Bias Audit Calculations":
-    if "page_calculations" in st.session_state:
-        st.session_state.page_calculations.main()
-    else:
-        st.session_state.page_calculations = BiasAuditCalculations()
-        st.session_state.page_calculations.main()
+    st.session_state.page_calculations.main()
 elif page == "What If Analysis":
-    if "page_whatIf" in st.session_state:
-        st.session_state.page_whatIf.main()
-    else:
-        st.session_state.page_whatIf = WhatIf()
-        st.session_state.page_whatIf.main()
+    st.session_state.page_whatIf.main()
+elif page == "My Reports":
+    st.session_state.page_myReports.main()
 # elif page == "Reference PDF":
 #     st.session_state.page_reference.main()
 elif page == "Contact Form":
