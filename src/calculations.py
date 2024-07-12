@@ -89,6 +89,8 @@ class BiasAuditCalculations:
                     st.dataframe(dataframe)
                     df_copy = dataframe.copy()
                     self.file_id = uuid.uuid4()
+                    st.session_state.report_generated = False
+
             except Exception as e:
                 st.error(
                     "Please submit valid data schema. Use the above data schema file link as reference")
@@ -103,7 +105,6 @@ class BiasAuditCalculations:
         sex_categories = df_copy.groupby('Sex (Male/Female)').agg(Total=(
             'Sex (Male/Female)', 'size'), Selected=('IsSelected (Yes/No)', 'sum')).reset_index()
         # make sure there are two rows and if not enter zeros in the second row
-        print("Sex columns: ", sex_categories.columns)
         sex_categories["Selection_Rate"] = (
             sex_categories['Selected']/sex_categories['Total']).round(2)
         sex_categories['Impact_Ratio'] = (
@@ -178,50 +179,19 @@ class BiasAuditCalculations:
         # Categories: SEX
         st.subheader("Audit metrics by category: Sex", divider="orange")
 
+        sex_categories.fillna(0, inplace=True)
+        race_categories.fillna(0, inplace=True)
+        intersectional_counts.fillna(0, inplace=True)
+
+
         _, r, _ = st.columns([.4, .2, .4])
         # Display the table view
-        if r.toggle('Table View'):
-            st.write(" ")
-            vmin = min(sex_categories["Impact_Ratio"])
-            vmax = max(sex_categories["Impact_Ratio"])
-            st.write(" ")
-            st.dataframe(sex_categories.style.text_gradient(subset=[
-                         "Impact_Ratio"], cmap="RdYlGn", vmin=vmin, vmax=vmax), width=700,  hide_index=True)
-
-        # Display the metrics
-        else:
-            _, col_male, _, col_female, _ = st.columns(
-                [0.02, 0.48, 0.02, 0.48, 0.02])
-
-            # Display the metrics for male column
-            with col_male:
-                container = st.container(border=True)
-                container.markdown(
-                    f"<h4 style='text-align: center; text-shadow: 1px 1px 1px blue; '>{sex_categories.iloc[0,0]}</h4>", unsafe_allow_html=True)
-                col1, col2, col3, col4 = container.columns(4)
-                col1.metric(label="Total Applicants",
-                            value=sex_categories.iloc[0, 1])
-                col2.metric(label="Total Selected",
-                            value=sex_categories.iloc[0, 2])
-                col3.metric(label="Selection Rate",
-                            value=sex_categories.iloc[0, 3], help="The rate at which individuals in a category are either selected to move forward in the hiring process or assigned a classification by an AEDT")
-                col4.metric(label="Impact Ratio", value=sex_categories.iloc[0, 4], delta=((sex_categories.iloc[0, 4]-1).round(
-                    2)), help="The selection rate for a category divided by the selection rate of the most selected category")
-
-            # Display the metrics for female column
-            with col_female:
-                container = st.container(border=True)
-                container.markdown(
-                    f"<h4 style='text-align: center; text-shadow: 1px 1px 1px blue;'>{sex_categories.iloc[1,0]}</h4>", unsafe_allow_html=True)
-                col1, col2, col3, col4 = container.columns(4)
-                col1.metric(label="Total Applicants",
-                            value=sex_categories.iloc[1, 1])
-                col2.metric(label="Total Selected",
-                            value=sex_categories.iloc[1, 2])
-                col3.metric(label="Selection Rate",
-                            value=sex_categories.iloc[1, 3], help="The rate at which individuals in a category are either selected to move forward in the hiring process or assigned a classification by an AEDT")
-                col4.metric(label="Impact Ratio", value=sex_categories.iloc[1, 4], delta=((sex_categories.iloc[1, 4]-1).round(
-                    2)), help="The selection rate for a category divided by the selection rate of the most selected category")
+        st.write(" ")
+        vmin = min(sex_categories["Impact_Ratio"])
+        vmax = max(sex_categories["Impact_Ratio"])
+        st.write(" ")
+        st.dataframe(sex_categories.style.text_gradient(subset=[
+                        "Impact_Ratio"], cmap="RdYlGn", vmin=vmin, vmax=vmax), width=700,  hide_index=True)
 
         # Race / Ethnicity Categories
         st.subheader("Audit metrics by category: Race/Ethnicity",
@@ -262,25 +232,32 @@ class BiasAuditCalculations:
 
         Path("data/reports").mkdir(parents=True, exist_ok=True)
 
-        generate_button, save_button, download_button, _ = st.columns([
-                                                                      1, 1, 1, 2])
+        generate_button, download_button, _, _ = st.columns([1, 1, 1, 2])
         generate_report_button = generate_button.button(
             "Generate Report", key="generate_report_button", use_container_width=True)
 
-        logger.info("Generating Bias Audit Report")
-        self.report_generator.add_note(embed_sex_table)
-        self.report_generator.add_note(embed_race_table)
-        self.report_generator.add_note(embed_sex_race_table)
-        # self.report_generator.add_note(embed_impact_ratio_chart)
 
-        self.report_generator.generate()
-        self.report_generator.save(Path(f"data/reports/{self.file_id}.html"))
+        if generate_report_button or ("report_generated" in st.session_state and st.session_state.report_generated == True):
+            st.session_state.report_generated = True
 
-        # put in s3
-        if save_button.button("Save Report", key=f'{self.file_id}', use_container_width=True):
+            logger.info("Generating Bias Audit Report")
+            
+            self.report_generator = ReportGenerator(name="Bias Audit for Client XYZ Corp.", version="1.0",
+                                        category="basic", owner='Sri Krishnamurthy', contact='info@qusandbox.com')
+            self.report_generator.load(self.template_input)
+
+            self.report_generator.add_note(embed_sex_table)
+            self.report_generator.add_note(embed_race_table)
+            self.report_generator.add_note(embed_sex_race_table)
+            # self.report_generator.add_note(embed_impact_ratio_chart)
+
+            self.report_generator.generate()
+            self.report_generator.save(Path(f"data/reports/{self.file_id}.html"))
+
+            # put in s3
             self.s3_file_manager.upload_file(
                 open(Path(f"data/reports/{self.file_id}.html"), "rb"), f"qu-aedt/test/reports/{st.session_state.user_info['email']}/{self.file_id}.html")
             st.success("Report saved successfully")
 
-        download_button.download_button("Download Report", open(Path(
-            f"data/reports/{self.file_id}.html"), 'rb'), file_name="Bias Audit Report.html", mime='text/html', use_container_width=True)
+            download_button.download_button("Download Report", open(Path(
+                f"data/reports/{self.file_id}.html"), 'rb'), file_name="Bias Audit Report.html", mime='text/html', use_container_width=True)

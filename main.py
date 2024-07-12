@@ -10,10 +10,7 @@ from src.whatIf import WhatIf
 from src.calculations import BiasAuditCalculations
 from src.contactForm import ContactForm
 from src.myReports import MyReports
-st.session_state.user_info = {
-    "email": "shreyas@qusandbox.com",
-    "name": "Shreyas",
-}
+
 if "user_info" not in st.session_state:
     st.session_state.user_info = {}
     st.switch_page("pages/login.py")

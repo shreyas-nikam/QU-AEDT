@@ -88,13 +88,13 @@ class WhatIf:
         if st.session_state.sex_option and st.session_state.race_option:
             selected_value = st.session_state.df_intersectional_counts.loc[(st.session_state.df_intersectional_counts['Sex (Male/Female)'] == st.session_state.sex_option) & (st.session_state.df_intersectional_counts['Race/Ethnicity'] == st.session_state.race_option), 'Total Selected'].values
             selected_value = selected_value[0]
-            st.session_state.input_selected = selected_content.text_input('No of Selected', selected_value)
+            st.session_state.input_selected = selected_content.number_input('No of Selected', selected_value)
 
             total_selected_count = st.session_state.df_intersectional_counts.loc[(st.session_state.df_intersectional_counts['Sex (Male/Female)'] == st.session_state.sex_option) & (st.session_state.df_intersectional_counts['Race/Ethnicity'] == st.session_state.race_option), 'Total Count'].values
             st.session_state.display_total = total_selected_count[0]
             total_content.text_input('Total Count', st.session_state.display_total, disabled = True )
         else:
-            selected_content.text_input('No of Selected', None)
+            selected_content.number_input('No of Selected', None)
             total_content.text_input('Total Count', None, disabled = True)
 
         # Output

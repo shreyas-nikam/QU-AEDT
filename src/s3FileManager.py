@@ -100,6 +100,7 @@ class S3FileManager:
         return temp_dir
 
     def get_reports_list(self, email):
+        print(email)
         try:
             response = self.s3_client.list_objects_v2(
                 Bucket=self.bucket_name, Prefix=f"qu-aedt/test/reports/{email}/")
@@ -118,7 +119,7 @@ class S3FileManager:
     def delete_report(self, report_name, email):
         try:
             self.s3_client.delete_object(
-                Bucket=self.bucket_name, Key=f"qu-aedt/test/reports/{email}/{report_name}")
+                Bucket=self.bucket_name, Key=report_name)
             return True
         except Exception as e:
             logging.error(f"An error occurred: {e}")

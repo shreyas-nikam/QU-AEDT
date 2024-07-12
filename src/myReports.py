@@ -25,7 +25,6 @@ class MyReports:
             self.s3_file_manager.delete_report(
                 report[0], st.session_state.user_info['email'])
             st.rerun()
-        print(report[0])
         temp_dir = self.s3_file_manager.download_file_in_temp(
             f"{report[0]}")
         download_button_col.download_button(label="Download", data=open(
@@ -41,8 +40,6 @@ class MyReports:
         if len(reports) == 0:
             st.write("No reports available.")
         else:
-            st.write("Below are the reports available:")
-            st.divider()
             name_col, date_col, size_col, delete_button_col, download_button_col = st.columns([
                 4, 2, 2, 1, 1])
             name_col.markdown("**Name**", )
