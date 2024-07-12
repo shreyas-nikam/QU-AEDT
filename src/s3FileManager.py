@@ -40,6 +40,14 @@ class S3FileManager:
             logging.error(f"upload_pdf: An error occurred: {e}")
             return False
 
+    def upload_file(self, file_obj, s3_path):
+        try:
+            self.s3_client.upload_fileobj(file_obj, self.bucket_name, s3_path)
+            return True
+        except Exception as e:
+            logging.error(f"An error occurred: {e}")
+            return False
+
     def read_file(self, s3_file_name):
         s3_file_name = str(Path(s3_file_name).as_posix())
         try:
@@ -60,12 +68,12 @@ class S3FileManager:
     def download_file(self, s3_file_name, download_file_path):
         s3_file_name = str(Path(s3_file_name).as_posix())
         download_file_path = str(Path(download_file_path).as_posix())
-        
+
         logging.info(f"{self.bucket_name}/{s3_file_name}")
         self.s3_client.download_file(
             self.bucket_name, s3_file_name, download_file_path)
         return True
-        
+
     def save_mmd_file(self, mmd_file_contents, mmd_s3_file_name):
         mmd_s3_file_name = str(Path(mmd_s3_file_name).as_posix())
         try:
@@ -77,10 +85,10 @@ class S3FileManager:
         except Exception as e:
             logging.error(f"AWS: save_mmd_file: An error occurred: {e}")
             return False
-    
-    def download_file_in_temp(self,input_file):
+
+    def download_file_in_temp(self, input_file):
         '''returns temp_directory'''
-        
+
         # Create a temporary directory
         logging.info("Creating Temp File")
         temp_dir = tempfile.mkdtemp()
@@ -90,25 +98,27 @@ class S3FileManager:
         self.download_file(input_file, temp_pdf_path)
         logging.info(f"Temp File Created : {temp_pdf_path}")
         return temp_dir
-    
 
     def get_reports_list(self, email):
         try:
-            response = self.s3_client.list_objects_v2(Bucket=self.bucket_name, Prefix=f"qu-aedt/test/reports/{email}/")
+            response = self.s3_client.list_objects_v2(
+                Bucket=self.bucket_name, Prefix=f"qu-aedt/test/reports/{email}/")
             if 'Contents' in response:
                 reports = []
                 for obj in response['Contents']:
-                    reports.append((obj['Key'], obj['LastModified'], obj['Size']))
+                    reports.append(
+                        (obj['Key'], obj['LastModified'], obj['Size']))
                 return reports
             else:
                 return []
         except Exception as e:
             logging.error(f"An error occurred: {e}")
             return []
-    
+
     def delete_report(self, report_name, email):
         try:
-            self.s3_client.delete_object(Bucket=self.bucket_name, Key=f"qu-aedt/test/reports/{email}/{report_name}")
+            self.s3_client.delete_object(
+                Bucket=self.bucket_name, Key=f"qu-aedt/test/reports/{email}/{report_name}")
             return True
         except Exception as e:
             logging.error(f"An error occurred: {e}")

@@ -10,11 +10,13 @@ from src.whatIf import WhatIf
 from src.calculations import BiasAuditCalculations
 from src.contactForm import ContactForm
 from src.myReports import MyReports
-
+st.session_state.user_info = {
+    "email": "shreyas@qusandbox.com",
+    "name": "Shreyas",
+}
 if "user_info" not in st.session_state:
     st.session_state.user_info = {}
     st.switch_page("pages/login.py")
-
 
 
 if "config_param" not in st.session_state:
@@ -40,7 +42,6 @@ st.sidebar.image(
     "https://www.quantuniversity.com/assets/img/logo5.jpg", use_column_width="always")
 
 
-
 _, logout_button_space = st.columns([0.9, 0.1])
 if logout_button_space.button("Logout", use_container_width=True, type="primary"):
     for key in st.session_state.keys():
@@ -51,14 +52,14 @@ if logout_button_space.button("Logout", use_container_width=True, type="primary"
 # Set sidebar routes
 page = st.sidebar.radio(label="Select a Page:",
                         options=["Home",
-                        #  "Course Material",
-                         "Bias Audit Calculations",
-                         "What If Analysis",
-                         "QuBot",
-                         "Quiz",
-                         "My Reports",
-                        #  "Reference PDF", 
-                         "Contact Form"],
+                                 #  "Course Material",
+                                 "Bias Audit Calculations",
+                                 "What If Analysis",
+                                 "QuBot",
+                                 "Quiz",
+                                 "My Reports",
+                                 #  "Reference PDF",
+                                 "Contact Form"],
                         disabled=True if not st.session_state.user_info else False)
 
 # check if the content is updated
@@ -81,4 +82,3 @@ elif page == "My Reports":
 #     st.session_state.page_reference.main()
 elif page == "Contact Form":
     st.session_state.contact_form.main()
-        

@@ -179,3 +179,5 @@ data/videos/*
 data/videos
 data/transcripts/*
 data/transcripts
+data/reports/*
+data/reports
